@@ -17,6 +17,12 @@ const FetchTimeSeries = props => {
 
     const cuntry_code_data = country_code.data;
     const country = props.country;
+
+    if (!timeseries.isFetching) {
+        console.log(Object.keys(timeseries.timeseriesData));
+    }
+    
+    
     
     return(
         <React.Fragment>
