@@ -6,21 +6,16 @@ const World = props => {
     const loading = props.countryDataLoading;
     const data = props.countryData;
     const columnDefs = [
-        {headerName: "Country", field: "country"},
-        {headerName: "Total Cases", field: "cases"},
-        {headerName: "Cases Today", field: "todayCases"},
-        {headerName: "Deaths", field: "deaths"},
-        {headerName: "Deaths Today", field: "todayDeaths"},
-        {headerName: "Recovered", field: "recovered"},
-        {headerName: "Active Cases", field: "active"},
-        {headerName: "Critical", field: "critical"},
-        {headerName: "Cases Per One Million", field: "casesPerOneMillion"},
+        {headerName: "Country", field: "country", sortable: true, filter: true},
+        {headerName: "Total Cases", field: "cases", sortable: true, filter: true},
+        {headerName: "Cases Today", field: "todayCases", sortable: true, filter: true},
+        {headerName: "Deaths", field: "deaths", sortable: true, filter: true},
+        {headerName: "Deaths Today", field: "todayDeaths", sortable: true, filter: true},
+        {headerName: "Recovered", field: "recovered", sortable: true, filter: true},
+        {headerName: "Active Cases", field: "active", sortable: true, filter: true},
+        {headerName: "Critical", field: "critical", sortable: true, filter: true},
+        {headerName: "Cases Per One Million", field: "casesPerOneMillion", sortable: true},
 
-    ];
-    const rowData = [
-        {country: "Toyota", cases: "Celica", todayCases: 35000},
-        {country: "Ford", cases: "Mondeo", todayCases: 32000},
-        {country: "Porsche", cases: "Boxter", todayCases: 72000}
     ];
 
     return (
