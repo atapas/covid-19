@@ -70,8 +70,8 @@ const TopNDeathWidget = props => {
                     <div>
                         {loading ? <h3>Loading...</h3> :
                             <div>
-                                <BarChart width={750} height={330} data={refinedData}
-                                    margin={{ top: 30, right: 0, left: 20, bottom: 5 }}
+                                <BarChart width={500} height={330} data={refinedData}
+                                    margin={{ top: 30, right: 0, left: 0, bottom: 5 }}
                                 >
                                     <XAxis dataKey="country" />
                                     <YAxis />

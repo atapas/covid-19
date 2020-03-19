@@ -54,11 +54,11 @@ const TopNRecoveredWidget = props => {
                         {loading ? <h3>Loading...</h3> :
                             <div>
                                 <BarChart
-                                    width={700}
+                                    width={500}
                                     height={300}
                                     data={refinedData}
                                     margin={{
-                                        top: 5, right: 30, left: 20, bottom: 5,
+                                        top: 5, right: 0, left: 0, bottom: 5,
                                     }}
                                 >
                                     <CartesianGrid strokeDasharray="3 3" />

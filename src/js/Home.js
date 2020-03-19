@@ -30,7 +30,7 @@ const Home = () => {
                 </Col>
             </Row>
             <Row>
-                <Col sm={6}>
+                <Col sm={8}>
                     <TopNRecoveredWidget loading={countryDataLoading} data={countryData}/>
                 </Col>
             </Row>
