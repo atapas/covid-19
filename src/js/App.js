@@ -11,11 +11,17 @@ import Form from 'react-bootstrap/Form';
 import FormControl from 'react-bootstrap/FormControl';
 import Button from 'react-bootstrap/Button';
 
+import { useFetch } from './useFetch';
+
 import Home from './Home';
 import World from './World';
 import Countries from './Countries';
 
 const App = () => {
+  const [countryData, countryDataLoading] = useFetch(
+    "https://corona.lmao.ninja/countries"
+  );
+
   return (
     <Router>
       <div className="App">
@@ -34,13 +40,13 @@ const App = () => {
 
         <Switch>
           <Route exact path="/">
-            <Home />
+            <Home countryData={countryData} countryDataLoading={countryDataLoading} />
           </Route>
           <Route exact path="/home">
-            <Home />
+            <Home countryData={countryData} countryDataLoading={countryDataLoading} />
           </Route>
           <Route path="/world">
-            <World />
+            <World countryData={countryData} countryDataLoading={countryDataLoading} />
           </Route>
           <Route path="/countries">
             <Countries />

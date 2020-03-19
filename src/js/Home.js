@@ -11,13 +11,11 @@ import OverAllWidget from './covid-all/OverAllWidget';
 import TopNDeathWidget from './covid-all/TopNDeathWidget';
 import TopNRecoveredWidget from './covid-all/TopNRecoveredWidget';
 
-const Home = () => {
+const Home = props => {
     const [allData, allDataLoading] = useFetch(
         "https://corona.lmao.ninja/all"
     );
-    const [countryData, countryDataLoading] = useFetch(
-        "https://corona.lmao.ninja/countries"
-    );
+    
     // console.log(countryData);
     return(
         <Container className="Home" fluid>
@@ -26,12 +24,12 @@ const Home = () => {
                     <OverAllWidget loading={allDataLoading} data={allData}/>
                 </Col>
                 <Col sm={8}>
-                    <TopNDeathWidget loading={countryDataLoading} data={countryData}/>
+                    <TopNDeathWidget loading={props.countryDataLoading} data={props.countryData}/>
                 </Col>
             </Row>
             <Row>
                 <Col sm={8}>
-                    <TopNRecoveredWidget loading={countryDataLoading} data={countryData}/>
+                    <TopNRecoveredWidget loading={props.countryDataLoading} data={props.countryData}/>
                 </Col>
             </Row>
         </Container>

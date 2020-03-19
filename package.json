@@ -37,10 +37,13 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.5.5",
+    "ag-grid-community": "^23.0.1",
+    "ag-grid-react": "^23.0.0",
     "bootstrap": "^4.4.1",
     "cross-env": "^7.0.2",
     "moment": "^2.24.0",
     "react-bootstrap": "^1.0.0-beta.17",
+    "react-dom-factories": "^1.0.2",
     "react-moment": "^0.9.7",
     "react-redux": "^7.2.0",
     "react-router-dom": "^5.1.2",

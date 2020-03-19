@@ -958,6 +958,18 @@ acorn@^6.2.1:
   resolved "https://registry.yarnpkg.com/acorn/-/acorn-6.3.0.tgz#0087509119ffa4fc0a0041d1e93a417e68cb856e"
   integrity sha512-/czfa8BwS88b9gWQVhc8eknunSA2DoJpJyTQkhheIf5E48u1N0R4q/YxxsAeqRrmK9TQ/uYfgLDfZo91UlANIA==
 
+ag-grid-community@^23.0.1:
+  version "23.0.1"
+  resolved "https://registry.yarnpkg.com/ag-grid-community/-/ag-grid-community-23.0.1.tgz#d3eb49d30970f12575016fe850679205af3063f8"
+  integrity sha512-oD6cTvUNNKfRAGNAb/D1juuwuhFKb17/CB/XY0rGjYJMCe8IXF/u4YrtyeURjU8oLCav1WAmhZGNjBCHDR9rCQ==
+
+ag-grid-react@^23.0.0:
+  version "23.0.0"
+  resolved "https://registry.yarnpkg.com/ag-grid-react/-/ag-grid-react-23.0.0.tgz#fbcd417ebca7c611a61cbda368a8123d1d0ec914"
+  integrity sha512-WWOAeIOEioaC42vADH3VVKA9mBAM3/e6cERx8RMAtGzovwi5Buw3jST//a28r3FpQbuaZ6/hLlC6niNDczDrUw==
+  dependencies:
+    prop-types "^15.6.2"
+
 ajv-errors@^1.0.0:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/ajv-errors/-/ajv-errors-1.0.1.tgz#f35986aceb91afadec4102fbd85014950cefa64d"
@@ -5679,6 +5691,11 @@ react-bootstrap@^1.0.0-beta.17:
     react-transition-group "^4.0.0"
     uncontrollable "^7.0.0"
     warning "^4.0.3"
+
+react-dom-factories@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/react-dom-factories/-/react-dom-factories-1.0.2.tgz#eb7705c4db36fb501b3aa38ff759616aa0ff96e0"
+  integrity sha1-63cFxNs2+1AbOqOP91lhaqD/luA=
 
 react-dom@^16.9.0:
   version "16.11.0"
