@@ -6,8 +6,9 @@
   "scripts": {
     "start": "npm run open:client",
     "open:client": "webpack-dev-server --mode development --open",
-    "prod": "npm run build",
-    "build": "webpack --mode production"
+    "build": "webpack --mode production",
+    "copy": "node ./config/copy-to-dist.js",
+    "prod": "npm run build && npm run copy"
   },
   "keywords": [],
   "author": "",
@@ -37,6 +38,7 @@
   "dependencies": {
     "@babel/runtime": "^7.5.5",
     "bootstrap": "^4.4.1",
+    "cross-env": "^7.0.2",
     "moment": "^2.24.0",
     "react-bootstrap": "^1.0.0-beta.17",
     "react-moment": "^0.9.7",
