@@ -11,14 +11,14 @@ import Moment from 'react-moment';
 const WorldData = props => {
     const loading = props.loading;
     const data = props.data;
-    console.log('from OverAllWidget', loading, data);
+    // console.log('from OverAllWidget', loading, data);
 
     let refinedData = [];
     if (!loading) {
         data['infected'] = (data.cases - (data.deaths + data.recovered));
         let keys = Object.keys(data);
         keys.forEach((elem) => {
-            console.log(elem);
+            // console.log(elem);
             if (elem === 'cases' || elem === 'updated') {
                 return;
             }
@@ -27,13 +27,9 @@ const WorldData = props => {
             obj['value'] = data[elem];
             refinedData.push(obj);
         });
-        console.log('refinedData', refinedData);
-
+        // console.log('refinedData', refinedData);
     }
-
     const COLORS = ['#DC3545', '#28A745', '#FFC107'];
-    
-
     return (
         <div className="worldData">
             <Card >

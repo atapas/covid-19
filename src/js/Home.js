@@ -25,10 +25,12 @@ const Home = () => {
                 <Col sm={4}>
                     <OverAllWidget loading={allDataLoading} data={allData}/>
                 </Col>
-                <Col sm={4}>
+                <Col sm={8}>
                     <TopNDeathWidget loading={countryDataLoading} data={countryData}/>
                 </Col>
-                <Col sm={4}>
+            </Row>
+            <Row>
+                <Col sm={6}>
                     <TopNRecoveredWidget loading={countryDataLoading} data={countryData}/>
                 </Col>
             </Row>

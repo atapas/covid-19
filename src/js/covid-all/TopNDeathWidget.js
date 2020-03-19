@@ -22,7 +22,6 @@ const TopNDeathWidget = props => {
         "rgba(255, 0, 0, 0.2)",
         "rgba(255, 0, 0, 0.1)"
     ];
-    // console.log('from TopNRecoveredWidget', loading, data);
 
     let refinedData = [];
     if (!loading) {
@@ -38,7 +37,7 @@ const TopNDeathWidget = props => {
             obj['deaths'] = element['deaths'];
             refinedData.push(obj);
         });
-        console.log('refinedData', refinedData);
+        // console.log('refinedData', refinedData);
     }
 
     const getPath = (x, y, width, height) => {
@@ -67,12 +66,12 @@ const TopNDeathWidget = props => {
             <Card >
                 <Card.Body>
                     <Card.Title>Top N Countries with Death Impact</Card.Title>
-                    <Card.Subtitle className="mb-2 text-muted">Number of Countries: {TOP_N}</Card.Subtitle>
+                    <Card.Subtitle className="mb-2 text-muted">Number of Countries: <b>{TOP_N}</b></Card.Subtitle>
                     <div>
                         {loading ? <h3>Loading...</h3> :
                             <div>
-                                <BarChart width={450} height={300} data={refinedData}
-                                    margin={{ top: 20, right: 0, left: 0, bottom: 5 }}
+                                <BarChart width={750} height={330} data={refinedData}
+                                    margin={{ top: 30, right: 0, left: 20, bottom: 5 }}
                                 >
                                     <XAxis dataKey="country" />
                                     <YAxis />
