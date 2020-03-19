@@ -39,10 +39,28 @@ const TopNRecoveredWidget = props => {
             let obj = {};
             obj['country'] = element['country'];
             obj['%recovered'] = element['recovPerc'];
+            obj['cases'] = element['cases'];
+            obj['recovered'] = element['recovered'];
             refinedData.push(obj);
         });
         console.log('refinedData', refinedData);
     }
+
+    const CustomTooltip = ({ active, payload, label }) => {
+        if (active) {
+          return (
+            <div className="custom-tooltip">
+                <p className="label">{`${label} : ${payload[0].value}`}% Recovered</p>
+                <p className="intro">
+                    {`Recovered Cases: ${payload[0].payload.recovered}`}<br />
+                    {`Total Cases: ${payload[0].payload.cases}`}
+                </p>
+            </div>
+          );
+        }
+      
+        return null;
+    };
 
     return (
         <div className="top-n-recovered-widget">
@@ -64,7 +82,7 @@ const TopNRecoveredWidget = props => {
                                     <CartesianGrid strokeDasharray="3 3" />
                                     <XAxis dataKey="country" />
                                     <YAxis />
-                                    <Tooltip />
+                                    <Tooltip content={<CustomTooltip />}/>
                                     <Legend />
                                     <Bar dataKey="%recovered" fill="rgba(40, 167, 69, 1.0)" label={{ position: 'top' }}>
                                         {
