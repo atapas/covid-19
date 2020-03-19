@@ -5,7 +5,7 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
-import WorldData from './covid-all/WorldData';
+import Overview from './covid-all/Overview';
 import FetchTimeSeries from './time-series/FetchTimeSeries';
 
 const Home = () => {
@@ -14,7 +14,7 @@ const Home = () => {
         <Container className="Home" fluid>
             <Row>
                 <Col sm={4}>
-                    <WorldData />
+                    <Overview />
                 </Col>
                 <Col sm={8}>
                     <div >
