@@ -9,7 +9,7 @@ import {
 const TopNDeathWidget = props => {
     const loading = props.loading;
     const data = props.data;
-    const TOP_N = 4;
+    const TOP_N = 5;
     const DANGER_COLOR_SHADES = [
         "rgba(255, 0, 0, 1.0)",
         "rgba(255, 0, 0, 0.9)",
@@ -61,16 +61,6 @@ const TopNDeathWidget = props => {
         width: PropTypes.number,
         height: PropTypes.number,
     };
-
-    const data01 = [
-        {page: 'Page A', uv: 4000},
-        {page: 'Page B', uv: 3000},
-        {page: 'Page C', uv: 2500},
-        {page: 'Page D', uv: 600},
-        {page: 'Page E', uv: 260},
-        {page: 'Page F', uv: 17},
-        
-  ];
 
     return (
         <div className="top-n-death-widget">
