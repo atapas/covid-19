@@ -1,7 +1,6 @@
 import React from "react";
 import Badge from 'react-bootstrap/Badge';
 import Card from 'react-bootstrap/Card';
-import { useFetch } from '../useFetch';
 import {
     PieChart, Pie, Legend, Tooltip, Cell
 } from 'recharts';
@@ -9,10 +8,10 @@ import {
 import Moment from 'react-moment';
 
 
-const WorldData = () => {
-    const [{ data, loading }] = useFetch(
-        "https://corona.lmao.ninja/all"
-    );
+const WorldData = props => {
+    const loading = props.loading;
+    const data = props.data;
+    console.log('from OverAllWidget', loading, data);
 
     let refinedData = [];
     if (!loading) {
@@ -33,14 +32,14 @@ const WorldData = () => {
     }
 
     const COLORS = ['#DC3545', '#28A745', '#FFC107'];
-    console.log(loading, data);
+    
 
     return (
         <div className="worldData">
             <Card >
                 <Card.Body>
                     <Card.Title>Recovery vs Death as on <Moment format="YYYY/MM/DD">{data.updated}</Moment></Card.Title>
-                    <Card.Subtitle className="mb-2 text-muted">Total Cases: {data.cases}</Card.Subtitle>
+                    <Card.Subtitle className="mb-2 text-muted">Total Cases: <b>{data.cases}</b></Card.Subtitle>
                     <div>
                     {loading ? <h3>Loading...</h3> :
                         <div>
@@ -55,7 +54,7 @@ const WorldData = () => {
                                     fill="#8884d8"
                                     label>
                                     {
-                                        refinedData.map((entry, index) => <Cell fill={COLORS[index % COLORS.length]} />)
+                                        refinedData.map((entry, index) => <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />)
                                     }
                                 </Pie>
                                 <Tooltip />

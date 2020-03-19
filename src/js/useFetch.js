@@ -18,7 +18,7 @@ const useFetch = (inputURL) => {
         fetchURL();
     }, [url]);
 
-    return [{ data, loading }, setUrl];
+    return [ data, loading ];
 };
 
 export { useFetch };
