@@ -49,7 +49,7 @@ const App = () => {
             <World countryData={countryData} countryDataLoading={countryDataLoading} />
           </Route>
           <Route path="/countries">
-            <Countries />
+            <Countries countryData={countryData} countryDataLoading={countryDataLoading} />
           </Route>
         </Switch>
       </div>

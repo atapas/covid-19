@@ -10,6 +10,7 @@ const TopNRecoveredWidget = props => {
     const data = props.data;
     // console.log('from TopNRecoveredWidget', loading, data);
     const TOP_N = 5;
+    const MIN_CASES = 10;
     const SUCCESS_COLOR_SHADES = [
         "rgba(40, 167, 69, 1.0)",
         "rgba(40, 167, 69, 0.9)",
@@ -25,8 +26,11 @@ const TopNRecoveredWidget = props => {
 
     let refinedData = [];
     if (!loading) {
-        console.log('from TopNRecoveredWidget', data);
-        let mappedData = data.map(elem => {
+        // console.log('from TopNRecoveredWidget', data);
+        let coutriesWithMinCases = data.filter(elem => {
+           return elem.cases >= MIN_CASES;
+        });
+        let mappedData = coutriesWithMinCases.map(elem => {
             elem['recovPerc'] = Math.round((elem['recovered'] * 100) / elem['cases']);
             return elem;
         });
@@ -66,7 +70,7 @@ const TopNRecoveredWidget = props => {
         <div className="top-n-recovered-widget">
             <Card >
                 <Card.Body>
-                    <Card.Title>Top N Countries Recovered Well</Card.Title>
+                    <Card.Title>Top N Countries Recovered Well(min. {MIN_CASES} Cases)</Card.Title>
                     <Card.Subtitle className="mb-2 text-muted">Number of Countries: <b>{TOP_N}</b></Card.Subtitle>
                     <div>
                         {loading ? <h3>Loading...</h3> :
