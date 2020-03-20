@@ -3,8 +3,8 @@ import { AgGridReact } from 'ag-grid-react';
 
 const World = props => {
 
-    const loading = props.countryDataLoading;
-    const data = props.countryData;
+    const loading = props.countryCoronaDataLoading;
+    const data = props.countryCoronaData;
     const columnDefs = [
         {headerName: "Country", field: "country", sortable: true, filter: true},
         {headerName: "Total Cases", field: "cases", sortable: true, filter: true},

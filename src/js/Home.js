@@ -16,7 +16,7 @@ const Home = props => {
         "https://corona.lmao.ninja/all"
     );
     
-    // console.log(countryData);
+    // console.log(countryCoronaData);
     return(
         <Container className="Home" fluid>
             <Row>
@@ -24,12 +24,12 @@ const Home = props => {
                     <OverAllWidget loading={allDataLoading} data={allData}/>
                 </Col>
                 <Col sm={8}>
-                    <TopNDeathWidget loading={props.countryDataLoading} data={props.countryData}/>
+                    <TopNDeathWidget loading={props.countryCoronaDataLoading} data={props.countryCoronaData}/>
                 </Col>
             </Row>
             <Row>
                 <Col sm={8}>
-                    <TopNRecoveredWidget loading={props.countryDataLoading} data={props.countryData}/>
+                    <TopNRecoveredWidget loading={props.countryCoronaDataLoading} data={props.countryCoronaData}/>
                 </Col>
             </Row>
         </Container>

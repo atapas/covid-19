@@ -2,45 +2,47 @@
 import React from "react";
 import { useSelector, useDispatch } from 'react-redux';
 import Button from 'react-bootstrap/Button';
-
 import { thunk_timeseries_action_creator } from './../actions/timeseriesAction';
-import * as country_code from '../../../assets/data/coutry_code.json';
 import TimeSeries from "./TimeSeries";
 
+import * as country_code from '../../../assets/data/coutry_code.json';
+
 const FetchTimeSeries = props => {
-    const timeseries = useSelector ( state => state.timeseries );
-    const dispatch = useDispatch();
-    const handleClick = e => {
+    //const timeseries = useSelector ( state => state.timeseries );
+    //const dispatch = useDispatch();
+    
+    /*const handleClick = e => {
         e.preventDefault();
         dispatch(thunk_timeseries_action_creator());
-    };
-
-    const cuntry_code_data = country_code.data;
+    };*/
+   
     const country = props.country;
-
-    if (!timeseries.isFetching) {
-        console.log(Object.keys(timeseries.timeseriesData));
+    
+    let selectedCountry = [];
+    let image = '';
+    // console.log(countriesData);
+    selectedCountry = country_code.filter( elem => {
+        return elem.name === country;
+    });
+    // console.log('selectedCountry', selectedCountry);
+    if (selectedCountry.length > 0) {
+        let countryCode = selectedCountry[0]['alpha2code'];
+        image =  <img src={`https://www.countryflags.io/${countryCode}/flat/48.png`} alt={country} />
     }
     
-    
-    
     return(
-        <React.Fragment>
+        
             <Button 
-                variant="secondary" 
-                size="sm" 
-                onClick={event => handleClick(event)} active>
-                    <img src={`https://www.countryflags.io/${cuntry_code_data[country]}/flat/32.png`} alt="cc" />
+            variant="light" 
+            size="sm"
+            className="countryCapsules"
+            active>
+                <div className="imageCountry">
+                    { image }
                     <span>{ country }</span>
+                </div>
             </Button>
-           
-            {timeseries.isFetching ? <h3>Loading...</h3> : null}
-            {timeseries.isError ? (
-                <h3 className="error">No data.</h3>) : null}
-            {Object.keys(timeseries.timeseriesData).length > 0 ? (
-                <TimeSeries timeseries={timeseries.timeseriesData[country]} />
-            ) : null}
-        </React.Fragment>
+        
     );
 };
 

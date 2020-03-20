@@ -24,5 +24,39 @@ body {
     border: 1px solid #333;
     border-radius: 3px;
 }
+
+.countries {
+    padding: 10px;
+}
   
-  
+.countries .inner {
+    padding: 10px;;
+}
+
+.countries .inner .search{
+    margin-bottom: 10px;
+}
+
+.countries .inner .countryCapsules {
+    padding-left: 3px;
+    padding-top: 3px;
+    padding-right: 3px;
+    padding-bottom: 3px;
+    width: 220px;
+    margin: 3px;
+    height: 60px;
+    background-color: #e3e3e3!important;
+}
+
+.countries .inner .countryCapsules .imageCountry {
+    float: left;
+}
+
+.countries .inner .countryCapsules .imageCountry img {
+    margin-right: 5px;
+}
+
+.countries .inner .countryCapsules .imageCountry span {
+    margin-right: 2px;
+    font-size: 14px;
+}

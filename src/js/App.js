@@ -18,7 +18,7 @@ import World from './World';
 import Countries from './Countries';
 
 const App = () => {
-  const [countryData, countryDataLoading] = useFetch(
+  const [countryCoronaData, countryCoronaDataLoading] = useFetch(
     "https://corona.lmao.ninja/countries"
   );
 
@@ -40,16 +40,25 @@ const App = () => {
 
         <Switch>
           <Route exact path="/">
-            <Home countryData={countryData} countryDataLoading={countryDataLoading} />
+            <Home 
+              countryCoronaData={countryCoronaData} 
+              countryCoronaDataLoading={countryCoronaDataLoading} />
           </Route>
           <Route exact path="/home">
-            <Home countryData={countryData} countryDataLoading={countryDataLoading} />
+            <Home 
+              countryCoronaData={countryCoronaData} 
+              countryCoronaDataLoading={countryCoronaDataLoading} />
           </Route>
           <Route path="/world">
-            <World countryData={countryData} countryDataLoading={countryDataLoading} />
+            <World 
+              countryCoronaData={countryCoronaData} 
+              countryCoronaDataLoading={countryCoronaDataLoading} />
           </Route>
           <Route path="/countries">
-            <Countries countryData={countryData} countryDataLoading={countryDataLoading} />
+            <Countries 
+              countryCoronaData={countryCoronaData} 
+              countryCoronaDataLoading={countryCoronaDataLoading} 
+            />
           </Route>
         </Switch>
       </div>
