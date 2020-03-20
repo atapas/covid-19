@@ -5,6 +5,7 @@ import Card from 'react-bootstrap/Card';
 import {
     BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend,
 } from 'recharts';
+import Loader from 'react-loader-spinner';
 
 const TopNDeathWidget = props => {
     const loading = props.loading;
@@ -68,7 +69,13 @@ const TopNDeathWidget = props => {
                     <Card.Title>Top N Countries with Death Impact</Card.Title>
                     <Card.Subtitle className="mb-2 text-muted">Number of Countries: <b>{TOP_N}</b></Card.Subtitle>
                     <div>
-                        {loading ? <h3>Loading...</h3> :
+                        {loading ? 
+                            <Loader
+                                type="ThreeDots"
+                                color="#00BFFF"
+                                height={100}
+                                width={100}
+                            />  :
                             <div>
                                 <BarChart width={500} height={330} data={refinedData}
                                     margin={{ top: 30, right: 0, left: 0, bottom: 5 }}

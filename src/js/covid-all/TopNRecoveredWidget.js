@@ -4,6 +4,7 @@ import {
     BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend,
 } from 'recharts';
 import Card from 'react-bootstrap/Card';
+import Loader from 'react-loader-spinner';
 
 const TopNRecoveredWidget = props => {
     const loading = props.loading;
@@ -73,7 +74,13 @@ const TopNRecoveredWidget = props => {
                     <Card.Title>Top N Countries Recovered Well(min. {MIN_CASES} Cases)</Card.Title>
                     <Card.Subtitle className="mb-2 text-muted">Number of Countries: <b>{TOP_N}</b></Card.Subtitle>
                     <div>
-                        {loading ? <h3>Loading...</h3> :
+                        {loading ? 
+                            <Loader
+                                type="ThreeDots"
+                                color="#00BFFF"
+                                height={100}
+                                width={100}
+                            />  :
                             <div>
                                 <BarChart
                                     width={500}

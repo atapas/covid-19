@@ -6,7 +6,7 @@ import {
 } from 'recharts';
 
 import Moment from 'react-moment';
-
+import Loader from 'react-loader-spinner';
 
 const WorldData = props => {
     const loading = props.loading;
@@ -37,7 +37,14 @@ const WorldData = props => {
                     <Card.Title>Recovery vs Death as on <Moment format="YYYY/MM/DD">{data.updated}</Moment></Card.Title>
                     <Card.Subtitle className="mb-2 text-muted">Total Cases: <b>{data.cases}</b></Card.Subtitle>
                     <div>
-                    {loading ? <h3>Loading...</h3> :
+                    {loading ? 
+                        <Loader
+                            type="ThreeDots"
+                            color="#00BFFF"
+                            height={100}
+                            width={100}
+                        /> 
+                        :
                         <div>
                             <PieChart width={350} height={300}>
                                 <Pie
