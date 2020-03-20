@@ -16,6 +16,8 @@ import { useFetch } from './useFetch';
 import Home from './Home';
 import World from './World';
 import Countries from './Countries';
+import Country from './Country';
+import NotFoundPage from './NotFoundPage';
 
 const App = () => {
   const [countryCoronaData, countryCoronaDataLoading] = useFetch(
@@ -49,17 +51,15 @@ const App = () => {
               countryCoronaData={countryCoronaData} 
               countryCoronaDataLoading={countryCoronaDataLoading} />
           </Route>
-          <Route path="/world">
+          <Route exact path="/world">
             <World 
               countryCoronaData={countryCoronaData} 
               countryCoronaDataLoading={countryCoronaDataLoading} />
           </Route>
-          <Route path="/countries">
-            <Countries 
-              countryCoronaData={countryCoronaData} 
-              countryCoronaDataLoading={countryCoronaDataLoading} 
-            />
-          </Route>
+          <Route exact path="/countries" 
+            render={ props => <Countries {...props} countryCoronaData={countryCoronaData} countryCoronaDataLoading={countryCoronaDataLoading}  /> } />
+          <Route exact path="/country-details" render={ props => <Country {...props} /> } />
+          <Route path='*' render={(props) => <NotFoundPage {...props} />} />
         </Switch>
       </div>
     </Router>

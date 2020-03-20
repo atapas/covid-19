@@ -7,6 +7,7 @@ import FormControl from 'react-bootstrap/FormControl';
 import FetchTimeSeries from './time-series/FetchTimeSeries';
 
 const Countries = props => {
+
     const loading = props.countryCoronaDataLoading;
     const data = props.countryCoronaData;
     const [countries, setCountries] = useState([]);
@@ -53,8 +54,8 @@ const Countries = props => {
                     </Row>
                     <Row>
                         {filteredCountries.map((country) =>
-                            <Col sm={3}>
-                                <FetchTimeSeries key={country} country={country}/>
+                            <Col key={country} sm={3}>
+                                <FetchTimeSeries  country={country} history={props.history}/>
                             </Col>
                         )}
                     </Row>

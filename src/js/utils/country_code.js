@@ -1,4 +1,4 @@
-[
+const COUNTRY_CODES = [
     {
         "name": "Afghanistan",
         "phoneCode": "+93",
@@ -1403,4 +1403,6 @@
         "alpha2code": "ZW",
         "alpha3code": "ZWE"
     }
-]
+];
+
+export default COUNTRY_CODES;
