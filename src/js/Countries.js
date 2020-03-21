@@ -3,7 +3,7 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import FormControl from 'react-bootstrap/FormControl';
-
+import Loader from 'react-loader-spinner';
 import FetchTimeSeries from './time-series/FetchTimeSeries';
 
 const Countries = props => {
@@ -41,7 +41,13 @@ const Countries = props => {
 
     return(
         <div className="countries">
-            {loading ? <h3>Loading...</h3> :
+            {loading ? 
+                <Loader
+                    type="ThreeDots"
+                    color="#00BFFF"
+                    height={100}
+                    width={100}
+                /> :
                 <Container className="inner" fluid>
                     <Row className="justify-content-md-center search">
                         <Col xs lg="6">

@@ -4,6 +4,7 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import FormControl from 'react-bootstrap/FormControl';
+import Loader from 'react-loader-spinner';
 
 const World = props => {
 
@@ -42,7 +43,13 @@ const World = props => {
 
     return (
         <div className="world">
-            {loading ? <h3>Loading...</h3> :
+            {loading ? 
+                <Loader
+                    type="ThreeDots"
+                    color="#00BFFF"
+                    height={100}
+                    width={100}
+                />  :
                 <div className="inner">
                     <div className="search">
                         <FormControl 
