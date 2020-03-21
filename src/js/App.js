@@ -19,6 +19,8 @@ import Countries from './Countries';
 import Country from './Country';
 import NotFoundPage from './NotFoundPage';
 
+import * as covid from '../images/covid.png';
+
 const App = () => {
   const [countryCoronaData, countryCoronaDataLoading] = useFetch(
     "https://corona.lmao.ninja/countries"
@@ -28,7 +30,16 @@ const App = () => {
     <Router>
       <div className="App">
         <Navbar bg="dark" variant="dark">
-          <Navbar.Brand href="/">COVID-19</Navbar.Brand>
+        <Navbar.Brand href="#home">
+          <img
+            alt=""
+            src="covid"
+            width="30"
+            height="30"
+            className="d-inline-block align-top"
+          />{' '}
+          COVID-19
+        </Navbar.Brand>
           <Nav className="mr-auto">
             <Nav.Link href="/home">Home</Nav.Link>
             <Nav.Link href="/world">World</Nav.Link>

@@ -65,3 +65,49 @@ body {
     margin-right: 2px;
     font-size: 14px;
 }
+
+.country {
+    padding: 10px;
+}
+
+.country .flag {
+    margin-right: 5px;
+}
+
+.country .stat {
+    margin-right: 5px;
+    padding: 10px;
+    margin-left: 19px;
+}
+
+.country .stat .badge {
+    padding: 30px;
+    max-width: 230px;
+    width: 200px;
+    height: 160px;
+}
+
+.country .stat .badge .label {
+    font-size: 30px;
+}
+.country .stat .badge .value {
+    font-size: 40px;
+}
+
+.country .stat .badge .extra {
+    font-size: 13px;
+    padding: 5px;
+}
+
+.country .trends {
+    margin-top: 20px;
+}
+
+.country .trends .timeseries .chart {
+    padding: 20px;
+}
+
+.country .trends .timeseries .chart H2{
+    margin-left: 30px;
+    margin-bottom: 14px;
+}
