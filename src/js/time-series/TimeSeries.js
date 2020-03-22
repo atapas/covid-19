@@ -71,7 +71,7 @@ const TimeSeries = props => {
                                         <Card.Title>Trends - Change of Confirmed vs Recovered vs Deaths</Card.Title>
                                         <Card.Subtitle className="mb-2 text-muted">Total count at the daily basis</Card.Subtitle>
                                     
-                                        <LineChart width={950} height={400} data={refinedData}
+                                        <LineChart width={920} height={400} data={refinedData}
                                             margin={{ top: 10, right: 30, left: 0, bottom: 0 }}>
                                             <XAxis dataKey="date" />
                                             <YAxis />
