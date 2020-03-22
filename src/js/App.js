@@ -19,7 +19,7 @@ import Countries from './Countries';
 import Country from './Country';
 import NotFoundPage from './NotFoundPage';
 
-import * as covid from '../images/covid.png';
+import * as covid from '../../assets/images/covid.png';
 
 const App = () => {
   const [countryCoronaData, countryCoronaDataLoading] = useFetch(
@@ -30,10 +30,10 @@ const App = () => {
     <Router>
       <div className="App">
         <Navbar bg="dark" variant="dark">
-        <Navbar.Brand href="#home">
+        <Navbar.Brand href="/">
           <img
             alt=""
-            src="covid"
+            src={covid}
             width="30"
             height="30"
             className="d-inline-block align-top"
