@@ -2,7 +2,7 @@ import React from "react";
 import Badge from 'react-bootstrap/Badge';
 import Card from 'react-bootstrap/Card';
 import {
-    PieChart, Pie, Legend, Tooltip, Cell
+    ResponsiveContainer, PieChart, Pie, Legend, Tooltip, Cell
 } from 'recharts';
 
 import Moment from 'react-moment';
@@ -49,22 +49,24 @@ const WorldData = props => {
                         /> 
                         :
                         <div>
-                            <PieChart width={370} height={308}>
-                                <Pie
-                                    dataKey="value"
-                                    isAnimationActive={true}
-                                    data={refinedData}
-                                    cx={230}
-                                    cy={150}
-                                    outerRadius={100}
-                                    fill="#8884d8"
-                                    label>
-                                    {
-                                        refinedData.map((entry, index) => <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />)
-                                    }
-                                </Pie>
-                                <Tooltip />
-                            </PieChart>
+                            <ResponsiveContainer width='100%' height={308}>
+                                <PieChart>
+                                    <Pie
+                                        dataKey="value"
+                                        isAnimationActive={true}
+                                        data={refinedData}
+                                        cx={180}
+                                        cy={150}
+                                        outerRadius={100}
+                                        fill="#8884d8"
+                                        label>
+                                        {
+                                            refinedData.map((entry, index) => <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />)
+                                        }
+                                    </Pie>
+                                    <Tooltip />
+                                </PieChart>
+                            </ResponsiveContainer>
                             <div className="legends">
                                 <Badge variant="success" className="recovered">
                                     {`Recovered - ${Math.round((data.recovered * 100) / data.cases)}%`}

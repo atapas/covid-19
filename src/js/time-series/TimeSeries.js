@@ -2,7 +2,7 @@
 import React from "react";
 import { useFetch } from '../useFetch';
 import {
-    LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend,
+    ResponsiveContainer, LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend,
 } from 'recharts';
 import Loader from 'react-loader-spinner';
 import Card from 'react-bootstrap/Card';
@@ -70,18 +70,19 @@ const TimeSeries = props => {
                                     <Card.Body>
                                         <Card.Title>Trends - Change of Confirmed vs Recovered vs Deaths</Card.Title>
                                         <Card.Subtitle className="mb-2 text-muted">Total count at the daily basis</Card.Subtitle>
-                                    
-                                        <LineChart width={920} height={400} data={refinedData}
-                                            margin={{ top: 10, right: 30, left: 0, bottom: 0 }}>
-                                            <XAxis dataKey="date" />
-                                            <YAxis />
-                                            <CartesianGrid strokeDasharray="3 3" />
-                                            <Tooltip />
-                                            <Legend />
-                                            <Line type="monotone" dataKey="confirmed" stroke="#FFC107" activeDot={{ r: 8 }} />
-                                            <Line type="monotone" dataKey="recovered" stroke="#28A745" activeDot={{ r: 8 }} />
-                                            <Line type="monotone" dataKey="deaths" stroke="#DC3545" activeDot={{ r: 8 }} />
-                                        </LineChart>
+                                        <ResponsiveContainer width='100%' height={400}>
+                                            <LineChart data={refinedData}
+                                                margin={{ top: 10, right: 30, left: 0, bottom: 0 }}>
+                                                <XAxis dataKey="date" />
+                                                <YAxis />
+                                                <CartesianGrid strokeDasharray="3 3" />
+                                                <Tooltip />
+                                                <Legend />
+                                                <Line type="monotone" dataKey="confirmed" stroke="#FFC107" activeDot={{ r: 8 }} />
+                                                <Line type="monotone" dataKey="recovered" stroke="#28A745" activeDot={{ r: 8 }} />
+                                                <Line type="monotone" dataKey="deaths" stroke="#DC3545" activeDot={{ r: 8 }} />
+                                            </LineChart>
+                                        </ResponsiveContainer>
                                     </Card.Body>
                                 </Card>
                             </div>

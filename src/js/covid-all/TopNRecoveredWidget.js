@@ -1,7 +1,7 @@
 
 import React from 'react';
 import {
-    BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend,
+    ResponsiveContainer, BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend,
 } from 'recharts';
 import Card from 'react-bootstrap/Card';
 import Loader from 'react-loader-spinner';
@@ -82,14 +82,13 @@ const TopNRecoveredWidget = props => {
                                 width={100}
                             />  :
                             <div>
-                                <BarChart
-                                    width={420}
-                                    height={330}
-                                    data={refinedData}
-                                    margin={{
-                                        top: 30, right: 0, left: 0, bottom: 5,
-                                    }}
-                                >
+                                <ResponsiveContainer width='100%' height={330}>
+                                    <BarChart
+                                        data={refinedData}
+                                        margin={{
+                                            top: 30, right: 0, left: 0, bottom: 5,
+                                        }}
+                                    >
                                     <CartesianGrid strokeDasharray="3 3" />
                                     <XAxis dataKey="country" />
                                     <YAxis />
@@ -102,7 +101,8 @@ const TopNRecoveredWidget = props => {
                                             ))
                                         }
                                     </Bar>
-                                </BarChart>
+                                    </BarChart>
+                                </ResponsiveContainer>
                             </div>}
                     </div>
                 </Card.Body>

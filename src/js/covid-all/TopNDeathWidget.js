@@ -3,7 +3,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Card from 'react-bootstrap/Card';
 import {
-    BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend,
+    ResponsiveContainer, BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend,
 } from 'recharts';
 import Loader from 'react-loader-spinner';
 
@@ -77,22 +77,24 @@ const TopNDeathWidget = props => {
                                 width={100}
                             />  :
                             <div>
-                                <BarChart width={420} height={330} data={refinedData}
-                                    margin={{ top: 30, right: 0, left: 0, bottom: 5 }}
-                                >
-                                    <XAxis dataKey="country" />
-                                    <YAxis />
-                                    <Tooltip />
-                                    <Legend />
-                                    <CartesianGrid strokeDasharray="3 3" />
-                                    <Bar dataKey="deaths" fill="rgba(255, 0, 0, 1.0)" shape={<TriangleBar />} label={{ position: 'top' }}>
-                                        {
-                                            refinedData.map((entry, index) => (
-                                                <Cell key={`cell-${index}`} fill={DANGER_COLOR_SHADES[index % 20]} />
-                                            ))
-                                        }
-                                    </Bar>
-                                </BarChart>
+                                <ResponsiveContainer width='100%' height={330}>
+                                    <BarChart data={refinedData}
+                                        margin={{ top: 30, right: 0, left: 0, bottom: 5 }}
+                                    >
+                                        <XAxis dataKey="country" />
+                                        <YAxis />
+                                        <Tooltip />
+                                        <Legend />
+                                        <CartesianGrid strokeDasharray="3 3" />
+                                        <Bar dataKey="deaths" fill="rgba(255, 0, 0, 1.0)" shape={<TriangleBar />} label={{ position: 'top' }}>
+                                            {
+                                                refinedData.map((entry, index) => (
+                                                    <Cell key={`cell-${index}`} fill={DANGER_COLOR_SHADES[index % 20]} />
+                                                ))
+                                            }
+                                        </Bar>
+                                    </BarChart>
+                                </ResponsiveContainer>
                             </div>
                         }
                     </div>

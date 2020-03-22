@@ -1,7 +1,7 @@
 
 import React from 'react';
 import {
-    AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip,
+    ResponsiveContainer, AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip,
 } from 'recharts';
 import Card from 'react-bootstrap/Card';
 import Loader from 'react-loader-spinner';
@@ -45,14 +45,16 @@ const CountryCasesWidget = props => {
                                 width={100}
                             />  :
                             <div>
-                            <AreaChart width={950} height={400} data={refinedData}
-                                    margin={{top: 10, right: 30, left: 0, bottom: 0}}>
-                                <CartesianGrid strokeDasharray="3 3"/>
-                                <XAxis dataKey="Country"/>
-                                <YAxis/>
-                                <Tooltip/>
-                                <Area type='monotone' dataKey='Cases' stackId="1" stroke='#FFC107' fill='#FFC107' />
-                            </AreaChart>
+                            <ResponsiveContainer width='100%' height={400}>
+                                <AreaChart data={refinedData}
+                                        margin={{top: 10, right: 30, left: 0, bottom: 0}}>
+                                    <CartesianGrid strokeDasharray="3 3"/>
+                                    <XAxis dataKey="Country"/>
+                                    <YAxis/>
+                                    <Tooltip/>
+                                    <Area type='monotone' dataKey='Cases' stackId="1" stroke='#FFC107' fill='#FFC107' />
+                                </AreaChart>
+                            </ResponsiveContainer>
                             </div>}
                     </div>
                 </Card.Body>
