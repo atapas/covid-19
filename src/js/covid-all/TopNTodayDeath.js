@@ -37,7 +37,7 @@ const TopNTodayDeath = props => {
         <div className="top-n-todays-death-widget">
             <Card >
                 <Card.Body>
-                    <Card.Title>Countries with maximum deaths today</Card.Title>
+                    <Card.Title>Countries with maximum Deaths Today</Card.Title>
                     <Card.Subtitle className="mb-2 text-muted">Number of Countries: <b>{TOP_N}</b></Card.Subtitle>
                     <div>
                         {loading ? 

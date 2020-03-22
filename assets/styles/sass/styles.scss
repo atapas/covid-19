@@ -13,9 +13,13 @@ body {
     padding-top: 10px;
 }
 
-.worldData .badge {
+.worldData .legends .badge {
     padding: 6px;
     margin-right: 3px;
+}
+
+.worldData .legends {
+    margin-left: 17%;
 }
 
 .custom-tooltip {
@@ -28,7 +32,6 @@ body {
 .world .inner .search{
     padding: 10px;
 }
-
 
 .countries {
     padding: 10px;

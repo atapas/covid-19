@@ -38,7 +38,7 @@ const WorldData = props => {
                     <Card.Title>
                         Total Cases: <CurrencyFormat value={data.cases} displayType={'text'} thousandSeparator={true} /> as on <Moment format="YYYY/MM/DD">{data.updated}</Moment>
                     </Card.Title>
-                    <Card.Subtitle className="mb-2 text-muted">Recovery vs Deaths</Card.Subtitle>
+                    <Card.Subtitle className="mb-2 text-muted">Recovery, Deaths and Still Infected</Card.Subtitle>
                     <div>
                     {loading ? 
                         <Loader
@@ -49,14 +49,14 @@ const WorldData = props => {
                         /> 
                         :
                         <div>
-                            <PieChart width={350} height={300}>
+                            <PieChart width={370} height={308}>
                                 <Pie
                                     dataKey="value"
                                     isAnimationActive={true}
                                     data={refinedData}
-                                    cx={100}
+                                    cx={230}
                                     cy={150}
-                                    outerRadius={80}
+                                    outerRadius={100}
                                     fill="#8884d8"
                                     label>
                                     {
@@ -65,15 +65,17 @@ const WorldData = props => {
                                 </Pie>
                                 <Tooltip />
                             </PieChart>
-                            <Badge variant="success" className="recovered">
-                                {`Recovered - ${Math.round((data.recovered * 100) / data.cases)}%`}
-                            </Badge>
-                            <Badge variant="warning" className="medication">
-                                {`Infected - ${Math.round(((data.infected) * 100) / data.cases)}%`}
-                            </Badge>
-                            <Badge variant="danger" className="deaths">
-                                {`Deaths - ${Math.round((data.deaths * 100) / data.cases)}%`}
-                            </Badge>
+                            <div className="legends">
+                                <Badge variant="success" className="recovered">
+                                    {`Recovered - ${Math.round((data.recovered * 100) / data.cases)}%`}
+                                </Badge>
+                                <Badge variant="warning" className="medication">
+                                    {`Infected - ${Math.round(((data.infected) * 100) / data.cases)}%`}
+                                </Badge>
+                                <Badge variant="danger" className="deaths">
+                                    {`Deaths - ${Math.round((data.deaths * 100) / data.cases)}%`}
+                                </Badge>
+                            </div>    
                         </div>
                     }
                     </div>

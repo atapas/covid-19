@@ -11,6 +11,7 @@ import OverAllWidget from './covid-all/OverAllWidget';
 import TopNDeathWidget from './covid-all/TopNDeathWidget';
 import TopNRecoveredWidget from './covid-all/TopNRecoveredWidget';
 import TopNTodayDeath from './covid-all/TopNTodayDeath';
+import TodayCasesWidget from './covid-all/TodayCasesWidget';
 
 const Home = props => {
     const [allData, allDataLoading] = useFetch(
@@ -34,6 +35,11 @@ const Home = props => {
                 </Col>
                 <Col sm={6}>
                     <TopNTodayDeath loading={props.countryCoronaDataLoading} data={props.countryCoronaData}/>
+                </Col>
+            </Row>
+            <Row>
+                <Col sm={12}>
+                    <TodayCasesWidget loading={props.countryCoronaDataLoading} data={props.countryCoronaData}/>
                 </Col>
             </Row>
         </Container>
