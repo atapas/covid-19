@@ -7,6 +7,7 @@ import {
 
 import Moment from 'react-moment';
 import Loader from 'react-loader-spinner';
+import CurrencyFormat from 'react-currency-format';
 
 const WorldData = props => {
     const loading = props.loading;
@@ -34,8 +35,10 @@ const WorldData = props => {
         <div className="worldData">
             <Card >
                 <Card.Body>
-                    <Card.Title>Recovery vs Death as on <Moment format="YYYY/MM/DD">{data.updated}</Moment></Card.Title>
-                    <Card.Subtitle className="mb-2 text-muted">Total Cases: <b>{data.cases}</b></Card.Subtitle>
+                    <Card.Title>
+                        Total Cases: <CurrencyFormat value={data.cases} displayType={'text'} thousandSeparator={true} /> as on <Moment format="YYYY/MM/DD">{data.updated}</Moment>
+                    </Card.Title>
+                    <Card.Subtitle className="mb-2 text-muted">Recovery vs Deaths</Card.Subtitle>
                     <div>
                     {loading ? 
                         <Loader

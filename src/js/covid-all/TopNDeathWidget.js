@@ -66,7 +66,7 @@ const TopNDeathWidget = props => {
         <div className="top-n-death-widget">
             <Card >
                 <Card.Body>
-                    <Card.Title>Top N Countries with Death Impact</Card.Title>
+                    <Card.Title>Countries with Overall Death Impact</Card.Title>
                     <Card.Subtitle className="mb-2 text-muted">Number of Countries: <b>{TOP_N}</b></Card.Subtitle>
                     <div>
                         {loading ? 
@@ -77,7 +77,7 @@ const TopNDeathWidget = props => {
                                 width={100}
                             />  :
                             <div>
-                                <BarChart width={500} height={330} data={refinedData}
+                                <BarChart width={420} height={330} data={refinedData}
                                     margin={{ top: 30, right: 0, left: 0, bottom: 5 }}
                                 >
                                     <XAxis dataKey="country" />

@@ -10,6 +10,7 @@ import { useFetch } from './useFetch';
 import OverAllWidget from './covid-all/OverAllWidget';
 import TopNDeathWidget from './covid-all/TopNDeathWidget';
 import TopNRecoveredWidget from './covid-all/TopNRecoveredWidget';
+import TopNTodayDeath from './covid-all/TopNTodayDeath';
 
 const Home = props => {
     const [allData, allDataLoading] = useFetch(
@@ -20,16 +21,19 @@ const Home = props => {
     return(
         <Container className="Home" fluid>
             <Row>
-                <Col sm={4}>
-                    <OverAllWidget loading={allDataLoading} data={allData}/>
-                </Col>
-                <Col sm={8}>
+                <Col sm={6}>
                     <TopNDeathWidget loading={props.countryCoronaDataLoading} data={props.countryCoronaData}/>
+                </Col>
+                <Col sm={6}>
+                    <TopNRecoveredWidget loading={props.countryCoronaDataLoading} data={props.countryCoronaData}/>
                 </Col>
             </Row>
             <Row>
-                <Col sm={8}>
-                    <TopNRecoveredWidget loading={props.countryCoronaDataLoading} data={props.countryCoronaData}/>
+                <Col sm={6}>
+                    <OverAllWidget loading={allDataLoading} data={allData}/>
+                </Col>
+                <Col sm={6}>
+                    <TopNTodayDeath loading={props.countryCoronaDataLoading} data={props.countryCoronaData}/>
                 </Col>
             </Row>
         </Container>
