@@ -45,10 +45,6 @@ const App = () => {
             <Nav.Link href="/world">World</Nav.Link>
             <Nav.Link href="/countries">Countries</Nav.Link>
           </Nav>
-          <Form inline>
-            <FormControl type="text" placeholder="Search by Country" className="mr-sm-2" />
-            <Button variant="outline-info">Search</Button>
-          </Form>
         </Navbar>
 
         <Switch>

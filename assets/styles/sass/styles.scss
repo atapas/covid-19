@@ -38,7 +38,11 @@ body {
 }
   
 .countries .inner {
-    padding: 10px;;
+    padding: 10px;
+}
+
+.countries .inner .sort-by SELECT {
+    margin-left: 3px;
 }
 
 .countries .inner .search{

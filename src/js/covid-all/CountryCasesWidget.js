@@ -10,23 +10,6 @@ const CountryCasesWidget = props => {
     const loading = props.loading;
     const data = props.data;
     const TOP_N = 10;
-    const AMBER_COLOR_SHADES = [
-        "rgba(255, 193, 7, 1.0)",
-        "rgba(255, 193, 7, 0.9)",
-        "rgba(255, 193, 7, 0.85)",
-        "rgba(255, 193, 7, 0.8)",
-        "rgba(255, 193, 7, 0.75)",
-        "rgba(255, 193, 7, 0.7)",
-        "rgba(255, 193, 7, 0.65)",
-        "rgba(255, 193, 7, 0.6)",
-        "rgba(255, 193, 7, 0.55)",
-        "rgba(255, 193, 7, 0.5)",
-        "rgba(255, 193, 7, 0.45)",
-        "rgba(255, 193, 7, 0.4)",
-        "rgba(255, 193, 7, 0.35)",
-        "rgba(255, 193, 7, 0.3)",
-        "rgba(255, 193, 7, 0.2)"
-    ];
 
     let refinedData = [];
     if (!loading) {
@@ -69,7 +52,6 @@ const CountryCasesWidget = props => {
                                 <YAxis/>
                                 <Tooltip/>
                                 <Area type='monotone' dataKey='Cases' stackId="1" stroke='#FFC107' fill='#FFC107' />
-                                
                             </AreaChart>
                             </div>}
                     </div>
