@@ -14,8 +14,8 @@ const TimeSeriesBroken = props => {
         <div className="time-series-broken-cases">
             <Card >
                 <Card.Body>
-                    <Card.Title>Cases Spreaded over Time</Card.Title>
-                    <Card.Subtitle className="mb-2 text-muted">New cases found per day.</Card.Subtitle>
+                    <Card.Title>New Cases found per Day</Card.Title>
+                    <Card.Subtitle className="mb-2 text-muted">New cases reported daily basis</Card.Subtitle>
                     <div>
                         <AreaChart width={950} height={400} data={data}
                                 margin={{top: 10, right: 30, left: 0, bottom: 0}}>
