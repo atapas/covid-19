@@ -1,29 +1,10 @@
 
-const initialState = {
-    timeseriesData: {},
-    isFetching: false,
-    isError: false
-};
-
-const timeseriesReducer = ( state = initialState, action ) => {
+const timeseriesReducer = ( state = {}, action ) => {
     switch ( action.type ) {
-        case 'FETCH_TIMESERIES':
-            return Object.assign({}, state, {
-                isFetching: true,
-                timeseriesData: {},
-                isError: false
-            });
-        case 'FETCHED_TIMESERIES':
-            return Object.assign({}, state, {
-                isFetching: false,
-                timeseriesData: action.data,
-                isError: false
-            });
-        case 'RECIEVED_ERROR':
-            return Object.assign({}, state, {
-                isFetching: false,
-                isError: true
-            });
+        case 'REGISTER_COVID_TS_DATA':
+            state = action.payload;
+            return state;
+            break;
         default:
             return state;
     }

@@ -31,7 +31,7 @@ const TimeSeries = props => {
         if (availableData) {
             refinedData = data[getProposedName(country)];
         }
-        // console.log('refined timeseries', refinedData);
+        console.log('refined timeseries', refinedData);
 
         for (let i = 0; i<refinedData.length ; i++) {
             let obj = {};

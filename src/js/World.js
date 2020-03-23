@@ -1,12 +1,10 @@
 import React, { useState, useEffect } from "react";
+import { useSelector } from 'react-redux';
 import { AgGridReact } from 'ag-grid-react';
 import FormControl from 'react-bootstrap/FormControl';
-import Loader from 'react-loader-spinner';
 
 const World = props => {
-
-    const loading = props.countryCoronaDataLoading;
-    const data = props.countryCoronaData;
+    const data = useSelector(state => state.covid19);
     const [filtered, setFiltered] = useState([]);
     const columnDefs = [
         {headerName: "Country", field: "country", sortable: true, filter: true},
@@ -22,11 +20,9 @@ const World = props => {
     ];
 
     useEffect(() => {
-        if (!loading) {
-            console.log(data);
-            setFiltered(data);
-        }
-    }, [loading]);
+        console.log(data);
+        setFiltered(data);
+    }, []);
 
     const handleFind = event => {
         event.preventDefault();
@@ -40,39 +36,31 @@ const World = props => {
 
     return (
         <div className="world">
-            {loading ? 
-                <Loader
-                    type="ThreeDots"
-                    color="#00BFFF"
-                    height={100}
-                    width={100}
-                />  :
-                <div className="inner">
-                    <div className="search">
-                        <FormControl 
-                            type="text" 
-                            placeholder="Filter by Country Name" 
-                            className="mr-sm-2"
-                            onChange={event => handleFind(event)} />
+            <div className="inner">
+                <div className="search">
+                    <FormControl 
+                        type="text" 
+                        placeholder="Filter by Country Name" 
+                        className="mr-sm-2"
+                        onChange={event => handleFind(event)} />
+            
+                </div>
                 
-                    </div>
-                    
-                    <div
-                        className="ag-theme-balham"
-                        style={{
-                            height: '100%',
-                            width: '100%',
-                            padding: '10px',
-                            position: 'absolute'
-                        }}
-                    >
-                        <AgGridReact
-                            columnDefs={columnDefs}
-                            rowData={filtered}>
-                        </AgGridReact>
-                    </div> 
-                </div>        
-            }
+                <div
+                    className="ag-theme-balham"
+                    style={{
+                        height: '100%',
+                        width: '100%',
+                        padding: '10px',
+                        position: 'absolute'
+                    }}
+                >
+                    <AgGridReact
+                        columnDefs={columnDefs}
+                        rowData={filtered}>
+                    </AgGridReact>
+                </div> 
+            </div>        
         </div>
     )
 };

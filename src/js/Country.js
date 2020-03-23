@@ -1,5 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -14,9 +15,7 @@ import TimeSeries from './time-series/TimeSeries';
 const Country = props => {
     console.log(props);
     const countryName = new URLSearchParams(props.location.search).get('name');
-    const [countryCoronaData, countryCoronaDataLoading] = useFetch(
-        "https://corona.lmao.ninja/countries"
-    );
+    const countryCoronaData = useSelector(state => state.covid19);
     const getCountryCode = country => {
         let selectedCountry = COUNTRY_CODES.filter( elem => {
             return elem.name === country;
@@ -29,13 +28,11 @@ const Country = props => {
         return countryCode;
     }
 
-    let covid = [];
-    if (!countryCoronaDataLoading) {
-        covid = countryCoronaData.filter(elem => {
-            return elem.country.toLowerCase() === countryName.toLowerCase();
-        });
-        console.log('covid data', covid);
-    }
+    let covid = countryCoronaData.filter(elem => {
+        return elem.country.toLowerCase() === countryName.toLowerCase();
+    });
+    console.log('covid data', covid);
+    
     return(
        <Container className="country" fluid >
             <Row>

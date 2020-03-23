@@ -1,5 +1,6 @@
 
 import React from "react";
+import { useSelector } from 'react-redux';
 
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
@@ -14,19 +15,20 @@ import TopNTodayDeath from './covid-all/TopNTodayDeath';
 import CountryCasesWidget from './covid-all/CountryCasesWidget';
 
 const Home = props => {
+    const registeredCovid19Data = useSelector(state => state.covid19);
     const [allData, allDataLoading] = useFetch(
         "https://corona.lmao.ninja/all"
     );
+    console.log('registeredCovid19Data', registeredCovid19Data);
     
-    // console.log(countryCoronaData);
     return(
         <Container className="Home" fluid>
             <Row>
                 <Col sm={6}>
-                    <TopNDeathWidget loading={props.countryCoronaDataLoading} data={props.countryCoronaData}/>
+                    <TopNDeathWidget data={registeredCovid19Data}/>
                 </Col>
                 <Col sm={6}>
-                    <TopNRecoveredWidget loading={props.countryCoronaDataLoading} data={props.countryCoronaData}/>
+                    <TopNRecoveredWidget data={registeredCovid19Data}/>
                 </Col>
             </Row>
             <Row>
@@ -34,12 +36,12 @@ const Home = props => {
                     <OverAllWidget loading={allDataLoading} data={allData}/>
                 </Col>
                 <Col sm={6}>
-                    <TopNTodayDeath loading={props.countryCoronaDataLoading} data={props.countryCoronaData}/>
+                    <TopNTodayDeath data={registeredCovid19Data}/>
                 </Col>
             </Row>
             <Row>
                 <Col sm={12}>
-                    <CountryCasesWidget loading={props.countryCoronaDataLoading} data={props.countryCoronaData}/>
+                    <CountryCasesWidget data={registeredCovid19Data}/>
                 </Col>
             </Row>
         </Container>
