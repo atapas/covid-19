@@ -2,6 +2,7 @@ const path = require('path');
 
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
 
 module.exports = {
   entry: './src/js/index.js',
@@ -87,7 +88,8 @@ module.exports = {
       new MiniCssExtractPlugin({
           filename: "[name].css",
           chunkFilename: "[id].css"
-      })
+      }),
+      new FaviconsWebpackPlugin('./favicon.ico')
   ],
   devServer: {
     historyApiFallback: true,
