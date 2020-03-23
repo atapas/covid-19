@@ -5,7 +5,6 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import FormControl from 'react-bootstrap/FormControl';
-import Loader from 'react-loader-spinner';
 import FetchTimeSeries from './time-series/FetchTimeSeries';
 
 const Countries = props => {

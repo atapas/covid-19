@@ -5,11 +5,6 @@ body {
     padding: 0;
 }
 
-.initialLoader {
-    margin-top: 30%;
-    margin-left: 40%;
-}
-
 .Home {
     padding: 10px;
 }
@@ -134,4 +129,12 @@ body {
 .country .trends .timeseries .chart H2{
     margin-left: 30px;
     margin-bottom: 14px;
+}
+
+.information {
+    padding: 10px;
+}
+
+.information .heading H2 IMG {
+    margin-right: 6px;
 }

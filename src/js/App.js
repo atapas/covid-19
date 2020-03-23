@@ -21,6 +21,7 @@ import World from './World';
 import Countries from './Countries';
 import Country from './Country';
 import NotFoundPage from './NotFoundPage';
+import Information from './Information';
 
 import { registerCovid19Data } from './actions/covidAction';
 
@@ -44,7 +45,7 @@ const App = () => {
             <Navbar bg="dark" variant="dark">
               <Navbar.Brand href="/">
                 <img
-                  alt=""
+                  alt={covid}
                   src={covid}
                   width="30"
                   height="30"
@@ -56,6 +57,7 @@ const App = () => {
                 <Nav.Link href="/home">Home</Nav.Link>
                 <Nav.Link href="/world">World</Nav.Link>
                 <Nav.Link href="/countries">Countries</Nav.Link>
+                <Nav.Link href="/information">Information & News</Nav.Link>
               </Nav>
             </Navbar>
 
@@ -119,6 +121,9 @@ const App = () => {
                     style={{marginLeft: '40%', marginTop: '13%'}}
                   /> :              
                   <Country {...props} />} />
+                  <Route exact path="/information">  
+                    <Information />
+                  </Route>
               <Route path='*' render={(props) => <NotFoundPage {...props} />} />
             </Switch>
           </div>
