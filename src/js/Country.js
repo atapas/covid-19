@@ -14,7 +14,13 @@ import TimeSeries from './time-series/TimeSeries';
 
 const Country = props => {
     console.log(props);
-    const countryName = new URLSearchParams(props.location.search).get('name');
+
+    let countryName;
+    if (props.location) {
+        countryName = new URLSearchParams(props.location.search).get('name');
+    } else {
+        countryName = props.countryName;
+    }
     const countryCoronaData = useSelector(state => state.covid19);
     const getCountryCode = country => {
         let selectedCountry = COUNTRY_CODES.filter( elem => {

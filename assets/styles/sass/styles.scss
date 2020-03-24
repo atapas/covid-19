@@ -13,6 +13,10 @@ body {
     padding-top: 10px;
 }
 
+.worldHeading {
+    margin-top: 50px;
+}
+
 .navbar .navbar-nav .nav-link {
     background-color: #333;
     border: 1px solid #333;
@@ -83,6 +87,10 @@ body {
 .countries .inner .countryCapsules .imageCountry span {
     margin-right: 2px;
     font-size: 14px;
+}
+
+.countryHeadline .country {
+    padding: 0px;
 }
 
 .country {

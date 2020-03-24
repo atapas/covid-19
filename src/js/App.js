@@ -62,8 +62,9 @@ const App = () => {
             </Navbar>
 
             <Switch>
-              <Route exact path="/">
-                {countryCoronaDataLoading ?
+            <Route exact path="/"
+                render={props => 
+                  countryCoronaDataLoading ?
                   <Loader
                     type="ThreeDots"
                     color="#00BFFF"
@@ -71,11 +72,11 @@ const App = () => {
                     width={150}
                     style={{marginLeft: '40%', marginTop: '13%'}}
                   /> :              
-                  <Home />
-                }
-              </Route>
-              <Route exact path="/home">
-                {countryCoronaDataLoading ?
+                  <Home {...props} />}
+                 />
+              <Route exact path="/home"
+                render={props => 
+                  countryCoronaDataLoading ?
                   <Loader
                     type="ThreeDots"
                     color="#00BFFF"
@@ -83,9 +84,8 @@ const App = () => {
                     width={150}
                     style={{marginLeft: '40%', marginTop: '13%'}}
                   /> :              
-                  <Home />
-                }
-              </Route>
+                  <Home {...props} />}
+                 />
               <Route exact path="/world">
                 {countryCoronaDataLoading ?
                   <Loader
