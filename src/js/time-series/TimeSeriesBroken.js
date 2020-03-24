@@ -24,7 +24,7 @@ const TimeSeriesBroken = props => {
                             <XAxis dataKey="date"/>
                             <YAxis/>
                             <Tooltip/>
-                            <Area type='monotone' dataKey='confirmed' stackId="1" stroke='#8B0000' fill='#8B0000' />
+                            <Area type='monotone' dataKey='confirmed' stackId="1" stroke='#8B0000' fill='#8B0000' activeDot={{ r: 8 }} />
                         </AreaChart>
                     </ResponsiveContainer>
                     </div>

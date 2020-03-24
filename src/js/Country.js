@@ -10,7 +10,7 @@ import CurrencyFormat from 'react-currency-format';
 import { useFetch } from './useFetch';
 import COUNTRY_CODES from './utils/country_code';
 import TimeSeries from './time-series/TimeSeries';
-
+import IndiaState from './IndiaState';
 
 const Country = props => {
     console.log(props);
@@ -53,58 +53,67 @@ const Country = props => {
                 </Col>
             </Row>
             {
-                covid.length > 0 ? 
-                    <Row className="stat">
-                        <Col sm={3}>
-                                <Badge variant="info" className="total">
-                                    <h3 className="label">Total</h3>
-                                    <CurrencyFormat 
-                                        value={covid[0].cases} 
-                                        displayType={'text'} 
-                                        thousandSeparator={true} 
-                                        renderText={value => <div className="value">{value}</div>} />
-                                </Badge>
-                        </Col>
-                        <Col sm={3}>
-                                <Badge variant="warning" className="active">
-                                    <h3 className="label">Active</h3>
-                                    <CurrencyFormat 
-                                        value={covid[0].active} 
-                                        displayType={'text'} 
-                                        thousandSeparator={true} 
-                                        renderText={value => <div className="value">{value}</div>} />
-                                    <div className="extra">(Today: {covid[0].todayCases})</div>
-                                </Badge>
-                        </Col>
-                        <Col sm={3}>
-                            <Badge variant="success" className="recovered">
-                                <h3 className="label">Recovered</h3>
+            covid.length > 0 ? 
+                <Row className="stat">
+                    <Col sm={3}>
+                            <Badge variant="info" className="total">
+                                <h3 className="label">Total</h3>
                                 <CurrencyFormat 
-                                        value={covid[0].recovered} 
-                                        displayType={'text'} 
-                                        thousandSeparator={true} 
-                                        renderText={value => <div className="value">{value}</div>} />
+                                    value={covid[0].cases} 
+                                    displayType={'text'} 
+                                    thousandSeparator={true} 
+                                    renderText={value => <div className="value">{value}</div>} />
                             </Badge>
-                        </Col> 
-                        <Col sm={3}>
-                            <Badge variant="danger" className="deaths">
-                                <h3 className="label">Deaths</h3>
+                    </Col>
+                    <Col sm={3}>
+                            <Badge variant="warning" className="active">
+                                <h3 className="label">Active</h3>
                                 <CurrencyFormat 
-                                        value={covid[0].deaths} 
-                                        displayType={'text'} 
-                                        thousandSeparator={true} 
-                                        renderText={value => <div className="value">{value}</div>} />
-                                <div className="extra">(Today: {covid[0].todayDeaths})</div>
+                                    value={covid[0].active} 
+                                    displayType={'text'} 
+                                    thousandSeparator={true} 
+                                    renderText={value => <div className="value">{value}</div>} />
+                                <div className="extra">(Today: {covid[0].todayCases})</div>
                             </Badge>
+                    </Col>
+                    <Col sm={3}>
+                        <Badge variant="success" className="recovered">
+                            <h3 className="label">Recovered</h3>
+                            <CurrencyFormat 
+                                    value={covid[0].recovered} 
+                                    displayType={'text'} 
+                                    thousandSeparator={true} 
+                                    renderText={value => <div className="value">{value}</div>} />
+                        </Badge>
+                    </Col> 
+                    <Col sm={3}>
+                        <Badge variant="danger" className="deaths">
+                            <h3 className="label">Deaths</h3>
+                            <CurrencyFormat 
+                                    value={covid[0].deaths} 
+                                    displayType={'text'} 
+                                    thousandSeparator={true} 
+                                    renderText={value => <div className="value">{value}</div>} />
+                            <div className="extra">(Today: {covid[0].todayDeaths})</div>
+                        </Badge>
+                    </Col>
+                </Row> : null
+            }
+                
+                <Row className="trends">
+                    <Col>
+                        <TimeSeries country={countryName} />
+                    </Col>
+                </Row>
+            {
+                (countryName === 'India') ?
+                    <Row>
+                        <Col>
+                            <IndiaState />
                         </Col>
                     </Row> : null
             }
-            
-            <Row className="trends">
-                <Col>
-                    <TimeSeries country={countryName} />
-                </Col>
-            </Row>
+                
         </Container>
     )
 };

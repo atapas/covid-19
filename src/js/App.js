@@ -22,6 +22,7 @@ import Countries from './Countries';
 import Country from './Country';
 import NotFoundPage from './NotFoundPage';
 import Information from './Information';
+import About from './About';
 
 import { registerCovid19Data } from './actions/covidAction';
 
@@ -59,6 +60,7 @@ const App = () => {
                 <Nav.Link href="/countries">Countries</Nav.Link>
                 <Nav.Link href="/information">Information & News</Nav.Link>
               </Nav>
+              <About />
             </Navbar>
 
             <Switch>

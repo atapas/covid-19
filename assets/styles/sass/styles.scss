@@ -9,20 +9,21 @@ body {
     padding: 10px;
 }
 
-.Home .row{
-    padding-top: 10px;
-}
-
-.worldHeading {
-    margin-top: 50px;
+.world {
+    padding: 10px;
 }
 
 .navbar .navbar-nav .nav-link {
     background-color: #333;
     border: 1px solid #333;
     border-radius: 9px;
-    color: #ebebeb;
+    color: #e3e3e3;
     margin-right: 6px;
+}
+
+.navbar .navbar-nav .nav-link:hover {
+    color: #FFFFFF;
+    text-decoration: underline;
 }
 
 .worldData .legends .badge {
@@ -43,6 +44,10 @@ body {
 
 .world .inner .search{
     padding: 10px;
+}
+
+.world .worldCharts {
+    margin-bottom: 30px;
 }
 
 .countries {
@@ -146,3 +151,16 @@ body {
 .information .heading H2 IMG {
     margin-right: 6px;
 }
+
+.indiaState {
+    margin-top: 20px;
+}
+
+.about .link{
+    color: #e3e3e3;
+}
+
+.about .link:hover{
+    color: #ffffff;
+}
+
