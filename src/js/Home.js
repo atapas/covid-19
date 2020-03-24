@@ -14,6 +14,7 @@ import TopNRecoveredWidget from './covid-all/TopNRecoveredWidget';
 import TopNTodayDeath from './covid-all/TopNTodayDeath';
 import CountryCasesWidget from './covid-all/CountryCasesWidget';
 import Country from './Country';
+import IndiaState from './IndiaState';
 
 import world from '../../assets/images/world.png';
 
@@ -29,6 +30,9 @@ const Home = props => {
             <Row className="countryHeadline">
                 <Col sm={12}>
                     <Country countryName="India" />
+                </Col>
+                <Col sm={12}>
+                    <IndiaState />
                 </Col>
             </Row>
             <Row className="worldHeading">
