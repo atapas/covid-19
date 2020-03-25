@@ -42,7 +42,7 @@ const CountryCasesWidget = props => {
                                 <XAxis dataKey="Country"/>
                                 <YAxis/>
                                 <Tooltip/>
-                                <Area type='monotone' dataKey='Cases' stackId="1" stroke='#FFC107' fill='#FFC107' />
+                                <Area type='monotone' dataKey='Cases' stackId="1" stroke='#FFC107' fill='#FFC107' activeDot={{ r: 8 }}/>
                             </AreaChart>
                         </ResponsiveContainer>
                     </div>
