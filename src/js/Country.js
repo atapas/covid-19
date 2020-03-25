@@ -12,9 +12,12 @@ import COUNTRY_CODES from './utils/country_code';
 import TimeSeries from './time-series/TimeSeries';
 import IndiaState from './IndiaState';
 
+import Loader from 'react-loader-spinner';
+
 const Country = props => {
     console.log(props);
-
+    const [indiaData, indiaDataLoading] = useFetch('https://api.covid19india.org/data.json');
+    
     let countryName;
     if (props.location) {
         countryName = new URLSearchParams(props.location.search).get('name');
@@ -106,10 +109,17 @@ const Country = props => {
                     </Col>
                 </Row>
             {
-                (countryName === 'India') ?
+                indiaDataLoading ? 
+                    <Loader
+                        type="ThreeDots"
+                        color="#00BFFF"
+                        height={100}
+                        width={100}
+                    /> :
+                (countryName === 'India' ) ?
                     <Row>
                         <Col>
-                            <IndiaState />
+                            <IndiaState data={indiaData}/>
                         </Col>
                     </Row> : null
             }
