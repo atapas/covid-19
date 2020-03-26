@@ -11,11 +11,12 @@ import { useFetch } from './useFetch';
 import COUNTRY_CODES from './utils/country_code';
 import TimeSeries from './time-series/TimeSeries';
 import IndiaState from './IndiaState';
+import IndiaStateCharts from './IndiaStateCharts';
 
 import Loader from 'react-loader-spinner';
 
 const Country = props => {
-    console.log(props);
+    // console.log(props);
     const [indiaData, indiaDataLoading] = useFetch('https://api.covid19india.org/data.json');
     
     let countryName;
@@ -40,8 +41,15 @@ const Country = props => {
     let covid = countryCoronaData.filter(elem => {
         return elem.country.toLowerCase() === countryName.toLowerCase();
     });
-    console.log('covid data', covid);
-    
+    // console.log('covid data', covid);
+
+    let stateData = [];
+    if (!indiaDataLoading) {
+        let stateWise = indiaData['statewise'];
+        stateData = stateWise.filter((elem, i) => i > 0);
+        console.log('stateData', stateData);
+    }
+   
     return(
        <Container className="country" fluid >
             <Row>
@@ -117,11 +125,20 @@ const Country = props => {
                         width={100}
                     /> :
                 (countryName === 'India' ) ?
+                 <>
                     <Row>
                         <Col>
-                            <IndiaState data={indiaData}/>
+                            <IndiaStateCharts data={stateData} />
+                            
                         </Col>
-                    </Row> : null
+                    </Row> 
+                    <Row>
+                        <Col>
+                            <IndiaState data={stateData}/>
+                        </Col>
+                    </Row> 
+                </> : null
+               
             }
                 
         </Container>

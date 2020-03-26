@@ -4,12 +4,7 @@ import Table from 'react-bootstrap/Table';
 import Card from 'react-bootstrap/Card';
 
 const IndiaState = props => {
-    const data = props.data;
-    let stateData = [];
-    console.log('State data', data);
-    let stateWise = data['statewise'];
-    stateData = stateWise.filter((elem, i) => i > 0);
-    console.log('stateData', stateData);
+    const stateData = props.data;
 
     return (
         <div className="indiaState">
