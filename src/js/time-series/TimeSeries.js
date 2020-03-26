@@ -25,13 +25,14 @@ const TimeSeries = props => {
     let refinedData = [];
     let brokenDownData = [];
     if (!loading) {
-        // console.log('timeseries', data);
-        // console.log('country', country);
         const availableData = data[getProposedName(country)];
         if (availableData) {
-            refinedData = data[getProposedName(country)];
+            refinedData = availableData.map(elem => {
+                elem['active'] = (elem['confirmed'] - (elem['deaths'] + elem['recovered']));
+                return elem;
+            });
         }
-        console.log('refined timeseries', refinedData);
+        
 
         for (let i = 0; i<refinedData.length ; i++) {
             let obj = {};
@@ -48,8 +49,15 @@ const TimeSeries = props => {
             }
             brokenDownData.push(obj);
           }
-          // console.log('refined brokenDownData', brokenDownData);
     }
+
+    console.group('TimeSeries');
+    console.groupCollapsed();
+    console.log('timeseries', data);
+    console.log('country', country);
+    console.log('refined timeseries', refinedData);
+    console.log('refined brokenDownData', brokenDownData);
+    console.groupEnd();
 
     return (
         <div className="timeseries">
@@ -79,6 +87,7 @@ const TimeSeries = props => {
                                                 <Tooltip />
                                                 <Legend />
                                                 <Line type="monotone" dataKey="confirmed" stroke="#FFC107" activeDot={{ r: 8 }} />
+                                                <Line type="monotone" dataKey="active" stroke="#B96666" activeDot={{ r: 8 }} />
                                                 <Line type="monotone" dataKey="recovered" stroke="#28A745" activeDot={{ r: 8 }} />
                                                 <Line type="monotone" dataKey="deaths" stroke="#DC3545" activeDot={{ r: 8 }} />
                                             </LineChart>
