@@ -41,7 +41,7 @@ const Country = props => {
     let covid = countryCoronaData.filter(elem => {
         return elem.country.toLowerCase() === countryName.toLowerCase();
     });
-    // console.log('covid data', covid);
+    console.log('covid data', covid);
 
     let stateData = [];
     if (!indiaDataLoading) {
@@ -74,6 +74,11 @@ const Country = props => {
                                     displayType={'text'} 
                                     thousandSeparator={true} 
                                     renderText={value => <div className="value">{value}</div>} />
+                                {
+                                covid[0].todayCases > 0 ?
+                                    <div className="extra">[ Today: +{covid[0].todayCases} ]</div> :
+                                    <div className="extra">[ Today: 0 ]</div>
+                                }
                             </Badge>
                     </Col>
                     <Col sm={3}>
@@ -84,7 +89,11 @@ const Country = props => {
                                     displayType={'text'} 
                                     thousandSeparator={true} 
                                     renderText={value => <div className="value">{value}</div>} />
-                                <div className="extra">(Today: {covid[0].todayCases})</div>
+                                {
+                                covid[0].todayCases > 0 ?
+                                    <div className="extra">[ Today: +{covid[0].todayCases} ]</div> :
+                                    <div className="extra">[ Today: 0 ]</div>
+                                }
                             </Badge>
                     </Col>
                     <Col sm={3}>
@@ -105,7 +114,11 @@ const Country = props => {
                                     displayType={'text'} 
                                     thousandSeparator={true} 
                                     renderText={value => <div className="value">{value}</div>} />
-                            <div className="extra">(Today: {covid[0].todayDeaths})</div>
+                            {
+                                covid[0].todayDeaths > 0 ?
+                                    <div className="extra">[ Today: +{covid[0].todayDeaths} ]</div> :
+                                    <div className="extra">[ Today: 0 ]</div>
+                            }
                         </Badge>
                     </Col>
                 </Row> : null
