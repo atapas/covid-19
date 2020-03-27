@@ -12,7 +12,7 @@ import StateIndiaMostRecovered from './covid-all/StateIndiaMostRecovered';
 const IndiaStateCharts = props => {
     const stateData = props.data;
 
-    const sortedMostConfirmed = [...stateData].sort((a,b) => parseInt(b.confirmed, 10) - parseInt(a.confirmed, 10));
+    const sortedMostConfirmed = [...stateData].sort((a,b) => parseInt(b.active, 10) - parseInt(a.active, 10));
     const sortedMostDeath = [...stateData].sort((a,b) => parseInt(b.deaths, 10) - parseInt(a.deaths, 10));
     let stateDataWithPerctRecovered = stateData.map(elem => {
         elem['perctRecoverd'] = Math.round((elem['recovered'] * 100) / elem['confirmed']);
@@ -32,10 +32,10 @@ const IndiaStateCharts = props => {
         <Container className="india-state-charts" fluid>
             <Row>
                 <Col sm={8}>
-                    <StateIndiaMostConfirmed data={sortedMostDeath} />
+                    <StateIndiaMostConfirmed data={sortedMostConfirmed} />
                 </Col>
                 <Col sm={4}>
-                <StateIndiaMostRecovered data={sortedMostRecoveredPerct} />
+                    <StateIndiaMostRecovered data={sortedMostRecoveredPerct} />
                 </Col>
                 {/*
                 <Col>

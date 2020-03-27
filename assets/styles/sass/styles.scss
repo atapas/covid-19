@@ -169,3 +169,19 @@ body {
     padding: 0px;
 }
 
+.type-btn-grp {
+    float: right;
+}
+
+.type-btn-grp .btn {
+    border-color: #5A6268;
+}
+
+.type-btn-grp .selected {
+    background-color: #000000;
+    color: #FFFFFF;
+    border-color: #000000;
+    box-shadow: 2px solid #000000;
+}
+
+

@@ -38,15 +38,19 @@ const TimeSeries = props => {
             let obj = {};
             obj['date'] = refinedData[i]['date'];
             if (i === 0) {
-              obj['confirmed'] = refinedData[i]['confirmed'];
-              obj['deaths'] = refinedData[i]['deaths'];
-              obj['recovered'] = refinedData[i]['recovered'];
+                obj['confirmed'] = refinedData[i]['confirmed'];
+                obj['deaths'] = refinedData[i]['deaths'];
+                obj['recovered'] = refinedData[i]['recovered'];
             } else {
-              obj['confirmed'] = refinedData[i]['confirmed'] - refinedData[i-1]['confirmed'];
-              obj['deaths'] = refinedData[i]['deaths'] - refinedData[i - 1]['deaths'];
-              obj['recovered'] = refinedData[i]['recovered'] - refinedData[i-1]['recovered'];
-          
+                let confirmedDiff = refinedData[i]['confirmed'] - refinedData[i-1]['confirmed'];
+                let deathDiff = refinedData[i]['deaths'] - refinedData[i - 1]['deaths'];
+                let recoverdDiff = refinedData[i]['recovered'] - refinedData[i-1]['recovered'];
+                obj['confirmed'] = confirmedDiff < 0 ? 0 : confirmedDiff;
+                obj['deaths'] = deathDiff < 0 ? 0 : deathDiff;
+                obj['recovered'] = recoverdDiff < 0 ? 0 : recoverdDiff;
             }
+            let activeDiff = obj['confirmed'] - (obj['deaths'] + obj['recovered']);
+            obj['active'] = activeDiff < 0 ? 0 : activeDiff;
             brokenDownData.push(obj);
           }
     }
