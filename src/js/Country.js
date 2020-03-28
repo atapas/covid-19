@@ -18,7 +18,6 @@ import Loader from 'react-loader-spinner';
 const Country = props => {
     // console.log(props);
     const [indiaData, indiaDataLoading] = useFetch('https://api.covid19india.org/data.json');
-    
     let countryName;
     if (props.location) {
         countryName = new URLSearchParams(props.location.search).get('name');
@@ -41,13 +40,94 @@ const Country = props => {
     let covid = countryCoronaData.filter(elem => {
         return elem.country.toLowerCase() === countryName.toLowerCase();
     });
-    console.log('covid data', covid);
+    console.log('Country: covid data', covid);
 
     let stateData = [];
+    let inidiaTotalData = {}
     if (!indiaDataLoading) {
         let stateWise = indiaData['statewise'];
+        inidiaTotalData = stateWise[0];
         stateData = stateWise.filter((elem, i) => i > 0);
-        console.log('stateData', stateData);
+        console.log('Country: stateData', stateData);
+    }
+
+    const getTotalValue = type => {
+        if (type === 'confirmed') {
+            if (countryName === 'India') {
+                if (!indiaDataLoading) {
+                    return inidiaTotalData.confirmed;
+                } else {
+                    return "...";
+                }
+            } else {
+                return covid[0].cases;
+            }
+
+        } else if (type === 'active') {
+            if (countryName === 'India') {
+                if (!indiaDataLoading) {
+                    return inidiaTotalData.active;
+                } else {
+                    return "...";
+                }
+            } else {
+                return covid[0].active;
+            }
+
+        } else if (type === 'recovered') {
+            if (countryName === 'India') {
+                if (!indiaDataLoading) {
+                    return inidiaTotalData.recovered;
+                } else {
+                    return "...";
+                }
+            } else {
+                return covid[0].recovered;
+            }
+
+        } else if (type === 'deaths') {
+            if (countryName === 'India') {
+                if (!indiaDataLoading) {
+                    return inidiaTotalData.deaths;
+                } else {
+                    return "...";
+                }
+            } else {
+                return covid[0].deaths;
+            }
+        }
+    }
+
+    const getIncreasdValue = type => {
+        if (countryName === 'India') {
+            if (!indiaDataLoading) {
+                if (type === 'confirmed') {
+                    return getFormattedIncreased(indiaData.key_values[0].confirmeddelta);
+                } else if (type === 'active') {
+                    return getFormattedIncreased(indiaData.key_values[0].confirmeddelta);
+                } else if (type === 'recovered') {
+                    return getFormattedIncreased(indiaData.key_values[0].recovereddelta);
+                } else if (type === 'deaths') {
+                    return getFormattedIncreased(indiaData.key_values[0].deceaseddelta);
+                }
+            }
+        } else {
+            if (type === 'confirmed') {
+                return getFormattedIncreased(covid[0].todayCases);
+            } else if (type === 'active') {
+                return getFormattedIncreased(covid[0].todayCases);
+            } else if (type === 'deaths') {
+                return getFormattedIncreased(covid[0].todayDeaths);
+            }
+        }
+    }
+
+    const getFormattedIncreased = value => {
+        if (value > 0) {
+            return `[ Today: +${value} ]`;
+        } else {
+            return `[ Today: 0 ]`;
+        }
     }
    
     return(
@@ -70,55 +150,50 @@ const Country = props => {
                             <Badge variant="info" className="total">
                                 <h3 className="label">Total</h3>
                                 <CurrencyFormat 
-                                    value={covid[0].cases} 
+                                    value={getTotalValue('confirmed')} 
                                     displayType={'text'} 
                                     thousandSeparator={true} 
                                     renderText={value => <div className="value">{value}</div>} />
-                                {
-                                covid[0].todayCases > 0 ?
-                                    <div className="extra">[ Today: +{covid[0].todayCases} ]</div> :
-                                    <div className="extra">[ Today: 0 ]</div>
-                                }
+                                
+                                <div className="extra">{getIncreasdValue('confirmed')}</div>
+                                
                             </Badge>
                     </Col>
                     <Col sm={3}>
                             <Badge variant="warning" className="active">
                                 <h3 className="label">Active</h3>
                                 <CurrencyFormat 
-                                    value={covid[0].active} 
+                                    value={getTotalValue('active')} 
                                     displayType={'text'} 
                                     thousandSeparator={true} 
                                     renderText={value => <div className="value">{value}</div>} />
-                                {
-                                covid[0].todayCases > 0 ?
-                                    <div className="extra">[ Today: +{covid[0].todayCases} ]</div> :
-                                    <div className="extra">[ Today: 0 ]</div>
-                                }
+                                <div className="extra">{getIncreasdValue('active')}</div>
                             </Badge>
                     </Col>
                     <Col sm={3}>
                         <Badge variant="success" className="recovered">
                             <h3 className="label">Recovered</h3>
                             <CurrencyFormat 
-                                    value={covid[0].recovered} 
+                                    value={getTotalValue('recovered')} 
                                     displayType={'text'} 
                                     thousandSeparator={true} 
                                     renderText={value => <div className="value">{value}</div>} />
+                            {
+                                (!indiaDataLoading && countryName === 'India') ?
+                                    <div className="extra">{getIncreasdValue('recovered')}</div> : null
+                            }
+                            
                         </Badge>
                     </Col> 
                     <Col sm={3}>
                         <Badge variant="danger" className="deaths">
                             <h3 className="label">Deaths</h3>
                             <CurrencyFormat 
-                                    value={covid[0].deaths} 
+                                    value={getTotalValue('deaths')} 
                                     displayType={'text'} 
                                     thousandSeparator={true} 
                                     renderText={value => <div className="value">{value}</div>} />
-                            {
-                                covid[0].todayDeaths > 0 ?
-                                    <div className="extra">[ Today: +{covid[0].todayDeaths} ]</div> :
-                                    <div className="extra">[ Today: 0 ]</div>
-                            }
+                            <div className="extra">{getIncreasdValue('deaths')}</div>
                         </Badge>
                     </Col>
                 </Row> : null
