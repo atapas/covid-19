@@ -16,7 +16,7 @@ const WorldData = props => {
 
     let refinedData = [];
     if (!loading) {
-        data['infected'] = (data.cases - (data.deaths + data.recovered));
+        // data['infected'] = (data.cases - (data.deaths + data.recovered));
         let keys = Object.keys(data);
         keys.forEach((elem) => {
             // console.log(elem);
@@ -72,7 +72,7 @@ const WorldData = props => {
                                     {`Recovered - ${Math.round((data.recovered * 100) / data.cases)}%`}
                                 </Badge>
                                 <Badge variant="warning" className="medication">
-                                    {`Infected - ${Math.round(((data.infected) * 100) / data.cases)}%`}
+                                    {`Active - ${Math.round(((data.active) * 100) / data.cases)}%`}
                                 </Badge>
                                 <Badge variant="danger" className="deaths">
                                     {`Deaths - ${Math.round((data.deaths * 100) / data.cases)}%`}
