@@ -39,7 +39,7 @@ const TimeSeriesBroken = props => {
             <Card >
                 <Card.Body>
                     <Card.Title>
-                        Trends - New Cases Found per Day
+                        Trends - Number of New Cases Found per Day
                         <div className="type-btn-grp">
                             <ButtonGroup aria-label="Basic example">
                                 <Button 
@@ -69,7 +69,7 @@ const TimeSeriesBroken = props => {
                             </ButtonGroup>
                         </div>
                     </Card.Title>
-                    <Card.Subtitle className="mb-2 text-muted">New cases reported daily basis</Card.Subtitle>
+                    <Card.Subtitle className="mb-2 text-muted">Number of New cases reported daily basis</Card.Subtitle>
                     <div>
                         
                         <ResponsiveContainer width='100%' height={400}>
