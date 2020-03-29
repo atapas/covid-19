@@ -21,6 +21,7 @@ import World from './World';
 import Countries from './Countries';
 import Country from './Country';
 import NotFoundPage from './NotFoundPage';
+import News from './News';
 import Information from './Information';
 import About from './About';
 
@@ -58,7 +59,8 @@ const App = () => {
                 <Nav.Link href="/home">Home</Nav.Link>
                 <Nav.Link href="/world">World</Nav.Link>
                 <Nav.Link href="/countries">Countries</Nav.Link>
-                <Nav.Link href="/information">Information & News</Nav.Link>
+                <Nav.Link href="/Information">Information</Nav.Link>
+                <Nav.Link href="/news">News</Nav.Link>
               </Nav>
               <About />
             </Navbar>
@@ -123,6 +125,9 @@ const App = () => {
                     style={{marginLeft: '40%', marginTop: '13%'}}
                   /> :              
                   <Country {...props} />} />
+                  <Route exact path="/news">  
+                    <News />
+                  </Route>
                   <Route exact path="/information">  
                     <Information />
                   </Route>
