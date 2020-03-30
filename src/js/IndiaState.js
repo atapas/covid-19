@@ -13,11 +13,26 @@ const IndiaState = props => {
     const stateData = props.data;
     const [expandedRows, setExpandedRows] = useState([]);
     const [districtData, loadingDistrictData] = useFetch('https://api.covid19india.org/state_district_wise.json');
+    const [expandState, setExpandState] = useState({});
 
     const handleEpandRow = (event, state) => {
         console.log('Expanding state', state);
         const currentExpandedRows = expandedRows;
         const isRowCurrentlyExpanded = currentExpandedRows.includes(state);
+
+        let tempState = {};
+        if (isRowCurrentlyExpanded) {
+            let obj = {};
+            obj[state] = false;
+            tempState = Object.assign({}, obj);
+            
+        } else {
+            let obj = {};
+            obj[state] = true;
+            tempState = Object.assign({}, obj);
+        }
+
+        setExpandState(tempState)
 
         const newExpandedRows = isRowCurrentlyExpanded ?
             currentExpandedRows.filter(st => st !== state) :
@@ -35,7 +50,7 @@ const IndiaState = props => {
                 let districts = Object.keys(data).sort((a, b) => data[b].confirmed - data[a].confirmed)
 
                 districts.forEach(name => {
-                    toRender = toRender + `<li key=${name}><span>${name}: ${data[name]['confirmed']}</span></li>`;
+                    toRender = toRender + `<li key=${name}>📣 <span>${name}: ${data[name]['confirmed']}</span></li>`;
                 });
             } else {
                 toRender = toRender + '<h5>No data available</h5>';
@@ -70,6 +85,7 @@ const IndiaState = props => {
                                 <>
                                     <tr key={data.state}>
                                         <td>
+                                            {expandState[data.state] ?  <span>👇</span> : <span>👉</span> }
                                             <Button
                                                 variant="link"
                                                 onClick={event => handleEpandRow(event, data.state)}>
