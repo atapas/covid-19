@@ -27,7 +27,7 @@ const IndiaState = props => {
     }
 
     const getDistrictData = state => {
-        let toRender = '<div className="district"><ul>';
+        let toRender = '<ul>';
         if (!loadingDistrictData) {
             if (districtData[state]) {
                 let data = districtData[state]['districtData'];
@@ -41,7 +41,7 @@ const IndiaState = props => {
                 toRender = toRender + '<h5>No data available</h5>';
             }
         }
-        toRender = toRender + '</ul></div>';
+        toRender = toRender + '</ul>';
         console.log('toRender', toRender);
         return toRender;
     }
@@ -132,7 +132,8 @@ const IndiaState = props => {
                                             !loadingDistrictData && expandedRows.includes(data.state) ?
                                                 <tr className="expandedRow" key={"row-expanded-" + data.state}>
                                                     <td colSpan="5">
-                                                        <div
+                                                        <div 
+                                                            className="district"
                                                             dangerouslySetInnerHTML={{ __html: getDistrictData(data.state) }}>
                                                         </div>
 
