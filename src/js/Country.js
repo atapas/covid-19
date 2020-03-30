@@ -53,53 +53,53 @@ const Country = props => {
 
     const getTotalValue = type => {
         if (type === 'confirmed') {
-            if (countryName === 'India') {
+            /*if (countryName === 'India') {
                 if (!indiaDataLoading) {
                     return inidiaTotalData.confirmed;
                 } else {
                     return "...";
                 }
-            } else {
+            } else {*/
                 return covid[0].cases;
-            }
+            /*}*/
 
         } else if (type === 'active') {
-            if (countryName === 'India') {
+            /*if (countryName === 'India') {
                 if (!indiaDataLoading) {
                     return inidiaTotalData.active;
                 } else {
                     return "...";
                 }
-            } else {
+            } else {*/
                 return covid[0].active;
-            }
+            /*}*/
 
         } else if (type === 'recovered') {
-            if (countryName === 'India') {
+            /*if (countryName === 'India') {
                 if (!indiaDataLoading) {
                     return inidiaTotalData.recovered;
                 } else {
                     return "...";
                 }
-            } else {
+            } else {*/
                 return covid[0].recovered;
-            }
+            /*}*/
 
         } else if (type === 'deaths') {
-            if (countryName === 'India') {
+            /*if (countryName === 'India') {
                 if (!indiaDataLoading) {
                     return inidiaTotalData.deaths;
                 } else {
                     return "...";
                 }
-            } else {
+            } else {*/
                 return covid[0].deaths;
-            }
+            /*}*/
         }
     }
 
     const getIncreasdValue = type => {
-        if (countryName === 'India') {
+        /*if (countryName === 'India') {
             if (!indiaDataLoading) {
                 if (type === 'confirmed') {
                     return getFormattedIncreased(indiaData.key_values[0].confirmeddelta);
@@ -111,7 +111,7 @@ const Country = props => {
                     return getFormattedIncreased(indiaData.key_values[0].deceaseddelta);
                 }
             }
-        } else {
+        } else {*/
             if (type === 'confirmed') {
                 return getFormattedIncreased(covid[0].todayCases);
             } else if (type === 'active') {
@@ -119,7 +119,7 @@ const Country = props => {
             } else if (type === 'deaths') {
                 return getFormattedIncreased(covid[0].todayDeaths);
             }
-        }
+        /*}*/
     }
 
     const getFormattedIncreased = value => {
@@ -199,11 +199,7 @@ const Country = props => {
                 </Row> : null
             }
                 
-                <Row className="trends">
-                    <Col>
-                        <TimeSeries country={countryName} />
-                    </Col>
-                </Row>
+               
             {
                 indiaDataLoading ? 
                     <Loader
@@ -214,6 +210,11 @@ const Country = props => {
                     /> :
                 (countryName === 'India' ) ?
                  <>
+                    <Row className="trends">
+                        <Col>
+                            <TimeSeries country={countryName} indiaData={indiaData}/>
+                        </Col>
+                    </Row>
                     <Row>
                         <Col>
                             <IndiaStateCharts data={stateData} />
@@ -225,7 +226,12 @@ const Country = props => {
                             <IndiaState data={stateData}/>
                         </Col>
                     </Row> 
-                </> : null
+                </> : 
+                <Row className="trends">
+                    <Col>
+                        <TimeSeries country={countryName} />
+                    </Col>
+                </Row>
                
             }
                 

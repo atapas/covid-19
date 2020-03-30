@@ -13,6 +13,7 @@ import TimeSeriesPercentage from './TimeSeriesPercentage';
 const TimeSeries = props => {
     const [data, loading] = useFetch('https://pomber.github.io/covid19/timeseries.json');
     const country = props.country;
+    const indiaData = props.indiaData;
 
     const getProposedName = country => {
         if (country === 'S. Korea') {
@@ -26,44 +27,64 @@ const TimeSeries = props => {
     let refinedData = [];
     let brokenDownData = [];
     let percentageData = [];
-    if (!loading) {
-        const availableData = data[getProposedName(country)];
-        if (availableData) {
-            refinedData = availableData.map(elem => {
-                elem['active'] = (elem['confirmed'] - (elem['deaths'] + elem['recovered']));
-                return elem;
-            });
-        }
-        
 
-        for (let i = 0; i<refinedData.length ; i++) {
-            let obj = {};
-            let percentageObj = {};
-            obj['date'] = refinedData[i]['date'];
-            percentageObj['date'] = refinedData[i]['date'];
-            if (i === 0) {
-                obj['confirmed'] = refinedData[i]['confirmed'];
-                obj['deaths'] = refinedData[i]['deaths'];
-                obj['recovered'] = refinedData[i]['recovered'];
-            } else {
-                let confirmedDiff = refinedData[i]['confirmed'] - refinedData[i-1]['confirmed'];
-                let deathDiff = refinedData[i]['deaths'] - refinedData[i - 1]['deaths'];
-                let recoverdDiff = refinedData[i]['recovered'] - refinedData[i-1]['recovered'];
-                obj['confirmed'] = confirmedDiff < 0 ? 0 : confirmedDiff;
-                obj['deaths'] = deathDiff < 0 ? 0 : deathDiff;
-                obj['recovered'] = recoverdDiff < 0 ? 0 : recoverdDiff;
-
-                percentageObj['% Change'] = refinedData[i-1]['confirmed'] === 0 ? 0 : 
-                                                ((confirmedDiff * 100) / refinedData[i-1]['confirmed']).toFixed(2);
-                percentageObj['Actual Change'] = confirmedDiff;
-                percentageObj['Actial value'] = refinedData[i]['confirmed'];
+    /*if (country === 'India') {
+        refinedData = indiaData.cases_time_series.map(elem => {
+            if (elem.totalconfirmed !== '') {
+                elem['confirmed'] = parseInt(elem.totalconfirmed, 10);
             }
-            let activeDiff = obj['confirmed'] - (obj['deaths'] + obj['recovered']);
-            obj['active'] = activeDiff < 0 ? 0 : activeDiff;
-            brokenDownData.push(obj);
-            percentageData.push(percentageObj);
-          }
-    }
+            if (elem.totaldeceased !== '') {
+                elem['deaths'] = parseInt(elem.totaldeceased, 10);
+            }
+            if (elem.totalrecovered !== '') {
+                elem['recovered'] = parseInt(elem.totalrecovered, 10);
+            }
+            
+            if (elem.totalconfirmed !== '' 
+                && elem.totaldeceased !== '' 
+                && elem.totalrecovered !== '') {
+                    elem['active'] = (elem['confirmed'] - (elem['recovered'] + elem['deaths']));
+                }
+            return elem;
+        });
+    } else {*/
+        if (!loading) {
+            const availableData = data[getProposedName(country)];
+            if (availableData) {
+                refinedData = availableData.map(elem => {
+                    elem['active'] = (elem['confirmed'] - (elem['deaths'] + elem['recovered']));
+                    return elem;
+                });
+            }
+            for (let i = 0; i<refinedData.length ; i++) {
+                let obj = {};
+                let percentageObj = {};
+                obj['date'] = refinedData[i]['date'];
+                percentageObj['date'] = refinedData[i]['date'];
+                if (i === 0) {
+                    obj['confirmed'] = refinedData[i]['confirmed'];
+                    obj['deaths'] = refinedData[i]['deaths'];
+                    obj['recovered'] = refinedData[i]['recovered'];
+                } else {
+                    let confirmedDiff = refinedData[i]['confirmed'] - refinedData[i-1]['confirmed'];
+                    let deathDiff = refinedData[i]['deaths'] - refinedData[i - 1]['deaths'];
+                    let recoverdDiff = refinedData[i]['recovered'] - refinedData[i-1]['recovered'];
+                    obj['confirmed'] = confirmedDiff < 0 ? 0 : confirmedDiff;
+                    obj['deaths'] = deathDiff < 0 ? 0 : deathDiff;
+                    obj['recovered'] = recoverdDiff < 0 ? 0 : recoverdDiff;
+    
+                    percentageObj['% Change'] = refinedData[i-1]['confirmed'] === 0 ? 0 : 
+                                                    ((confirmedDiff * 100) / refinedData[i-1]['confirmed']).toFixed(2);
+                    percentageObj['Actual Change'] = confirmedDiff;
+                    percentageObj['Actial value'] = refinedData[i]['confirmed'];
+                }
+                let activeDiff = obj['confirmed'] - (obj['deaths'] + obj['recovered']);
+                obj['active'] = activeDiff < 0 ? 0 : activeDiff;
+                brokenDownData.push(obj);
+                percentageData.push(percentageObj);
+              }
+        }
+    /*}*/
 
     console.group('TimeSeries');
     console.groupCollapsed();
