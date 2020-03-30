@@ -28,7 +28,7 @@ const TimeSeries = props => {
     let brokenDownData = [];
     let percentageData = [];
 
-    /*if (country === 'India') {
+    if (country === 'India') {
         refinedData = indiaData.cases_time_series.map(elem => {
             if (elem.totalconfirmed !== '') {
                 elem['confirmed'] = parseInt(elem.totalconfirmed, 10);
@@ -47,7 +47,31 @@ const TimeSeries = props => {
                 }
             return elem;
         });
-    } else {*/
+        for (let i = 0; i<refinedData.length ; i++) {
+            let obj = {};
+            let percentageObj = {};
+            obj['date'] = refinedData[i]['date'];
+            percentageObj['date'] = refinedData[i]['date'];
+
+            obj['confirmed'] = parseInt(refinedData[i]['dailyconfirmed'], 10);
+            obj['deaths'] = parseInt(refinedData[i]['dailydeceased'], 10);
+            obj['recovered'] = parseInt(refinedData[i]['dailyrecovered'], 10);
+            obj['active'] = (obj['confirmed'] - (obj['recovered'] + obj['deaths']));
+
+            if (i > 0) {
+                percentageObj['% Change'] = refinedData[i-1]['confirmed'] === 0 ? 0 : 
+                                                    ((parseInt(refinedData[i]['dailyconfirmed'], 10) * 100) / refinedData[i-1]['confirmed']).toFixed(2);
+                percentageObj['Actual Change'] = parseInt(refinedData[i]['dailyconfirmed'], 10);
+                percentageObj['Actial value'] = refinedData[i]['confirmed'];
+            }
+
+            brokenDownData.push(obj);
+            percentageData.push(percentageObj);
+        }
+        
+        
+        // percentageData.push(percentageObj);
+    } else {
         if (!loading) {
             const availableData = data[getProposedName(country)];
             if (availableData) {
@@ -84,7 +108,7 @@ const TimeSeries = props => {
                 percentageData.push(percentageObj);
               }
         }
-    /*}*/
+    }
 
     console.group('TimeSeries');
     console.groupCollapsed();
