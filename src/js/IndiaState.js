@@ -19,30 +19,33 @@ const IndiaState = props => {
         const currentExpandedRows = expandedRows;
         const isRowCurrentlyExpanded = currentExpandedRows.includes(state);
 
-        const newExpandedRows = isRowCurrentlyExpanded ? 
-			currentExpandedRows.filter(st => st !== state) : 
+        const newExpandedRows = isRowCurrentlyExpanded ?
+            currentExpandedRows.filter(st => st !== state) :
             currentExpandedRows.concat(state);
-            
+
         setExpandedRows(newExpandedRows);
     }
 
     const getDistrictData = state => {
         let toRender = '<div className="district"><ul>';
         if (!loadingDistrictData) {
-            let data = districtData[state]['districtData'];
-            console.log('districtData', data);
-            let districts = Object.keys(data).sort((a,b) => data[b].confirmed - data[a].confirmed)
-            
-            districts.forEach(name => {
-                toRender = toRender + `<li key=${name}><span>${name}: ${data[name]['confirmed']}</span></li>`;
-            });
-            
+            if (districtData[state]) {
+                let data = districtData[state]['districtData'];
+                console.log('districtData', data);
+                let districts = Object.keys(data).sort((a, b) => data[b].confirmed - data[a].confirmed)
+
+                districts.forEach(name => {
+                    toRender = toRender + `<li key=${name}><span>${name}: ${data[name]['confirmed']}</span></li>`;
+                });
+            } else {
+                toRender = toRender + '<h5>No data available</h5>';
+            }
         }
         toRender = toRender + '</ul></div>';
         console.log('toRender', toRender);
         return toRender;
     }
-    
+
 
     return (
         <div className="indiaState">
@@ -67,32 +70,32 @@ const IndiaState = props => {
                                 <>
                                     <tr key={data.state}>
                                         <td>
-                                            <Button 
-                                                variant="link" 
+                                            <Button
+                                                variant="link"
                                                 onClick={event => handleEpandRow(event, data.state)}>
                                                 {data.state}
                                             </Button>
                                         </td>
                                         <td>
                                             <div>
-                                                <span>{data.confirmed}</span>{' '} 
+                                                <span>{data.confirmed}</span>{' '}
                                                 {
                                                     data['delta']['active'] > 0 ?
                                                         <span title="Increase in the Confirmed cases today">
-                                                            [<img src={red_up_arrow} height="20px" width="20px"/>
+                                                            [<img src={red_up_arrow} height="20px" width="20px" />
                                                             {data['delta']['active']}]
                                                         </span> : null
                                                 }
-                                                
+
                                             </div>
                                         </td>
                                         <td>
                                             <div>
-                                                <span>{data.active}</span>{' '} 
+                                                <span>{data.active}</span>{' '}
                                                 {
                                                     data['delta']['active'] > 0 ?
                                                         <span title="Increase in the Active cases today">
-                                                            [<img src={red_up_arrow} height="20px" width="20px"/>
+                                                            [<img src={red_up_arrow} height="20px" width="20px" />
                                                             {data['delta']['active']}]
                                                         </span> : null
                                                 }
@@ -104,11 +107,11 @@ const IndiaState = props => {
                                                 {
                                                     data['delta']['recovered'] > 0 ?
                                                         <span title="Increase in the Recovered cases today">
-                                                            [<img src={green_up_arrow} height="20px" width="20px"/>
+                                                            [<img src={green_up_arrow} height="20px" width="20px" />
                                                             {data['delta']['recovered']}]
                                                         </span> : null
                                                 }
-                                                
+
                                             </div>
                                         </td>
                                         <td>
@@ -117,7 +120,7 @@ const IndiaState = props => {
                                                 {
                                                     data['delta']['deaths'] > 0 ?
                                                         <span title="Increase in the Death cases today">
-                                                            [<img src={red_up_arrow} height="20px" width="20px"/>
+                                                            [<img src={red_up_arrow} height="20px" width="20px" />
                                                             {data['delta']['deaths']}]
                                                         </span> : null
                                                 }
@@ -129,21 +132,21 @@ const IndiaState = props => {
                                             !loadingDistrictData && expandedRows.includes(data.state) ?
                                                 <tr className="expandedRow" key={"row-expanded-" + data.state}>
                                                     <td colSpan="5">
-                                                        <div 
-                                                            dangerouslySetInnerHTML={{__html: getDistrictData(data.state)}}>
+                                                        <div
+                                                            dangerouslySetInnerHTML={{ __html: getDistrictData(data.state) }}>
                                                         </div>
-                                                        
+
                                                     </td>
                                                 </tr> : null
                                         }
                                     </>
                                 </>
-                                
+
                             )}
                         </tbody>
                     </Table>
                 </Card.Body>
-            </Card>       
+            </Card>
         </div>
     )
 };
