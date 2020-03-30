@@ -49,7 +49,7 @@ const Information = () => {
                             </Card.Body>
                         </Card>
                 )}
-            </CardColumns>>
+            </CardColumns>
         </div>
     )
 };
