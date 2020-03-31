@@ -56,7 +56,8 @@ const TimeSeries = props => {
             obj['confirmed'] = parseInt(refinedData[i]['dailyconfirmed'], 10);
             obj['deaths'] = parseInt(refinedData[i]['dailydeceased'], 10);
             obj['recovered'] = parseInt(refinedData[i]['dailyrecovered'], 10);
-            obj['active'] = (obj['confirmed'] - (obj['recovered'] + obj['deaths']));
+            let activeDiff = (obj['confirmed'] - (obj['recovered'] + obj['deaths']));
+            obj['active'] = activeDiff < 0 ? 0 : activeDiff;
 
             if (i > 0) {
                 percentageObj['% Change'] = refinedData[i-1]['confirmed'] === 0 ? 0 : 

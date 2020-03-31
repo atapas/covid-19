@@ -129,6 +129,14 @@ const Country = props => {
             return `[ Today: 0 ]`;
         }
     }
+
+    const getLastInfoUpdatedTime = () => {
+        if (countryName === 'India') {
+            if (!indiaDataLoading) {
+                return indiaData.key_values[0].lastupdatedtime;
+            }
+        }
+    }
    
     return(
        <Container className="country" fluid >
@@ -139,7 +147,7 @@ const Country = props => {
                             src={`https://www.countryflags.io/${getCountryCode(countryName)}/flat/64.png`} 
                             alt={countryName} 
                             className="flag"/>
-                        {countryName}
+                            {countryName}
                     </h1>
                 </Col>
             </Row>
