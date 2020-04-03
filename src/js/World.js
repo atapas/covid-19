@@ -16,6 +16,7 @@ import TopNDeathWidget from './covid-all/TopNDeathWidget';
 import TopNRecoveredWidget from './covid-all/TopNRecoveredWidget';
 import TopNTodayDeath from './covid-all/TopNTodayDeath';
 import CountryCasesWidget from './covid-all/CountryCasesWidget';
+import CompareWidget from './covid-all/CompareWidget';
 
 import world from '../../assets/images/world.png';
 
@@ -67,6 +68,11 @@ const World = props => {
                                 className="world" />
                         World
                     </h1>
+                    </Col>
+                </Row>
+                <Row className="worldCharts">
+                    <Col sm={12}>
+                        <CompareWidget history={props.history}/>
                     </Col>
                 </Row>
                 <Row className="worldCharts">

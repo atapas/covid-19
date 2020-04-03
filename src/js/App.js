@@ -90,8 +90,9 @@ const App = () => {
                   /> :              
                   <Home {...props} />}
                  />
-              <Route exact path="/world">
-                {countryCoronaDataLoading ?
+              <Route exact path="/world"
+              render={props => 
+                countryCoronaDataLoading ?
                   <Loader
                     type="ThreeDots"
                     color="#00BFFF"
@@ -99,9 +100,8 @@ const App = () => {
                     width={150}
                     style={{marginLeft: '40%', marginTop: '13%'}}
                   /> :              
-                  <World />
-                }
-              </Route>
+                  <World {...props}/>}
+              />
               <Route exact path="/countries"
                 render={props => 
                   countryCoronaDataLoading ?

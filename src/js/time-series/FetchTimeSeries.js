@@ -7,6 +7,7 @@ import COUNTRY_CODES from '../utils/country_code';
 
 const FetchTimeSeries = props => {
     const country = props.country;
+    const size = props.size ? props.size : 48;
     
     let selectedCountry = [];
     let image = '';
@@ -17,7 +18,7 @@ const FetchTimeSeries = props => {
     // console.log('selectedCountry', selectedCountry);
     if (selectedCountry.length > 0) {
         let countryCode = selectedCountry[0]['alpha2code'];
-        image =  <img src={`https://www.countryflags.io/${countryCode}/flat/48.png`} alt={country} />
+        image =  <img src={`https://www.countryflags.io/${countryCode}/flat/${size}.png`} alt={country} />
     }
 
     const getCountryDetails = (event, country) => {
