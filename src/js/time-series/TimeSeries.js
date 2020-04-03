@@ -20,6 +20,8 @@ const TimeSeries = props => {
             return 'Korea, South';
         } else if (country === 'UK') {
             return 'United Kingdom';
+        } else if (country === 'USA') {
+            return 'US';
         } else {
             return country;
         }
