@@ -9,7 +9,10 @@ import FetchTimeSeries from './time-series/FetchTimeSeries';
 
 const Countries = props => {
 
-    const data = useSelector(state => state.covid19);
+    const covid19Data = useSelector(state => state.covid19);
+    let data = covid19Data.filter(elem => {
+        return elem.country !== 'World';
+    });
     const [countries, setCountries] = useState([]);
     const [filteredCountries, setFilteredCountries] = useState([]);
     const [sortBy, setSortBy] = useState('cases');
