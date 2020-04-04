@@ -11,7 +11,7 @@ const StateIndiaMostConfirmed = props => {
     const data = props.data;
 
     let filteredData = data.filter(elem => {
-        return elem.confirmed > 0
+        return elem.confirmed > 20
     });
 
     let refinedData = [];
@@ -75,7 +75,7 @@ const StateIndiaMostConfirmed = props => {
     return (
         <Card>
             <Card.Body>
-                <Card.Title>State: Most Affected</Card.Title>
+                <Card.Title>State: Most Affected(Minimum 20 Cases)</Card.Title>
                 <Card.Subtitle className="mb-2 text-muted">
                     States with most number of Confirmed cases.
                 </Card.Subtitle>
