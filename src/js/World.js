@@ -21,7 +21,10 @@ import CompareWidget from './covid-all/CompareWidget';
 import world from '../../assets/images/world.png';
 
 const World = props => {
-    const data = useSelector(state => state.covid19);
+    const covid19Data = useSelector(state => state.covid19);
+    let data = covid19Data.filter(elem => {
+        return elem['country'] !== 'World';
+    })
     const [allData, allDataLoading] = useFetch(
         "https://corona.lmao.ninja/all"
     );
