@@ -20,7 +20,12 @@ const WorldData = props => {
         let keys = Object.keys(data);
         keys.forEach((elem) => {
             // console.log(elem);
-            if (elem === 'cases' || elem === 'updated' || elem === 'affectedCountries') {
+            if (elem === 'cases' 
+                || elem === 'updated' 
+                || elem === 'affectedCountries'
+                || elem === 'todayCases'
+                || elem === 'critical'
+                || elem === 'todayDeaths') {
                 return;
             }
             let obj = {};
