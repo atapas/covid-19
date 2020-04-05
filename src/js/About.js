@@ -59,10 +59,15 @@ const About = () => {
                             </li>
                         </ul>
                     </p>
-                    <br />
-                    <a href="https://www.tapasadhikary.com" target="_blank">
+                    {
+                        /*
+                        <br />
+                        <a href="https://www.tapasadhikary.com" target="_blank">
                         Contact me
-                    </a> for any further questions.
+                        </a> for any further questions.
+                        */
+                    }
+                    
                 </p>
             </Modal.Body>
           </Modal>

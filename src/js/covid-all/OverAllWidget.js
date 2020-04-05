@@ -20,20 +20,22 @@ const WorldData = props => {
         let keys = Object.keys(data);
         keys.forEach((elem) => {
             // console.log(elem);
-            if (elem === 'cases' 
+            /*if (elem === 'cases' 
                 || elem === 'updated' 
                 || elem === 'affectedCountries'
                 || elem === 'todayCases'
                 || elem === 'critical'
                 || elem === 'todayDeaths') {
                 return;
+            }*/
+            if (elem === 'deaths' || elem === 'recovered' || elem === 'active') {
+                let obj = {};
+                obj['name'] = elem;
+                obj['value'] = data[elem];
+                refinedData.push(obj);
             }
-            let obj = {};
-            obj['name'] = elem;
-            obj['value'] = data[elem];
-            refinedData.push(obj);
         });
-        // console.log('refinedData', refinedData);
+        console.log('overall widget refinedData', refinedData);
     }
     const COLORS = ['#DC3545', '#28A745', '#FFC107'];
     return (

@@ -60,7 +60,9 @@ const App = () => {
                 <Nav.Link href="/world">World</Nav.Link>
                 <Nav.Link href="/countries">Countries</Nav.Link>
                 <Nav.Link href="/Information">Information</Nav.Link>
-                <Nav.Link href="/news">News</Nav.Link>
+                {
+                  /* <Nav.Link href="/news">News</Nav.Link> */
+                }
               </Nav>
               <About />
             </Navbar>
