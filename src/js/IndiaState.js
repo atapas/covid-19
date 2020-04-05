@@ -116,7 +116,7 @@ const IndiaState = props => {
                                                 {
                                                     data['deltarecovered'] > 0 ?
                                                         <span title="Increase in the Recovered cases today">
-                                                            [<img src={green_up_arrow} height="13px" width="12px" style={{marginRight:'4px'}} />
+                                                            [<img src={green_up_arrow} height="11px" width="10px" style={{marginRight:'4px', marginLeft: '3px'}} />
                                                             {data['deltarecovered']}]
                                                         </span> : null
                                                 }
