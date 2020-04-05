@@ -102,13 +102,13 @@ const Country = props => {
         if (countryName === 'India') {
             if (!indiaDataLoading) {
                 if (type === 'confirmed') {
-                    return getFormattedIncreased(indiaData.key_values[0].confirmeddelta);
+                    return getFormattedIncreased(inidiaTotalData.deltaconfirmed);
                 } else if (type === 'active') {
-                    return getFormattedIncreased(indiaData.key_values[0].confirmeddelta);
+                    return getFormattedIncreased(inidiaTotalData.deltaconfirmed);
                 } else if (type === 'recovered') {
-                    return getFormattedIncreased(indiaData.key_values[0].recovereddelta);
+                    return getFormattedIncreased(inidiaTotalData.deltarecovered);
                 } else if (type === 'deaths') {
-                    return getFormattedIncreased(indiaData.key_values[0].deceaseddelta);
+                    return getFormattedIncreased(inidiaTotalData.deltadeaths);
                 }
             }
         } else {

@@ -96,10 +96,10 @@ const IndiaState = props => {
                                             <div>
                                                 <span>{data.confirmed}</span>{' '}
                                                 {
-                                                    data['delta']['active'] > 0 ?
+                                                    data['deltaconfirmed'] > 0 ?
                                                         <span title="Increase in the Confirmed cases today">
                                                             [<img src={red_up_arrow} height="20px" width="20px" />
-                                                            {data['delta']['active']}]
+                                                            {data['deltaconfirmed']}]
                                                         </span> : null
                                                 }
 
@@ -107,24 +107,17 @@ const IndiaState = props => {
                                         </td>
                                         <td>
                                             <div>
-                                                <span>{data.active}</span>{' '}
-                                                {
-                                                    data['delta']['active'] > 0 ?
-                                                        <span title="Increase in the Active cases today">
-                                                            [<img src={red_up_arrow} height="20px" width="20px" />
-                                                            {data['delta']['active']}]
-                                                        </span> : null
-                                                }
+                                                <span>{data.active}</span>
                                             </div>
                                         </td>
                                         <td>
                                             <div>
                                                 <span>{data.recovered}</span>{' '}
                                                 {
-                                                    data['delta']['recovered'] > 0 ?
+                                                    data['deltarecovered'] > 0 ?
                                                         <span title="Increase in the Recovered cases today">
-                                                            [<img src={green_up_arrow} height="20px" width="20px" />
-                                                            {data['delta']['recovered']}]
+                                                            [<img src={green_up_arrow} height="13px" width="12px" style={{marginRight:'4px'}} />
+                                                            {data['deltarecovered']}]
                                                         </span> : null
                                                 }
 
@@ -134,10 +127,10 @@ const IndiaState = props => {
                                             <div>
                                                 <span>{data.deaths}</span>{' '}
                                                 {
-                                                    data['delta']['deaths'] > 0 ?
+                                                    data['deltadeaths'] > 0 ?
                                                         <span title="Increase in the Death cases today">
                                                             [<img src={red_up_arrow} height="20px" width="20px" />
-                                                            {data['delta']['deaths']}]
+                                                            {data['deltadeaths']}]
                                                         </span> : null
                                                 }
                                             </div>

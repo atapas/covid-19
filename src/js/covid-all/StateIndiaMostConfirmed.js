@@ -23,9 +23,9 @@ const StateIndiaMostConfirmed = props => {
         obj['Active'] = element['active'];
         obj['Deaths'] = element['deaths'];
         obj['Recovered'] = element['recovered'];
-        obj['New Case(Today)'] = element['delta']['active'];
-        obj['New Deaths(Today)'] = element['delta']['deaths'];
-        obj['New Recovery(Today)'] = element['delta']['recovered'];
+        obj['New Case(Today)'] = element['deltaconfirmed'];
+        obj['New Deaths(Today)'] = element['deltadeaths'];
+        obj['New Recovery(Today)'] = element['deltarecovered'];
         refinedData.push(obj);
     });
 
