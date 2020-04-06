@@ -17,7 +17,9 @@ const CompareWidget = props => {
             'India': true, 
             'China': true, 
             'Italy': true, 
-            'Spain': true
+            'Spain': true,
+            'Germany': true,
+            'USA': true
         }
     );
     
@@ -176,7 +178,7 @@ const CompareWidget = props => {
                         <Card.Title>
                             Compare Countries over the Weeks
                             {   
-                                chartData.length > 0 ?
+                                false ?
                                     <CountrySelector 
                                         preSelected={selectedCountries}
                                         update={updateCountries} /> 
