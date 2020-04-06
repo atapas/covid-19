@@ -5,6 +5,37 @@ body {
     padding: 0;
 }
 
+.regular-checkbox {
+	-webkit-appearance: none;
+	background-color: #fafafa;
+	border: 1px solid #cacece;
+	box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px -15px 10px -12px rgba(0,0,0,0.05);
+	padding: 14px!important;
+	border-radius: 3px;
+	display: inline-block;
+	position: relative;
+}
+
+.regular-checkbox:active, .regular-checkbox:checked:active {
+	box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px 1px 3px rgba(0,0,0,0.1);
+}
+
+.regular-checkbox:checked {
+	background-color: #e9ecee;
+	border: 1px solid #adb8c0;
+	box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px -15px 10px -12px rgba(0,0,0,0.05), inset 15px 10px -12px rgba(255,255,255,0.1);
+	color: #99a1a7;
+}
+
+.regular-checkbox:checked:after {
+	content: '\2714';
+	font-size: 19px;
+	position: absolute;
+	top: 0px;
+	left: 6px;
+	color: #99a1a7;
+}
+
 .Home {
     padding: 10px;
 }
@@ -102,6 +133,18 @@ body {
 
 .world .compare-widget .countryCapsules .imageCountry span {
     margin-left: 3px;
+}
+
+.world .compare-widget .country-select {
+    margin-left: 5px;
+    padding-left: 3px;
+    padding-right: 3px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+}
+
+.world .compare-widget .country-select .icon{
+    color: #000;
 }
 
 .countryHeadline .country {
@@ -206,5 +249,21 @@ body {
     font-size: 16px;
     list-style: none;
 }
+
+.select-country-modal .header .icon{
+    margin-right: 5px;
+}
+
+.select-country-modal .content LI{
+    list-style: none;
+    margin-top: 5px;
+}
+
+.select-country-modal .content {
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+
 
 

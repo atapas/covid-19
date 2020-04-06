@@ -37,6 +37,7 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.5.5",
+    "@fortawesome/fontawesome-free": "^5.13.0",
     "ag-grid-community": "^23.0.1",
     "ag-grid-react": "^23.0.0",
     "bootstrap": "^4.4.1",

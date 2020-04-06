@@ -11,7 +11,9 @@ const FetchTimeSeries = props => {
     
     let selectedCountry = [];
     let image = '';
-    // console.log(countriesData);
+    
+    // console.log('COUNTRY_CODES', COUNTRY_CODES);
+    
     selectedCountry = COUNTRY_CODES.filter( elem => {
         return elem.name === country;
     });
@@ -23,7 +25,9 @@ const FetchTimeSeries = props => {
 
     const getCountryDetails = (event, country) => {
         event.preventDefault();
-        props.history.push(`/country-details?name=${country}`);
+        if (props.history) {
+            props.history.push(`/country-details?name=${country}`);
+        }
     }
     
     return(
