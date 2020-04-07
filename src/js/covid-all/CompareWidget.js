@@ -5,23 +5,27 @@ import {
 } from 'recharts';
 import Loader from 'react-loader-spinner';
 import Card from 'react-bootstrap/Card';
+import {reactLocalStorage} from 'reactjs-localstorage';
 
 import FetchTimeSeries from '../time-series/FetchTimeSeries';
 import { useFetch } from '../useFetch';
 import CountrySelector from '../CountrySelector';
 
 const CompareWidget = props => {
+    let defaultCountries = {
+        'India': true, 
+        'China': true, 
+        'Italy': true, 
+        'Spain': true,
+        'Germany': true,
+        'USA': true
+    };
+    let storedCountries = reactLocalStorage.getObject('compare_widget_country_selected');
+    if (storedCountries && Object.keys(storedCountries).length > 0) {
+        defaultCountries = storedCountries;
+    }
     const [data, loading] = useFetch('https://pomber.github.io/covid19/timeseries.json');
-    const [selectedCountries, setSelectedCountries] = useState(
-        {
-            'India': true, 
-            'China': true, 
-            'Italy': true, 
-            'Spain': true,
-            'Germany': true,
-            'USA': true
-        }
-    );
+    const [selectedCountries, setSelectedCountries] = useState(defaultCountries);
     
     const COLOR_ARRAY = [
         "#17A2B8",
@@ -161,6 +165,7 @@ const CompareWidget = props => {
     const updateCountries = countries => {
         console.log('updateCountries', countries)
         setSelectedCountries(countries);
+        reactLocalStorage.setObject('compare_widget_country_selected', countries);
     }
     
     return(

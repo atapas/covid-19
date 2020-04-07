@@ -5874,6 +5874,11 @@ react@^16.9.0:
     object-assign "^4.1.1"
     prop-types "^15.6.2"
 
+reactjs-localstorage@^0.0.8:
+  version "0.0.8"
+  resolved "https://registry.yarnpkg.com/reactjs-localstorage/-/reactjs-localstorage-0.0.8.tgz#34934d3ec81a2326e4604617edd193e60c4ec914"
+  integrity sha512-4gtrf4O7J0trFRmX28eyypaj3v/HhAa9Z6Glv8PXD/sEkmFd+JkLn+JMynstCUfFqNJHWop9FOc8UB6Kwj4NqA==
+
 read-pkg-up@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/read-pkg-up/-/read-pkg-up-1.0.1.tgz#9d63c13276c065918d57f002a57f40a1b643fb02"
