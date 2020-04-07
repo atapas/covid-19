@@ -52,7 +52,7 @@ const CountrySelector = ({ preSelected , update}) => {
     
     return (
         <>
-            <Button variant="info" onClick={handleShow} className="country-select">
+            <Button variant="success" onClick={handleShow} className="country-select">
                 <i
                     title="Selecet Countries"
                     className="fas fa-edit fa-1x icon" />

@@ -178,7 +178,7 @@ const CompareWidget = props => {
                         <Card.Title>
                             Compare Countries over the Weeks
                             {   
-                                false ?
+                                chartData.length > 0 ?
                                     <CountrySelector 
                                         preSelected={selectedCountries}
                                         update={updateCountries} /> 
