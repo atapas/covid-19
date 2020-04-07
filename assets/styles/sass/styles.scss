@@ -229,9 +229,14 @@ body {
     margin-top: 5px;
 }
 
+.select-country-modal .content INPUT.filterbox {
+    margin-bottom: 10px;
+}
+
 .select-country-modal .content {
     max-height: 300px;
     overflow-y: auto;
+    padding: 8px;
 }
 
 

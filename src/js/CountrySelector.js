@@ -1,7 +1,8 @@
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
+import FormControl from 'react-bootstrap/FormControl';
 import { useSelector } from 'react-redux';
 
 import FetchTimeSeries from './time-series/FetchTimeSeries';
@@ -15,31 +16,39 @@ const CountrySelector = ({ preSelected , update}) => {
     const [checkedItems, setCheckedItems] = useState(preSelected);
     const [show, setShow] = useState(false);
     const covid19Data = useSelector(state => state.covid19);
+    const [filteredCountries, setFilteredCountries] = useState([]);
+    const [allCountries, setAllCountries] = useState([]);
 
-    let data = covid19Data.filter(elem => {
-        return elem.country !== 'World';
-    });
-
-    let allCountries = data.sort((a,b) => b.cases - a.cases);
-
+    useEffect(() => {
+        let data = covid19Data.filter(elem => {
+            return elem.country !== 'World';
+        });
+    
+        let sortedCountries = data.sort((a,b) => b.cases - a.cases);
+        
+        let allCountries = sortedCountries.map(elem => {
+            return { 'name': elem.country };
+        });
+        setAllCountries(allCountries);
+        setFilteredCountries(allCountries);
+        // console.log('allCountries', allCountries);
+    
+    }, []);
+   
     const handleSelect = () => {
         setShow(false);
+        setFilteredCountries(allCountries);
         update(checkedItems);
     }
 
     const handleCancel = () => {
         setShow(false);
         setCheckedItems(preSelected);
+        setFilteredCountries(allCountries);
         // update(checkedItems);
     }
 
     const handleShow = () => setShow(true);
-
-    const ALL_COUNTRIES = allCountries.map(elem => {
-        return { 'name': elem.country };
-    });
-
-    // console.log('ALL_COUNTRIES', ALL_COUNTRIES);
 
     const handleChange = (event) => {
         let updated = { ...checkedItems, [event.target.name]: event.target.checked };
@@ -47,6 +56,16 @@ const CountrySelector = ({ preSelected , update}) => {
         // updating an object instead of a Map
         setCheckedItems(temp);
         // console.log("checkedItems: ", checkedItems);
+    }
+
+    const handleFind = event => {
+        event.preventDefault();
+        console.log(event.target.value);
+        let filtered = allCountries.filter(elem => {
+            return elem.name.toLowerCase().includes(event.target.value.toLowerCase());
+            
+        });
+        setFilteredCountries(filtered);
     }
 
     
@@ -67,8 +86,14 @@ const CountrySelector = ({ preSelected , update}) => {
 
                 <Modal.Body>
                     <ul className="content">
+                    <FormControl 
+                            type="text" 
+                            placeholder="Filter by Country Name" 
+                            className="mr-sm-2"
+                            onChange={event => handleFind(event)} 
+                            className="filterbox"/>
                         {
-                            ALL_COUNTRIES.map(item => (
+                            filteredCountries.map(item => (
                                 <li key={item.name}>
                                     <FetchTimeSeries  country={item.name} size='16' />
                                     <div style={{float: 'left', marginRight: '9px'}}>
