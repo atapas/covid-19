@@ -143,11 +143,14 @@ const Country = props => {
             <Row>
                 <Col>
                     <h1>
-                        <img 
-                            src={`https://www.countryflags.io/${getCountryCode(countryName)}/flat/64.png`} 
-                            alt={countryName} 
-                            className="flag"/>
-                            {countryName}
+                        {
+                            getCountryCode(countryName) !== '' ?
+                                <img 
+                                    src={`https://www.countryflags.io/${getCountryCode(countryName)}/flat/64.png`} 
+                                    alt={countryName} 
+                                    className="flag"/> : null
+                        }
+                        { countryName }
                     </h1>
                 </Col>
             </Row>
