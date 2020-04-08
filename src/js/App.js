@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   BrowserRouter as Router,
   Route,
@@ -14,7 +14,12 @@ import Button from 'react-bootstrap/Button';
 
 import Loader from 'react-loader-spinner';
 
+import { ThemeProvider } from 'styled-components';
+
 import { useFetch } from './useFetch';
+import { lightTheme, darkTheme } from './themes/theme';
+import { GlobalStyles } from './themes/global';
+import Toggle from './themes/Toggle';
 
 import Home from './Home';
 import World from './World';
@@ -31,9 +36,21 @@ import * as covid from '../../assets/images/covid.png';
 
 const App = () => {
   const dispatch = useDispatch();
+  const [theme, setTheme] = useState('light');
   const [countryCoronaData, countryCoronaDataLoading] = useFetch(
     "https://corona.lmao.ninja/countries"
   );
+
+  // The function that toggles between themes
+  const toggleTheme = () => {
+    // if the theme is not light, then set it to dark
+    if (theme === 'light') {
+      setTheme('dark');
+    // otherwise, it should be light
+    } else {
+      setTheme('light');
+    }
+  }
   
   if (!countryCoronaDataLoading) {
     dispatch(registerCovid19Data(countryCoronaData));
@@ -41,7 +58,8 @@ const App = () => {
 
   return (
     
-      
+      <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
+        <GlobalStyles />
         <Router>
           <div className="App">
             <Navbar bg="dark" variant="dark">
@@ -64,6 +82,7 @@ const App = () => {
                   /* <Nav.Link href="/news">News</Nav.Link> */
                 }
               </Nav>
+              <Toggle theme={theme} toggleTheme={toggleTheme} />
               <About />
             </Navbar>
 
@@ -137,6 +156,7 @@ const App = () => {
             </Switch>
           </div>
         </Router>
+      </ThemeProvider>
   );
 };
 export default App;
