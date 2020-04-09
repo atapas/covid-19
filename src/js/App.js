@@ -11,6 +11,7 @@ import Nav from 'react-bootstrap/Nav';
 import Form from 'react-bootstrap/Form';
 import FormControl from 'react-bootstrap/FormControl';
 import Button from 'react-bootstrap/Button';
+import {reactLocalStorage} from 'reactjs-localstorage';
 
 import Loader from 'react-loader-spinner';
 
@@ -35,8 +36,10 @@ import { registerCovid19Data } from './actions/covidAction';
 import * as covid from '../../assets/images/covid.png';
 
 const App = () => {
+  const savedTheme = reactLocalStorage.getObject('codid_19_app_theme');
+  let initialTheme = Object.keys(savedTheme).length > 0 ? savedTheme.theme : 'light';
   const dispatch = useDispatch();
-  const [theme, setTheme] = useState('light');
+  const [theme, setTheme] = useState(initialTheme);
   const [countryCoronaData, countryCoronaDataLoading] = useFetch(
     "https://corona.lmao.ninja/countries"
   );
@@ -45,11 +48,14 @@ const App = () => {
   const toggleTheme = () => {
     // if the theme is not light, then set it to dark
     if (theme === 'light') {
+      reactLocalStorage.setObject('codid_19_app_theme', {'theme': 'dark'});
       setTheme('dark');
     // otherwise, it should be light
     } else {
+      reactLocalStorage.setObject('codid_19_app_theme', {'theme': 'light'});
       setTheme('light');
     }
+    
   }
   
   if (!countryCoronaDataLoading) {
