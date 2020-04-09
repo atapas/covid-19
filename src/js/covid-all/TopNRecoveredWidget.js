@@ -5,6 +5,8 @@ import {
 } from 'recharts';
 import Card from 'react-bootstrap/Card';
 
+import WidgetContainer from '../WidgetContainer';
+
 const TopNRecoveredWidget = props => {
     const data = props.data;
     // console.log('from TopNRecoveredWidget', loading, data);
@@ -68,33 +70,35 @@ const TopNRecoveredWidget = props => {
     return (
         <div className="top-n-recovered-widget">
             <Card >
-                <Card.Body>
-                    <Card.Title>Countries Recovering Well(min. {MIN_CASES} Cases)</Card.Title>
-                    <Card.Subtitle className="mb-2 text-muted">Number of Countries: <b>{TOP_N}</b></Card.Subtitle>
-                    <div>
-                        <ResponsiveContainer width='100%' height={330}>
-                            <BarChart
-                                data={refinedData}
-                                margin={{
-                                    top: 30, right: 0, left: 0, bottom: 5,
-                                }}
-                            >
-                            <CartesianGrid strokeDasharray="3 3" />
-                            <XAxis dataKey="country" />
-                            <YAxis />
-                            <Tooltip content={<CustomTooltip />}/>
-                            <Legend />
-                            <Bar dataKey="%recovered" fill="rgba(40, 167, 69, 1.0)" label={{ position: 'top' }}>
-                                {
-                                    refinedData.map((entry, index) => (
-                                        <Cell key={`cell-${index}`} fill={SUCCESS_COLOR_SHADES[index % 20]} />
-                                    ))
-                                }
-                            </Bar>
-                            </BarChart>
-                        </ResponsiveContainer>
-                    </div>
-                </Card.Body>
+                <WidgetContainer children = {
+                    <Card.Body>
+                        <Card.Title>Countries Recovering Well(min. {MIN_CASES} Cases)</Card.Title>
+                        <Card.Subtitle className="mb-2 text-muted">Number of Countries: <b>{TOP_N}</b></Card.Subtitle>
+                        <div>
+                            <ResponsiveContainer width='100%' height={330}>
+                                <BarChart
+                                    data={refinedData}
+                                    margin={{
+                                        top: 30, right: 0, left: 0, bottom: 5,
+                                    }}
+                                >
+                                <CartesianGrid strokeDasharray="3 3" />
+                                <XAxis dataKey="country" />
+                                <YAxis />
+                                <Tooltip content={<CustomTooltip />}/>
+                                <Legend />
+                                <Bar dataKey="%recovered" fill="rgba(40, 167, 69, 1.0)" label={{ position: 'top' }}>
+                                    {
+                                        refinedData.map((entry, index) => (
+                                            <Cell key={`cell-${index}`} fill={SUCCESS_COLOR_SHADES[index % 20]} />
+                                        ))
+                                    }
+                                </Bar>
+                                </BarChart>
+                            </ResponsiveContainer>
+                        </div>
+                    </Card.Body>
+                }/>
             </Card>
         </div>
     )

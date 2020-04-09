@@ -11,6 +11,8 @@ import FetchTimeSeries from '../time-series/FetchTimeSeries';
 import { useFetch } from '../useFetch';
 import CountrySelector from '../CountrySelector';
 
+import WidgetContainer from '../WidgetContainer';
+
 const CompareWidget = props => {
     let defaultCountries = {
         'India': true, 
@@ -179,53 +181,56 @@ const CompareWidget = props => {
                 /> : 
                 
                 <Card >
-                    <Card.Body>
-                        <Card.Title>
-                            Compare Countries over the Weeks
-                            {   
+                    <WidgetContainer children = {
+                        <Card.Body>
+                            <Card.Title>
+                                Compare Countries over the Weeks
+                                {   
+                                    chartData.length > 0 ?
+                                        <CountrySelector 
+                                            preSelected={selectedCountries}
+                                            update={updateCountries} /> 
+                                        : null 
+                                }
+                            </Card.Title>
+                            {
                                 chartData.length > 0 ?
-                                    <CountrySelector 
-                                        preSelected={selectedCountries}
-                                        update={updateCountries} /> 
-                                    : null 
-                            }
-                        </Card.Title>
-                        {
-                            chartData.length > 0 ?
-                                <Card.Subtitle className="mb-2 text-muted">
-                                    Countries(<b>{getCountriesToCompare().length}</b>) :
-                                    {
-                                        getCountriesToCompare().map((entry, index) => 
-                                            <FetchTimeSeries  key={`fts-${index}`} country={getCountryFlagName(entry)} size='16' history={props.history}/>)
-                                    }
-                                </Card.Subtitle> 
-                                : null 
-                        }
-                        {
-                            chartData.length > 0 ?
-                                <ResponsiveContainer width='100%' height={400}>
-                                    <LineChart data={chartData}
-                                        margin={{ top: 10, right: 30, left: 0, bottom: 0 }}>
-                                        <XAxis dataKey="week" />
-                                        <YAxis />
-                                        <CartesianGrid strokeDasharray="3 3" />
-                                        <Tooltip content={<CustomTooltip />} />
-                                        <Legend />
+                                    <Card.Subtitle className="mb-2 text-muted">
+                                        Countries(<b>{getCountriesToCompare().length}</b>) :
                                         {
                                             getCountriesToCompare().map((entry, index) => 
-                                                <Line key={`line-${index}`} type="monotone" dataKey={entry} stroke={COLOR_ARRAY[index % COLOR_ARRAY.length]} activeDot={{ r: 8 }} />)
+                                                <FetchTimeSeries  key={`fts-${index}`} country={getCountryFlagName(entry)} size='16' history={props.history}/>)
                                         }
-                                    </LineChart>
-                                </ResponsiveContainer> : 
-                                <h3>
-                                    Select One or more countries to compare
-                                    <CountrySelector 
-                                        preSelected={selectedCountries}
-                                        update={updateCountries} />
-                                </h3>
-                        }
-                    </Card.Body>
+                                    </Card.Subtitle> 
+                                    : null 
+                            }
+                            {
+                                chartData.length > 0 ?
+                                    <ResponsiveContainer width='100%' height={400}>
+                                        <LineChart data={chartData}
+                                            margin={{ top: 10, right: 30, left: 0, bottom: 0 }}>
+                                            <XAxis dataKey="week" />
+                                            <YAxis />
+                                            <CartesianGrid strokeDasharray="3 3" />
+                                            <Tooltip content={<CustomTooltip />} />
+                                            <Legend />
+                                            {
+                                                getCountriesToCompare().map((entry, index) => 
+                                                    <Line key={`line-${index}`} type="monotone" dataKey={entry} stroke={COLOR_ARRAY[index % COLOR_ARRAY.length]} activeDot={{ r: 8 }} />)
+                                            }
+                                        </LineChart>
+                                    </ResponsiveContainer> : 
+                                    <h3>
+                                        Select One or more countries to compare
+                                        <CountrySelector 
+                                            preSelected={selectedCountries}
+                                            update={updateCountries} />
+                                    </h3>
+                            }
+                        </Card.Body>
+                    }/>
                 </Card>
+                
             }
         </div>
     )

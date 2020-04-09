@@ -5,6 +5,8 @@ import {
 } from 'recharts';
 import Card from 'react-bootstrap/Card';
 
+import WidgetContainer from '../WidgetContainer';
+
 const TopNTodayDeath = props => {
     const data = props.data;
     const TOP_N = 5;
@@ -34,33 +36,35 @@ const TopNTodayDeath = props => {
     return (
         <div className="top-n-todays-death-widget">
             <Card >
-                <Card.Body>
-                    <Card.Title>Countries with maximum Deaths Today</Card.Title>
-                    <Card.Subtitle className="mb-2 text-muted">Number of Countries: <b>{TOP_N}</b></Card.Subtitle>
-                    <div>
-                        <ResponsiveContainer width='100%' height={330}>
-                            <BarChart
-                                data={refinedData}
-                                margin={{
-                                    top: 30, right: 0, left: 0, bottom: 5,
-                                }}
-                            >
-                                <CartesianGrid strokeDasharray="3 3" />
-                                <XAxis dataKey="country" />
-                                <YAxis />
-                                <Tooltip />
-                                <Legend />
-                                <Bar dataKey="Today Deaths" fill="rgba(255, 0, 0, 1.0)" label={{ position: 'top' }}>
-                                    {
-                                        refinedData.map((entry, index) => (
-                                            <Cell key={`cell-${index}`} fill={DANGER_COLOR_SHADES[index % 20]} />
-                                        ))
-                                    }
-                                </Bar>
-                            </BarChart>
-                        </ResponsiveContainer>
-                    </div>
-                </Card.Body>
+                <WidgetContainer children = {
+                    <Card.Body>
+                        <Card.Title>Countries with maximum Deaths Today</Card.Title>
+                        <Card.Subtitle className="mb-2 text-muted">Number of Countries: <b>{TOP_N}</b></Card.Subtitle>
+                        <div>
+                            <ResponsiveContainer width='100%' height={330}>
+                                <BarChart
+                                    data={refinedData}
+                                    margin={{
+                                        top: 30, right: 0, left: 0, bottom: 5,
+                                    }}
+                                >
+                                    <CartesianGrid strokeDasharray="3 3" />
+                                    <XAxis dataKey="country" />
+                                    <YAxis />
+                                    <Tooltip />
+                                    <Legend />
+                                    <Bar dataKey="Today Deaths" fill="rgba(255, 0, 0, 1.0)" label={{ position: 'top' }}>
+                                        {
+                                            refinedData.map((entry, index) => (
+                                                <Cell key={`cell-${index}`} fill={DANGER_COLOR_SHADES[index % 20]} />
+                                            ))
+                                        }
+                                    </Bar>
+                                </BarChart>
+                            </ResponsiveContainer>
+                        </div>
+                    </Card.Body>
+                }/>
             </Card>
         </div>
     )
