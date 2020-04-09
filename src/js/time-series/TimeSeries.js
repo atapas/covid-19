@@ -10,6 +10,8 @@ import Card from 'react-bootstrap/Card';
 import TimeSeriesBroken from './TimeSeriesBroken';
 import TimeSeriesPercentage from './TimeSeriesPercentage';
 
+import WidgetContainer from '../WidgetContainer';
+
 const TimeSeries = props => {
     const [data, loading] = useFetch('https://pomber.github.io/covid19/timeseries.json');
     const country = props.country;
@@ -139,24 +141,26 @@ const TimeSeries = props => {
                             <TimeSeriesPercentage data={percentageData}/>
                             <div className="chart">
                                 <Card>
-                                    <Card.Body>
-                                        <Card.Title>Trends - Change of Confirmed vs Active vs Recovered vs Deaths</Card.Title>
-                                        <Card.Subtitle className="mb-2 text-muted">Total count at the daily basis</Card.Subtitle>
-                                        <ResponsiveContainer width='100%' height={400}>
-                                            <LineChart data={refinedData}
-                                                margin={{ top: 10, right: 30, left: 0, bottom: 0 }}>
-                                                <XAxis dataKey="date" />
-                                                <YAxis />
-                                                <CartesianGrid strokeDasharray="3 3" />
-                                                <Tooltip />
-                                                <Legend />
-                                                <Line type="monotone" dataKey="confirmed" stroke="#17A2B8" activeDot={{ r: 8 }} />
-                                                <Line type="monotone" dataKey="active" stroke="#FFC107" activeDot={{ r: 8 }} />
-                                                <Line type="monotone" dataKey="recovered" stroke="#28A745" activeDot={{ r: 8 }} />
-                                                <Line type="monotone" dataKey="deaths" stroke="#DC3545" activeDot={{ r: 8 }} />
-                                            </LineChart>
-                                        </ResponsiveContainer>
-                                    </Card.Body>
+                                    <WidgetContainer children = {
+                                        <Card.Body>
+                                            <Card.Title>Trends - Change of Confirmed vs Active vs Recovered vs Deaths</Card.Title>
+                                            <Card.Subtitle className="mb-2 text-muted">Total count at the daily basis</Card.Subtitle>
+                                            <ResponsiveContainer width='100%' height={400}>
+                                                <LineChart data={refinedData}
+                                                    margin={{ top: 10, right: 30, left: 0, bottom: 0 }}>
+                                                    <XAxis dataKey="date" />
+                                                    <YAxis />
+                                                    <CartesianGrid strokeDasharray="3 3" />
+                                                    <Tooltip />
+                                                    <Legend />
+                                                    <Line type="monotone" dataKey="confirmed" stroke="#17A2B8" activeDot={{ r: 8 }} />
+                                                    <Line type="monotone" dataKey="active" stroke="#FFC107" activeDot={{ r: 8 }} />
+                                                    <Line type="monotone" dataKey="recovered" stroke="#28A745" activeDot={{ r: 8 }} />
+                                                    <Line type="monotone" dataKey="deaths" stroke="#DC3545" activeDot={{ r: 8 }} />
+                                                </LineChart>
+                                            </ResponsiveContainer>
+                                        </Card.Body>
+                                    }/>
                                 </Card>
                             </div>
                         </div>

@@ -4,6 +4,7 @@ import Card from 'react-bootstrap/Card';
 import {
     ResponsiveContainer, ScatterChart, Scatter, XAxis, YAxis, ZAxis, CartesianGrid, Tooltip
 } from 'recharts';
+import WidgetContainer from '../WidgetContainer';
 
 import INDIA_STATE_CODES from '../utils/india_state_codes';
 
@@ -74,27 +75,29 @@ const StateIndiaMostConfirmed = props => {
 
     return (
         <Card>
-            <Card.Body>
-                <Card.Title>State: Most Affected(Minimum 20 Cases)</Card.Title>
-                <Card.Subtitle className="mb-2 text-muted">
-                    States with most number of Confirmed cases.
-                </Card.Subtitle>
-                <ResponsiveContainer width='100%' height={330}>
-                    <ScatterChart  margin={{
-                            top: 30, right: 0, left: 0, bottom: 5,
-                    }} >
-                    <CartesianGrid />
-                    <XAxis dataKey={'State Code'} name='State' />
-                    <YAxis dataKey={'Confirmed'} type="number"  domain={domain} range={range} name='Confirmed' />
-                    <ZAxis type="number" dataKey={'Confirmed'} domain={domain} range={range} />
-                    <Scatter name='COVID-19 India' data={refinedData} fill='#B96666' activeDot={{ r: 8 }}/>
-                    <Tooltip 
-                        cursor={{strokeDasharray: '3 3'}} 
-                        wrapperStyle={{ zIndex: 100 }} 
-                        content={<CustomTooltip />} />
-                    </ScatterChart>
-                </ResponsiveContainer>
-            </Card.Body>
+            <WidgetContainer children = {
+                <Card.Body>
+                    <Card.Title>State: Most Affected(Minimum 20 Cases)</Card.Title>
+                    <Card.Subtitle className="mb-2 text-muted">
+                        States with most number of Confirmed cases.
+                    </Card.Subtitle>
+                    <ResponsiveContainer width='100%' height={330}>
+                        <ScatterChart  margin={{
+                                top: 30, right: 0, left: 0, bottom: 5,
+                        }} >
+                        <CartesianGrid />
+                        <XAxis dataKey={'State Code'} name='State' />
+                        <YAxis dataKey={'Confirmed'} type="number"  domain={domain} range={range} name='Confirmed' />
+                        <ZAxis type="number" dataKey={'Confirmed'} domain={domain} range={range} />
+                        <Scatter name='COVID-19 India' data={refinedData} fill='#B96666' activeDot={{ r: 8 }}/>
+                        <Tooltip 
+                            cursor={{strokeDasharray: '3 3'}} 
+                            wrapperStyle={{ zIndex: 100 }} 
+                            content={<CustomTooltip />} />
+                        </ScatterChart>
+                    </ResponsiveContainer>
+                </Card.Body>
+            }/>
         </Card>
     );
 };

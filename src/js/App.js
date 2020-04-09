@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   BrowserRouter as Router,
   Route,
@@ -11,10 +11,16 @@ import Nav from 'react-bootstrap/Nav';
 import Form from 'react-bootstrap/Form';
 import FormControl from 'react-bootstrap/FormControl';
 import Button from 'react-bootstrap/Button';
+import {reactLocalStorage} from 'reactjs-localstorage';
 
 import Loader from 'react-loader-spinner';
 
+import { ThemeProvider } from 'styled-components';
+
 import { useFetch } from './useFetch';
+import { lightTheme, darkTheme } from './themes/theme';
+import { GlobalStyles } from './themes/global';
+import Toggle from './themes/Toggle';
 
 import Home from './Home';
 import World from './World';
@@ -30,10 +36,27 @@ import { registerCovid19Data } from './actions/covidAction';
 import * as covid from '../../assets/images/covid.png';
 
 const App = () => {
+  const savedTheme = reactLocalStorage.getObject('codid_19_app_theme');
+  let initialTheme = Object.keys(savedTheme).length > 0 ? savedTheme.theme : 'light';
   const dispatch = useDispatch();
+  const [theme, setTheme] = useState(initialTheme);
   const [countryCoronaData, countryCoronaDataLoading] = useFetch(
     "https://corona.lmao.ninja/countries"
   );
+
+  // The function that toggles between themes
+  const toggleTheme = () => {
+    // if the theme is not light, then set it to dark
+    if (theme === 'light') {
+      reactLocalStorage.setObject('codid_19_app_theme', {'theme': 'dark'});
+      setTheme('dark');
+    // otherwise, it should be light
+    } else {
+      reactLocalStorage.setObject('codid_19_app_theme', {'theme': 'light'});
+      setTheme('light');
+    }
+    
+  }
   
   if (!countryCoronaDataLoading) {
     dispatch(registerCovid19Data(countryCoronaData));
@@ -41,7 +64,8 @@ const App = () => {
 
   return (
     
-      
+      <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
+        <GlobalStyles />
         <Router>
           <div className="App">
             <Navbar bg="dark" variant="dark">
@@ -64,6 +88,7 @@ const App = () => {
                   /* <Nav.Link href="/news">News</Nav.Link> */
                 }
               </Nav>
+              <Toggle theme={theme} toggleTheme={toggleTheme} />
               <About />
             </Navbar>
 
@@ -137,6 +162,7 @@ const App = () => {
             </Switch>
           </div>
         </Router>
+      </ThemeProvider>
   );
 };
 export default App;

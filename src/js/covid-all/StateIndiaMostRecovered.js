@@ -7,6 +7,8 @@ import {
 
 import INDIA_STATE_CODES from '../utils/india_state_codes';
 
+import WidgetContainer from '../WidgetContainer';
+
 const StateIndiaMostRecovered = props => {
     const data = props.data;
     const TOP_N = 5;
@@ -60,33 +62,35 @@ const StateIndiaMostRecovered = props => {
 
     return (
         <Card>
-            <Card.Body>
-                <Card.Title>State: Most Recovered</Card.Title>
-                <Card.Subtitle className="mb-2 text-muted">
-                    State with the higher number of Recovery percentage
-                </Card.Subtitle>
-                <ResponsiveContainer width='100%' height={330}>
-                    <BarChart
-                        data={refinedData}
-                        margin={{
-                            top: 30, right: 0, left: 0, bottom: 5,
-                        }}
-                    >
-                    <CartesianGrid strokeDasharray="3 3" />
-                    <XAxis dataKey="State Code" />
-                    <YAxis />
-                    <Tooltip content={<CustomTooltip />}/>
-                    <Legend />
-                    <Bar dataKey="% Recovered" fill="rgba(40, 167, 69, 1.0)" label={{ position: 'top' }}>
-                        {
-                            refinedData.map((entry, index) => (
-                                <Cell key={`cell-${index}`} fill={SUCCESS_COLOR_SHADES[index % 20]} />
-                            ))
-                        }
-                    </Bar>
-                    </BarChart>
-                </ResponsiveContainer>
-            </Card.Body>
+            <WidgetContainer children = {
+                <Card.Body>
+                    <Card.Title>State: Most Recovered</Card.Title>
+                    <Card.Subtitle className="mb-2 text-muted">
+                        State with the higher number of Recovery percentage
+                    </Card.Subtitle>
+                    <ResponsiveContainer width='100%' height={330}>
+                        <BarChart
+                            data={refinedData}
+                            margin={{
+                                top: 30, right: 0, left: 0, bottom: 5,
+                            }}
+                        >
+                        <CartesianGrid strokeDasharray="3 3" />
+                        <XAxis dataKey="State Code" />
+                        <YAxis />
+                        <Tooltip content={<CustomTooltip />}/>
+                        <Legend />
+                        <Bar dataKey="% Recovered" fill="rgba(40, 167, 69, 1.0)" label={{ position: 'top' }}>
+                            {
+                                refinedData.map((entry, index) => (
+                                    <Cell key={`cell-${index}`} fill={SUCCESS_COLOR_SHADES[index % 20]} />
+                                ))
+                            }
+                        </Bar>
+                        </BarChart>
+                    </ResponsiveContainer>
+                </Card.Body>
+            }/>
         </Card>
     );
 };
