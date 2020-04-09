@@ -14,11 +14,11 @@ import CountrySelector from '../CountrySelector';
 const CompareWidget = props => {
     let defaultCountries = {
         'India': true, 
-        'China': true, 
-        'Italy': true, 
-        'Spain': true,
-        'Germany': true,
-        'USA': true
+        'Pakistan': true, 
+        'Bangladesh': true, 
+        'Sri Lanka': true,
+        'Malaysia': true,
+        'Vietnam': true
     };
     let storedCountries = reactLocalStorage.getObject('compare_widget_country_selected');
     if (storedCountries && Object.keys(storedCountries).length > 0) {
