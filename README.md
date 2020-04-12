@@ -6,6 +6,13 @@ With the oubreak world-wide and increasing number of active patients, there are 
 
 `COVID-19 World` is yet another Project to build a Dashboard like app to showcase the data related to the COVID-19(Corona Virus).
 
+# See it Running
+
+`COVID-19 World` app is running as a website hosted on [![Netlify Status](https://api.netlify.com/api/v1/badges/3ce79a2b-dd74-4c1b-856b-ef5f52ed3d48/deploy-status)](https://app.netlify.com/sites/covid-19-world/deploys)
+
+👉 [https://covid-19-world.netlify.com/](https://covid-19-world.netlify.com/)
+
+
 # Analytics
 
 `COVID-19 World` provides some basic but useful analytics to understand the depth and gravity of the situation.
