@@ -1,3 +1,8 @@
+/*
+ * Created on Sun Apr 12 2020
+ *
+ * Copyright (c) 2020 https://tapasadhikary.com
+ */
 
 const INDIA_STATE_CODES = {
     "Maharashtra": "MH",

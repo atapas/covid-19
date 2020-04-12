@@ -1,4 +1,10 @@
 
+/*
+ * Created on Sun Apr 12 2020
+ *
+ * Copyright (c) 2020 https://tapasadhikary.com
+ */
+
 import React, { useState, useEffect } from 'react';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';

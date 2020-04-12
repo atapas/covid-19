@@ -4,6 +4,12 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
+/*
+ * Created on Sun Apr 12 2020
+ *
+ * Copyright (c) 2020 https://tapasadhikary.com
+ */
+
 import FormControl from 'react-bootstrap/FormControl';
 import FetchTimeSeries from './time-series/FetchTimeSeries';
 

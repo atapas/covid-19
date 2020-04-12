@@ -1,3 +1,8 @@
+/*
+ * Created on Sun Apr 12 2020
+ *
+ * Copyright (c) 2020 https://tapasadhikary.com
+ */
 
 export const registerCovid19Data = covidData => {
     return {
