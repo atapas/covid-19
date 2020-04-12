@@ -82,7 +82,7 @@ module.exports = {
   plugins: [
       new HtmlWebPackPlugin({
         template: "./src/index.html",
-        favicon: 'favicon.ico',
+        favicon: './assets/images/add_to_hs/favicon.ico',
         filename: "./index.html"
       }),
       new MiniCssExtractPlugin({
