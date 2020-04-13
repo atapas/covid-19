@@ -87,7 +87,7 @@ Only motivation behind building this app was to kill time at home over a Long We
 My sincere thanks to followings 👍:
 
 - [Coronavirus NovelCOVID API](https://github.com/NovelCOVID/API)
-- [COVID Time-Series API(Pomber)](https://pomber.github.io/covid19/timeseries.json)
+- [COVID Time-Series API(Pomber)](https://github.com/pomber/COVID19)
 - Corona State Data(India)
 - [API for News](https://newsapi.org/)
 
