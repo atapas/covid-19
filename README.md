@@ -9,6 +9,7 @@ With the oubreak world-wide and increasing number of active patients, there are 
 # See it Running
 
 `COVID-19 World` app is running as a website hosted on [![Netlify Status](https://api.netlify.com/api/v1/badges/3ce79a2b-dd74-4c1b-856b-ef5f52ed3d48/deploy-status)](https://app.netlify.com/sites/covid-19-world/deploys)
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fatapas%2Fcovid-19.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fatapas%2Fcovid-19?ref=badge_shield)
 
 👉 [https://covid-19-world.netlify.com/](https://covid-19-world.netlify.com/)
 
@@ -102,3 +103,7 @@ This app is built from the scratch using following User Interface Technologies:
 # 🙏 Stay Home, Stay Safe! 🙏
  
 Contact [https://www.tapasadhikary.com](https://www.tapasadhikary.com) for any further queries.
+
+
+## License
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fatapas%2Fcovid-19.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fatapas%2Fcovid-19?ref=badge_large)
