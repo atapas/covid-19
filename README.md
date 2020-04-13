@@ -64,7 +64,42 @@ With the oubreak world-wide and increasing number of active patients, there are 
 
 # To Run from the Source
 
-- `yarn install`: Install the Projcect Dependencies
-- `yarn start` to start the app in dev mode.
-- `yarn build` to build the app for production.
+`COVID-19 World` is a ReactJS based project uses API from various sources to visualize and analyse the data to represent in most useful manner. Once you clone/fork the repo, you should be able to run it locally.
 
+Make sure, you have NodeJS installed. Preffered Version of nodeJs is >=12.7.0
+
+With Yarn, Do the followings:
+
+- `yarn install`: Install the Projcect Dependencies
+- `yarn start`: Start the app in dev mode. The app will be available on [https://localhost:8080](https://localhost:4000)
+- `yarn build`: Build the app for production.
+
+With NPM, Do the followings:
+
+- `npm install`: Install the Projcect Dependencies
+- `npm run start`: Start the app in dev mode. The app will be available on [https://localhost:8080](https://localhost:4000)
+- `npm run build`: Build the app for production.
+
+# Credits and Motivations
+
+Only motivation behind building this app was to kill time at home over a Long Weekend. 😏
+
+My sincere thanks to followings 👍:
+
+- [Coronavirus NovelCOVID API](https://github.com/NovelCOVID/API)
+- [COVID Time-Series API(Pomber)](https://pomber.github.io/covid19/timeseries.json)
+- Corona State Data(Inida)
+- [API for News](https://newsapi.org/)
+
+# Technologies
+
+This app is built from the scratch using following User Interface Technologies:
+
+- [ReactJs](https://reactjs.org/)
+- [https://react-bootstrap.netlify.com/](Bootstrap)
+- [http://recharts.org/en-US/](Recharts)
+- [http://netlify.com/](Hosted on Netlify)
+
+# 🙏 Stay Home, Stay Safe! 🙏
+ 
+Contact [https://www.tapasadhikary.com](https://www.tapasadhikary.com) for any further queries.
