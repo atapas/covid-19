@@ -59,7 +59,7 @@ With the oubreak world-wide and increasing number of active patients, there are 
 
 ## News Page [🔗](https://covid-19-world.netlify.com/news)
 
-`News` page shows the curtaed news about COVID-19 and Health from different publications over the globe.
+`News` page shows the curated news about COVID-19 and Health from different publications over the globe.
 
 
 # To Run from the Source
