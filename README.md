@@ -96,9 +96,8 @@ My sincere thanks to followings 👍:
 This app is built from the scratch using following User Interface Technologies:
 
 - [ReactJs](https://reactjs.org/)
-- [https://react-bootstrap.netlify.com/](Bootstrap)
-- [http://recharts.org/en-US/](Recharts)
-- [http://netlify.com/](Hosted on Netlify)
+- [Bootstrap](https://react-bootstrap.netlify.com/)
+- [Recharts](http://recharts.org/en-US/)
 
 # 🙏 Stay Home, Stay Safe! 🙏
  
