@@ -19,7 +19,7 @@ With the oubreak world-wide and increasing number of active patients, there are 
 
 ## Home Page [🔗](https://covid-19-world.netlify.com/home)
 
-Home page provides the statistics on the data from country `India`, i.e, my Country.
+`Home` page provides the statistics on the data from country `India`, i.e, my Country.
 
 - Total Number of Confirmed Cases
 - Total Number of Active Cases
@@ -33,6 +33,33 @@ Home page provides the statistics on the data from country `India`, i.e, my Coun
 - State: Most Affected
 - State: Most Recovered
 - District Wise Data Breakups for a State
+
+## World Page [🔗](https://covid-19-world.netlify.com/world)
+
+`World` page provides the rich features and stats about the Countries affected by the virus:
+
+- Compare Countries over the Weeks: Compare the Spreads by Selecting the Countries of your choice. The selection also gets persisted into the localstorage of the browser so that, you can montor those over times.
+- Countries with Overall Death Impact
+- Countries Recovering Well
+- Total Cases and Splits
+- Countries with maximum Deaths Today
+- Major Country Spreads
+
+## Countries Page [🔗](https://covid-19-world.netlify.com/countries)
+
+`Countries` page list down all the countries affected by the Virus today. This page allows to:
+
+- Find a Specific Country by type-down search.
+- Select a Country to drill down on the details.
+- Sort the Countries based on, total cases, active cases, deaths and recovery.
+
+## Information Page [🔗](https://covid-19-world.netlify.com/information)
+
+`Information` page provides general information about COVID-19.
+
+## News Page [🔗](https://covid-19-world.netlify.com/news)
+
+`News` page shows the curtaed news about COVID-19 and Health from different publications over the globe.
 
 
 # To Run from the Source
