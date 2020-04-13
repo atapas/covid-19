@@ -30,6 +30,7 @@ import NotFoundPage from './NotFoundPage';
 import News from './News';
 import Information from './Information';
 import About from './About';
+import GitHub from './GitHub';
 
 import { registerCovid19Data } from './actions/covidAction';
 
@@ -68,6 +69,7 @@ const App = () => {
                 <Nav.Link href="/Information">Information</Nav.Link>
                 <Nav.Link href="/news">News</Nav.Link>
               </Nav>
+              <GitHub />
               <About />
             </Navbar>
 
