@@ -40,7 +40,7 @@ const About = () => {
                             Corona timeseries API: pomber.github
                         </li>
                         <li>
-                            Corona State Data(Inida): corona.covid19
+                            Corona State Data(India): corona.covid19
                         </li>
                         <li>
                             API for News: newsapi.org
