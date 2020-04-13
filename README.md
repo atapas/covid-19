@@ -88,7 +88,7 @@ My sincere thanks to followings 👍:
 
 - [Coronavirus NovelCOVID API](https://github.com/NovelCOVID/API)
 - [COVID Time-Series API(Pomber)](https://pomber.github.io/covid19/timeseries.json)
-- Corona State Data(Inida)
+- Corona State Data(India)
 - [API for News](https://newsapi.org/)
 
 # Technologies
