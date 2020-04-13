@@ -99,6 +99,10 @@ This app is built from the scratch using following User Interface Technologies:
 - [Bootstrap](https://react-bootstrap.netlify.com/)
 - [Recharts](http://recharts.org/en-US/)
 
+# License
+
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fatapas%2Fcovid-19.svg?type=large)](https://app.fossa.io/reports/970db5be-b904-4b5c-acea-1c708a0e92b8)
+
 # 🙏 Stay Home, Stay Safe! 🙏
  
 Contact [https://www.tapasadhikary.com](https://www.tapasadhikary.com) for any further queries.
