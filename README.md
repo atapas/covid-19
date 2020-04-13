@@ -19,7 +19,7 @@ With the oubreak world-wide and increasing number of active patients, there are 
 
 ## Home Page [🔗](https://covid-19-world.netlify.com/home)
 
-Home page provides the statistics on the data from country `India`, i.e, my Country.
+`Home` page provides the statistics on the data from country `India`, i.e, my Country.
 
 - Total Number of Confirmed Cases
 - Total Number of Active Cases
@@ -34,10 +34,71 @@ Home page provides the statistics on the data from country `India`, i.e, my Coun
 - State: Most Recovered
 - District Wise Data Breakups for a State
 
+## World Page [🔗](https://covid-19-world.netlify.com/world)
+
+`World` page provides the rich features and stats about the Countries affected by the virus:
+
+- Compare Countries over the Weeks: Compare the Spreads by Selecting the Countries of your choice. The selection also gets persisted into the localstorage of the browser so that, you can montor those over times.
+- Countries with Overall Death Impact
+- Countries Recovering Well
+- Total Cases and Splits
+- Countries with maximum Deaths Today
+- Major Country Spreads
+
+## Countries Page [🔗](https://covid-19-world.netlify.com/countries)
+
+`Countries` page list down all the countries affected by the Virus today. This page allows to:
+
+- Find a Specific Country by type-down search.
+- Select a Country to drill down on the details.
+- Sort the Countries based on, total cases, active cases, deaths and recovery.
+
+## Information Page [🔗](https://covid-19-world.netlify.com/information)
+
+`Information` page provides general information about COVID-19.
+
+## News Page [🔗](https://covid-19-world.netlify.com/news)
+
+`News` page shows the curtaed news about COVID-19 and Health from different publications over the globe.
+
 
 # To Run from the Source
 
-- `yarn install`: Install the Projcect Dependencies
-- `yarn start` to start the app in dev mode.
-- `yarn build` to build the app for production.
+`COVID-19 World` is a ReactJS based project uses API from various sources to visualize and analyse the data to represent in most useful manner. Once you clone/fork the repo, you should be able to run it locally.
 
+Make sure, you have NodeJS installed. Preffered Version of nodeJs is >=12.7.0
+
+With Yarn, Do the followings:
+
+- `yarn install`: Install the Projcect Dependencies
+- `yarn start`: Start the app in dev mode. The app will be available on [https://localhost:8080](https://localhost:4000)
+- `yarn build`: Build the app for production.
+
+With NPM, Do the followings:
+
+- `npm install`: Install the Projcect Dependencies
+- `npm run start`: Start the app in dev mode. The app will be available on [https://localhost:8080](https://localhost:4000)
+- `npm run build`: Build the app for production.
+
+# Credits and Motivations
+
+Only motivation behind building this app was to kill time at home over a Long Weekend. 😏
+
+My sincere thanks to followings 👍:
+
+- [Coronavirus NovelCOVID API](https://github.com/NovelCOVID/API)
+- [COVID Time-Series API(Pomber)](https://pomber.github.io/covid19/timeseries.json)
+- Corona State Data(India)
+- [API for News](https://newsapi.org/)
+
+# Technologies
+
+This app is built from the scratch using following User Interface Technologies:
+
+- [ReactJs](https://reactjs.org/)
+- [Bootstrap](https://react-bootstrap.netlify.com/)
+- [Recharts](http://recharts.org/en-US/)
+
+# 🙏 Stay Home, Stay Safe! 🙏
+ 
+Contact [https://www.tapasadhikary.com](https://www.tapasadhikary.com) for any further queries.
