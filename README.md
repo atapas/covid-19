@@ -71,13 +71,13 @@ Make sure, you have NodeJS installed. Preffered Version of nodeJs is >=12.7.0
 With Yarn, Do the followings:
 
 - `yarn install`: Install the Projcect Dependencies
-- `yarn start`: Start the app in dev mode. The app will be available on [https://localhost:8080](https://localhost:4000)
+- `yarn start`: Start the app in dev mode. The app will be available on [https://localhost:4000](https://localhost:4000)
 - `yarn build`: Build the app for production.
 
 With NPM, Do the followings:
 
 - `npm install`: Install the Projcect Dependencies
-- `npm run start`: Start the app in dev mode. The app will be available on [https://localhost:8080](https://localhost:4000)
+- `npm run start`: Start the app in dev mode. The app will be available on [https://localhost:4000](https://localhost:4000)
 - `npm run build`: Build the app for production.
 
 # Credits and Motivations
