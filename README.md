@@ -9,6 +9,7 @@ With the oubreak world-wide and increasing number of active patients, there are 
 # See it Running
 
 `COVID-19 World` app is running as a website hosted on [![Netlify Status](https://api.netlify.com/api/v1/badges/3ce79a2b-dd74-4c1b-856b-ef5f52ed3d48/deploy-status)](https://app.netlify.com/sites/covid-19-world/deploys)
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fatapas%2Fcovid-19.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fatapas%2Fcovid-19?ref=badge_shield)
 
 👉 [https://covid-19-world.netlify.com/](https://covid-19-world.netlify.com/)
 
@@ -59,7 +60,7 @@ With the oubreak world-wide and increasing number of active patients, there are 
 
 ## News Page [🔗](https://covid-19-world.netlify.com/news)
 
-`News` page shows the curtaed news about COVID-19 and Health from different publications over the globe.
+`News` page shows the curated news about COVID-19 and Health from different publications over the globe.
 
 
 # To Run from the Source
@@ -71,13 +72,13 @@ Make sure, you have NodeJS installed. Preffered Version of nodeJs is >=12.7.0
 With Yarn, Do the followings:
 
 - `yarn install`: Install the Projcect Dependencies
-- `yarn start`: Start the app in dev mode. The app will be available on [https://localhost:8080](https://localhost:4000)
+- `yarn start`: Start the app in dev mode. The app will be available on [https://localhost:4000](https://localhost:4000)
 - `yarn build`: Build the app for production.
 
 With NPM, Do the followings:
 
 - `npm install`: Install the Projcect Dependencies
-- `npm run start`: Start the app in dev mode. The app will be available on [https://localhost:8080](https://localhost:4000)
+- `npm run start`: Start the app in dev mode. The app will be available on [https://localhost:4000](https://localhost:4000)
 - `npm run build`: Build the app for production.
 
 # Credits and Motivations
@@ -87,7 +88,7 @@ Only motivation behind building this app was to kill time at home over a Long We
 My sincere thanks to followings 👍:
 
 - [Coronavirus NovelCOVID API](https://github.com/NovelCOVID/API)
-- [COVID Time-Series API(Pomber)](https://pomber.github.io/covid19/timeseries.json)
+- [COVID Time-Series API(Pomber)](https://github.com/pomber/COVID19)
 - Corona State Data(India)
 - [API for News](https://newsapi.org/)
 
@@ -98,6 +99,10 @@ This app is built from the scratch using following User Interface Technologies:
 - [ReactJs](https://reactjs.org/)
 - [Bootstrap](https://react-bootstrap.netlify.com/)
 - [Recharts](http://recharts.org/en-US/)
+
+# License
+
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fatapas%2Fcovid-19.svg?type=large)](https://app.fossa.io/reports/970db5be-b904-4b5c-acea-1c708a0e92b8)
 
 # 🙏 Stay Home, Stay Safe! 🙏
  
