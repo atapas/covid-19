@@ -46,7 +46,9 @@ const Information = () => {
                         <Card key={index}>
                             <Card.Img variant="top" src={info.urlToImage} />
                             <Card.Body>
-                                <Card.Title>{info.title}</Card.Title>
+                                <Card.Title>
+                                    <Card.Link target="_blank" href={info.url}>{info.title}</Card.Link>
+                                </Card.Title>
                                 <Card.Text>
                                     {info.description}
                                 </Card.Text>

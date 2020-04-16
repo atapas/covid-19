@@ -86,7 +86,7 @@ const CountrySelector = ({ preSelected , update}) => {
                 <Modal.Header closeButton>
                     <Modal.Title className="header">
                         <i className="fas fa-flag icon" />
-                        Selecet Countries to Compare
+                        Select Countries to Compare
                     </Modal.Title>
                 </Modal.Header>
 
