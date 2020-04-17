@@ -17,7 +17,7 @@ const StateIndiaMostConfirmed = props => {
     const data = props.data;
 
     let filteredData = data.filter(elem => {
-        return elem.confirmed > MIN_CASES_TO_SHOW;
+        return elem.active > MIN_CASES_TO_SHOW;
     });
 
     let refinedData = [];
@@ -41,7 +41,7 @@ const StateIndiaMostConfirmed = props => {
         return [
           0,
           Math.max.apply(null, [
-            ...refinedData.map(entry => entry.Confirmed)
+            ...refinedData.map(entry => entry.Active)
           ])
         ];
     };
@@ -81,9 +81,9 @@ const StateIndiaMostConfirmed = props => {
     return (
         <Card>
             <Card.Body>
-                <Card.Title>State: Most Affected(Minimum {} Cases)</Card.Title>
+                <Card.Title>State: Most Affected(Minimum {MIN_CASES_TO_SHOW} Active Cases)</Card.Title>
                 <Card.Subtitle className="mb-2 text-muted">
-                    States with most number of Confirmed cases.
+                    States with most number of Active cases.
                 </Card.Subtitle>
                 <ResponsiveContainer width='100%' height={350}>
                     <ScatterChart  margin={{
@@ -91,8 +91,8 @@ const StateIndiaMostConfirmed = props => {
                     }} >
                     <CartesianGrid />
                     <XAxis dataKey={'State Code'} name='State' />
-                    <YAxis dataKey={'Confirmed'} type="number"  domain={domain} range={range} name='Confirmed' />
-                    <ZAxis type="number" dataKey={'Confirmed'} domain={domain} range={range} />
+                    <YAxis dataKey={'Active'} type="number"  domain={domain} range={range} name='Active' />
+                    <ZAxis type="number" dataKey={'Active'} domain={domain} range={range} />
                     <Scatter name='COVID-19 India' data={refinedData} fill='#B96666' activeDot={{ r: 8 }}/>
                     <Tooltip 
                         cursor={{strokeDasharray: '3 3'}} 
