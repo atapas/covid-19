@@ -32,7 +32,7 @@ const World = props => {
         return elem['country'] !== 'World';
     })
     const [allData, allDataLoading] = useFetch(
-        "https://corona.lmao.ninja/all"
+        "https://corona.lmao.ninja/v2/all"
     );
     const [filtered, setFiltered] = useState([]);
     const columnDefs = [

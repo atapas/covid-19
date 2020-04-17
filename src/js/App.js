@@ -39,7 +39,7 @@ import * as covid from '../../assets/images/covid.png';
 const App = () => {
   const dispatch = useDispatch();
   const [countryCoronaData, countryCoronaDataLoading] = useFetch(
-    "https://corona.lmao.ninja/countries"
+    "https://corona.lmao.ninja/v2/countries"
   );
   
   if (!countryCoronaDataLoading) {
