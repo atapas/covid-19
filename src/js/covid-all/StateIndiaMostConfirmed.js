@@ -13,10 +13,11 @@ import {
 import INDIA_STATE_CODES from '../utils/india_state_codes';
 
 const StateIndiaMostConfirmed = props => {
+    const MIN_CASES_TO_SHOW = 100;
     const data = props.data;
 
     let filteredData = data.filter(elem => {
-        return elem.confirmed > 20
+        return elem.confirmed > MIN_CASES_TO_SHOW;
     });
 
     let refinedData = [];
@@ -46,7 +47,7 @@ const StateIndiaMostConfirmed = props => {
     };
       
     const domain = parseDomain();
-    const range = [1, domain[1] + 300];
+    const range = [1, domain[1]];
 
     const CustomTooltip = ({ active, payload, label }) => {
         if (active) {
@@ -80,11 +81,11 @@ const StateIndiaMostConfirmed = props => {
     return (
         <Card>
             <Card.Body>
-                <Card.Title>State: Most Affected(Minimum 20 Cases)</Card.Title>
+                <Card.Title>State: Most Affected(Minimum {} Cases)</Card.Title>
                 <Card.Subtitle className="mb-2 text-muted">
                     States with most number of Confirmed cases.
                 </Card.Subtitle>
-                <ResponsiveContainer width='100%' height={330}>
+                <ResponsiveContainer width='100%' height={350}>
                     <ScatterChart  margin={{
                             top: 30, right: 0, left: 0, bottom: 5,
                     }} >
