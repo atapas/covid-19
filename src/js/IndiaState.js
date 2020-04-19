@@ -20,6 +20,8 @@ const IndiaState = props => {
     const [districtData, loadingDistrictData] = useFetch('https://api.covid19india.org/state_district_wise.json');
     const [expandState, setExpandState] = useState({});
 
+    const sortedStateData = stateData.sort((a,b) => b.deltaconfirmed - a.deltaconfirmed);
+
     const handleEpandRow = (event, state) => {
         console.log('Expanding state', state);
         const currentExpandedRows = expandedRows;
@@ -86,7 +88,7 @@ const IndiaState = props => {
                             </tr>
                         </thead>
                         <tbody>
-                            {stateData.map((data) =>
+                            {sortedStateData.map((data) =>
                                 <>
                                     <tr key={data.state}>
                                         <td>
