@@ -1,6 +1,6 @@
 # COVID-19 World
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 COVID-19 is the infectious disease caused by the most recently discovered coronavirus. This new virus and disease were unknown before the outbreak began in Wuhan, China, in December 2019.
@@ -121,6 +121,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <table>
   <tr>
     <td align="center"><a href="https://tapasadhikary.com"><img src="https://avatars1.githubusercontent.com/u/3633137?v=4" width="100px;" alt=""/><br /><sub><b>Tapas Adhikary</b></sub></a><br /><a href="https://github.com/atapas/covid-19/commits?author=atapas" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/nirmalkc"><img src="https://avatars1.githubusercontent.com/u/6359059?v=4" width="100px;" alt=""/><br /><sub><b>Nirmal Kumar</b></sub></a><br /><a href="https://github.com/atapas/covid-19/issues?q=author%3Anirmalkc" title="Bug reports">🐛</a></td>
   </tr>
 </table>
 
