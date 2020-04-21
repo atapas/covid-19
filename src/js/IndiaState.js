@@ -98,6 +98,7 @@ const IndiaState = props => {
                                                 onClick={event => handleEpandRow(event, data.state)}>
                                                 {data.state}
                                             </Button>
+                                            <span>(Updated at {data.lastupdatedtime})</span>
                                         </td>
                                         <td>
                                             <div>
