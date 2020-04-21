@@ -94,11 +94,14 @@ const IndiaState = props => {
                                         <td>
                                             {expandState[data.state] ?  <span>👇</span> : <span>👉</span> }
                                             <Button
+                                                style={{paddingRight: '2px'}}
                                                 variant="link"
                                                 onClick={event => handleEpandRow(event, data.state)}>
                                                 {data.state}
                                             </Button>
-                                            <span>(Updated at {data.lastupdatedtime})</span>
+                                            { data.lastupdatedtime && 
+                                                <span style={{fontSize: '12px'}}>(Updated at: {data.lastupdatedtime})</span>
+                                            }
                                         </td>
                                         <td>
                                             <div>
