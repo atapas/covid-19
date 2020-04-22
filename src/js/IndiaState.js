@@ -73,7 +73,7 @@ const IndiaState = props => {
         <div className="indiaState">
             <Card>
                 <Card.Body>
-                    <Card.Title>State Data</Card.Title>
+                    <Card.Title>States and UTs({sortedStateData.length})</Card.Title>
                     <Card.Subtitle className="mb-2 text-muted">
                         State wise break-up of COVID-19 Outbreak
                     </Card.Subtitle>
