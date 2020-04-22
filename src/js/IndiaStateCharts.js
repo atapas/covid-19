@@ -37,7 +37,7 @@ const IndiaStateCharts = props => {
 
     return(
         <Container className="india-state-charts" fluid>
-            <Row>
+            <Row style={{marginBottom: '20px'}}>
                 <Col>
                     <StateIndiaMostConfirmed data={sortedMostConfirmed} />
                 </Col>
