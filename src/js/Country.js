@@ -143,6 +143,48 @@ const Country = props => {
             }
         }
     }
+
+    const getPercentage = type => {
+       if (type === 'active') {
+            if (countryName === 'India') {
+                if (!indiaDataLoading) {
+                    let calc = (inidiaTotalData.active/inidiaTotalData.confirmed) * 100;
+                    return `${ calc.toFixed(2) }%`;
+                } else {
+                    return "...";
+                }
+            } else {
+                let calc = (covid[0].active/covid[0].cases) * 100;
+                return `${ calc.toFixed(2) }%`;
+            }
+
+        } else if (type === 'recovered') {
+            if (countryName === 'India') {
+                if (!indiaDataLoading) {
+                    let calc = (inidiaTotalData.recovered / inidiaTotalData.confirmed) * 100;
+                    return `${ calc.toFixed(2) }%`;
+                } else {
+                    return "...";
+                }
+            } else {
+                let calc = (covid[0].recovered/covid[0].cases) * 100;
+                return `${ calc.toFixed(2) }%`;
+            }
+
+        } else if (type === 'deaths') {
+            if (countryName === 'India') {
+                if (!indiaDataLoading) {
+                    let calc = (inidiaTotalData.deaths/inidiaTotalData.confirmed) * 100;
+                    return `${ calc.toFixed(2) }%`;
+                } else {
+                    return "...";
+                }
+            } else {
+                let calc = (covid[0].deaths/covid[0].cases) * 100;
+                return `${ calc.toFixed(2) }%`;
+            }
+        }
+    }
    
     return(
        <Container className="country" fluid >
@@ -171,7 +213,6 @@ const Country = props => {
                                     displayType={'text'} 
                                     thousandSeparator={true} 
                                     renderText={value => <div className="value">{value}</div>} />
-                                
                                 <div className="extra">{getIncreasdValue('confirmed')}</div>
                                 
                             </Badge>
@@ -184,6 +225,7 @@ const Country = props => {
                                     displayType={'text'} 
                                     thousandSeparator={true} 
                                     renderText={value => <div className="value">{value}</div>} />
+                                <div className="perct">{getPercentage('active')}</div>
                                 <div className="extra">{getIncreasdValue('active')}</div>
                             </Badge>
                     </Col>
@@ -195,9 +237,11 @@ const Country = props => {
                                     displayType={'text'} 
                                     thousandSeparator={true} 
                                     renderText={value => <div className="value">{value}</div>} />
+                            <div className="perct">{getPercentage('recovered')}</div>
                             {
                                 (!indiaDataLoading && countryName === 'India') ?
-                                    <div className="extra">{getIncreasdValue('recovered')}</div> : null
+                                    <div className="extra">{getIncreasdValue('recovered')}</div> 
+                                    : null
                             }
                             
                         </Badge>
@@ -210,6 +254,7 @@ const Country = props => {
                                     displayType={'text'} 
                                     thousandSeparator={true} 
                                     renderText={value => <div className="value">{value}</div>} />
+                            <div className="perct">{getPercentage('deaths')}</div>
                             <div className="extra">{getIncreasdValue('deaths')}</div>
                         </Badge>
                     </Col>
