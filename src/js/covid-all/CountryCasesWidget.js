@@ -39,7 +39,7 @@ const CountryCasesWidget = props => {
         <div className="country-all-data-widget">
             <Card >
                 <Card.Body>
-                    <Card.Title>Major Country Spreads(Total Cases)</Card.Title>
+                    <Card.Title>Major Country Spreads(Total Confirmed Cases)</Card.Title>
                     <Card.Subtitle className="mb-2 text-muted">Number of Countries: <b>{TOP_N}</b></Card.Subtitle>
                     <div>
                         <ResponsiveContainer width='100%' height={400}>
