@@ -1,7 +1,7 @@
 
 const COLOR_CODES = {
     'CATEGORIES': {
-        'CONFIRMED': '#17A2B8'
+        'CONFIRMED': '#17A2B8',
         'ACTIVE': '#FFC107',
         'RECOVERED': '#28A745',
         'DEATHS': '#DC3545'
