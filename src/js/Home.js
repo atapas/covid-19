@@ -18,7 +18,7 @@ const Home = props => {
     const countryName = localStorage.getItem('countryName');
      return(
         <>
-        {!countryName && <HomePageSelector show={true} /> }
+        {!countryName && <HomePageSelector  history={props.history} show={true} /> }
         <Container className="Home" fluid>
             <Row className="countryHeadline">
                 <Col sm={12}>

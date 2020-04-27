@@ -59,7 +59,6 @@ const HomePageSelector = (props) => {
     }
 
     const updateLocalStore = () => {
-        console.log(countryName);
         localStorage.setItem('countryName', countryName);
         setShow(false);
         setFilteredCountries(allCountries);
