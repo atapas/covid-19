@@ -22,6 +22,15 @@
       "contributions": [
         "bug"
       ]
+    },
+    {
+      "login": "SauravKanchan",
+      "name": "Saurav  Kanchan",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/21256638?v=4",
+      "profile": "https://saurav.tech/",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
