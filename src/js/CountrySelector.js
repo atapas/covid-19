@@ -79,7 +79,7 @@ const CountrySelector = ({ preSelected , update}) => {
         <>
             <Button variant="success" onClick={handleShow} className="country-select">
                 <i
-                    title="Selecet Countries"
+                    title="Select Countries"
                     className="fas fa-edit fa-1x icon" />
             </Button>
             <Modal show={show} onHide={handleCancel} animation={true} className="select-country-modal"> 
