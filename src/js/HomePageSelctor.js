@@ -10,10 +10,11 @@ import FetchTimeSeries from './time-series/FetchTimeSeries';
 
 const HomePageSelector = (props) => {
 
+    const country = localStorage.getItem('countryName');
     const [show, setShow] = useState(props.show);
     const [allCountries, setAllCountries] = useState([]);
     const covid19Data = useSelector(state => state.covid19);
-    const [selectedCountry, setSelectedCountry] = useState();
+    const [selectedCountry, setSelectedCountry] = useState({ [country] : true});
     const [countryName, setCountryName] = useState();
     const [filteredCountries, setFilteredCountries] = useState([]);
 
@@ -22,7 +23,7 @@ const HomePageSelector = (props) => {
     };
 
     useEffect(() => {
-        let data = covid19Data.filter(elem => {
+        let data = covid19Data && covid19Data.filter(elem => {
             return elem.country !== 'World';
         });
 
