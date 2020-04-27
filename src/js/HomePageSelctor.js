@@ -57,6 +57,9 @@ const HomePageSelector = (props) => {
         setShow(false);
         setSelectedCountry({});
         setFilteredCountries(allCountries);
+        if (props.history) {
+            props.history.push(`/`);
+        }
     }
 
     const updateLocalStore = () => {
