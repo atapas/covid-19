@@ -29,7 +29,6 @@ import Country from './Country';
 import NotFoundPage from './NotFoundPage';
 import News from './News';
 import Information from './Information';
-import HomePageSelector from './HomePageSelctor';
 import About from './About';
 import GitHub from './GitHub';
 
