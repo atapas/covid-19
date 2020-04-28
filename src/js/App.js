@@ -69,7 +69,6 @@ const App = () => {
                 <Nav.Link href="/countries">Countries</Nav.Link>
                 <Nav.Link href="/Information">Information</Nav.Link>
                 <Nav.Link href="/news">News</Nav.Link>
-                <Nav.Link href="/sethomepage">Set home page</Nav.Link>
               </Nav>
               <GitHub />
               <About />
@@ -140,19 +139,6 @@ const App = () => {
                   </Route>
                   <Route exact path="/information">  
                     <Information />
-                  </Route>
-                  <Route exact path="/sethomepage"  
-                  render={props =>
-                    countryCoronaDataLoading ?
-                    <Loader
-                    type="ThreeDots"
-                    color="#00BFFF"
-                    height={150}
-                    width={150}
-                    style={{marginLeft: '40%', marginTop: '13%'}}
-                  /> :
-                  <HomePageSelector show={true} history={props.history} />}
-                  >
                   </Route>
               <Route path='*' render={(props) => <NotFoundPage {...props} />} />
             </Switch>
