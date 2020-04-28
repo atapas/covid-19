@@ -22,7 +22,7 @@ const Home = props => {
         <Container className="Home" fluid>
             <Row className="countryHeadline">
                 <Col sm={12}>
-                    <Country countryName={ countryName ? countryName : 'India'} />
+                    <Country history={props.history} countryName={ countryName ? countryName : 'India' } />
                 </Col>
             </Row>
         </Container>
