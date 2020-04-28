@@ -76,7 +76,7 @@ const HomePageSelector = (props) => {
             <Modal.Header closeButton>
                 <Modal.Title className="header">
                     <i className="fas fa-flag icon" />
-                        Select a Country you want to be landed always
+                        Select Your Home Country
                     </Modal.Title>
             </Modal.Header>
 
