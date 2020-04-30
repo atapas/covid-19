@@ -4,7 +4,7 @@
  * Copyright (c) 2020 https://tapasadhikary.com
  */
 
-import React, { useState } from "react";
+import React from "react";
 
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
@@ -15,8 +15,7 @@ import HomePageSelector from './HomePageSelctor';
 
 const Home = props => {
 
-    const [countryName,] = useState(localStorage.getItem('countryName'));
-    
+    const countryName = localStorage.getItem('countryName');
      return(
         <>
         {!countryName && <HomePageSelector  history={props.history} show={true} /> }
