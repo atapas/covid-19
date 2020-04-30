@@ -14,7 +14,6 @@ import { useSelector } from 'react-redux';
 import FetchTimeSeries from './time-series/FetchTimeSeries';
 
 const Checkbox = ({ type = 'checkbox', name, checked = false, onChange, className = 'regular-checkbox' }) => {
-    // console.log("Checkbox: ", name, checked);
     return (<input type={type} name={name} checked={checked} onChange={onChange} className={className} />)
 }
 
@@ -37,8 +36,6 @@ const CountrySelector = ({ preSelected , update}) => {
         });
         setAllCountries(allCountries);
         setFilteredCountries(allCountries);
-        // console.log('allCountries', allCountries);
-    
     }, []);
    
     const handleSelect = () => {
@@ -61,12 +58,10 @@ const CountrySelector = ({ preSelected , update}) => {
         let temp = JSON.parse(JSON.stringify(updated));
         // updating an object instead of a Map
         setCheckedItems(temp);
-        // console.log("checkedItems: ", checkedItems);
     }
 
     const handleFind = event => {
         event.preventDefault();
-        console.log(event.target.value);
         let filtered = allCountries.filter(elem => {
             return elem.name.toLowerCase().includes(event.target.value.toLowerCase());
             

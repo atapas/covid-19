@@ -36,7 +36,6 @@ const Country = props => {
         let selectedCountry = COUNTRY_CODES.filter(elem => {
             return elem.name === country;
         });
-        // console.log('selectedCountry', selectedCountry);
         let countryCode = '';
         if (selectedCountry.length > 0) {
             countryCode = selectedCountry[0]['alpha2code'];
@@ -47,7 +46,6 @@ const Country = props => {
     let covid = countryCoronaData.filter(elem => {
         return elem.country.toLowerCase() === countryName.toLowerCase();
     });
-    console.log('Country: covid data', covid);
 
     let stateData = [];
     let inidiaTotalData = {}
@@ -55,7 +53,6 @@ const Country = props => {
         let stateWise = indiaData['statewise'];
         inidiaTotalData = stateWise[0];
         stateData = stateWise.filter((elem, i) => i > 0);
-        console.log('Country: stateData', stateData);
     }
 
     const getTotalValue = type => {

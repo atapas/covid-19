@@ -76,7 +76,6 @@ const CompareWidget = props => {
 
     const getWeekArray = (country, timeseries) => {
         let firstIndex = getCountryFirstIndex(timeseries);
-        console.log('country firstIndex', country, firstIndex);
         let wk = 1;
         let arr = [];
         for (let i = firstIndex; i < timeseries.length; i = i + 7) {
@@ -94,7 +93,6 @@ const CompareWidget = props => {
             obj[`${country}-week-date`] = timeseries[timeseries.length - 1].date;
             arr.push(obj);
         }
-        console.log(wk, arr);
         return arr;
     }
 
@@ -124,7 +122,6 @@ const CompareWidget = props => {
     let chartData = [];
     if (!loading) {
         chartData = getData();
-        console.log('chartData', chartData);
     }
 
     const CustomTooltip = ({ active, payload, label }) => {
@@ -165,7 +162,6 @@ const CompareWidget = props => {
     
 
     const updateCountries = countries => {
-        console.log('updateCountries', countries)
         setSelectedCountries(countries);
         reactLocalStorage.setObject('compare_widget_country_selected', countries);
     }

@@ -118,15 +118,6 @@ const TimeSeries = props => {
         }
     }
 
-    console.group('TimeSeries');
-    console.groupCollapsed();
-    console.log('timeseries', data);
-    console.log('country', country);
-    console.log('refined timeseries', refinedData);
-    console.log('refined brokenDownData', brokenDownData);
-    console.log('refined percentageData', percentageData);
-    console.groupEnd();
-
     return (
         <div className="timeseries">
             {

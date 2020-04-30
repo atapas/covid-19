@@ -49,13 +49,11 @@ const World = props => {
     ];
 
     useEffect(() => {
-        console.log(data);
         setFiltered(data);
     }, []);
 
     const handleFind = event => {
         event.preventDefault();
-        console.log(event.target.value);
         let filtered = data.filter(elem => {
             return elem.country.toLowerCase().includes(event.target.value.toLowerCase());
 

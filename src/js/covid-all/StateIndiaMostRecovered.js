@@ -50,10 +50,6 @@ const StateIndiaMostRecovered = props => {
         refinedData.push(obj);
     });
 
-    console.group('StateIndiaMostRecovered');
-    console.log('refinedData', refinedData);
-    console.groupEnd();
-
     const CustomTooltip = ({ active, payload, label }) => {
         if (active) {
             return (

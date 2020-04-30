@@ -23,18 +23,15 @@ const TopNTodayDeath = props => {
     let refinedData = [];
    
     let sortedData = data.sort((a, b) => b.todayDeaths - a.todayDeaths);
-    // console.log('sortedData', sortedData);
     let cloned = JSON.parse(JSON.stringify(sortedData));
     let topNData = cloned.splice(0, TOP_N);
-    // console.log('topNData', topNData);
+
     topNData.forEach(element => {
         let obj = {};
         obj['country'] = element['country'];
         obj['Today Deaths'] = element['todayDeaths'];
         refinedData.push(obj);
     });
-    console.log('TopNTodayDeath refinedData', refinedData);
-    
 
     return (
         <div className="top-n-todays-death-widget">
