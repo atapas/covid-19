@@ -13,7 +13,7 @@ import {
 import INDIA_STATE_CODES from '../utils/india_state_codes';
 
 const StateIndiaMostConfirmed = props => {
-    const MIN_CASES_TO_SHOW = 100;
+    const MIN_CASES_TO_SHOW = 50;
     const data = props.data;
 
     let filteredData = data.filter(elem => {

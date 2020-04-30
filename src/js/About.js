@@ -34,16 +34,24 @@ const About = () => {
                     My sincere thanks to followings 👍:
                     <ul>
                         <li>
-                            Coronavirus Ninja API: corona.ioma.ninja
+                            <a href="https://corona.lmao.ninja/docs/" target="_blank">
+                                Coronavirus Ninja API
+                            </a>
                         </li>
                         <li>
-                            Corona timeseries API: pomber.github
+                            <a href="https://github.com/pomber/covid19/" target="_blank">
+                                Corona timeseries API
+                            </a>
                         </li>
                         <li>
-                            Corona State Data(India): corona.covid19
+                            <a href="https://api.covid19india.org/" target="_blank">
+                                Corona State Data(India)
+                            </a>
                         </li>
                         <li>
-                            API for News: newsapi.org
+                            <a href="https://saurav.tech/NewsAPI/top-headlines/category/health/in.json" target="_blank">
+                                API for News
+                            </a>
                         </li>
                     </ul>
                     <br />

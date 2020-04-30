@@ -13,6 +13,24 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "nirmalkc",
+      "name": "Nirmal Kumar",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/6359059?v=4",
+      "profile": "https://github.com/nirmalkc",
+      "contributions": [
+        "bug"
+      ]
+    },
+    {
+      "login": "SauravKanchan",
+      "name": "Saurav  Kanchan",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/21256638?v=4",
+      "profile": "https://saurav.tech/",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,

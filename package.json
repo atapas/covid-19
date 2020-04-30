@@ -43,6 +43,7 @@
     "bootstrap": "^4.4.1",
     "cross-env": "^7.0.2",
     "moment": "^2.24.0",
+    "randomcolor": "^0.5.4",
     "react-bootstrap": "^1.0.0-beta.17",
     "react-currency-format": "^1.0.0",
     "react-dom-factories": "^1.0.2",

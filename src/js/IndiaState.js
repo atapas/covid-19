@@ -73,7 +73,7 @@ const IndiaState = props => {
         <div className="indiaState">
             <Card>
                 <Card.Body>
-                    <Card.Title>State Data</Card.Title>
+                    <Card.Title>States and UTs({sortedStateData.length})</Card.Title>
                     <Card.Subtitle className="mb-2 text-muted">
                         State wise break-up of COVID-19 Outbreak
                     </Card.Subtitle>
@@ -94,10 +94,14 @@ const IndiaState = props => {
                                         <td>
                                             {expandState[data.state] ?  <span>👇</span> : <span>👉</span> }
                                             <Button
+                                                style={{paddingRight: '2px'}}
                                                 variant="link"
                                                 onClick={event => handleEpandRow(event, data.state)}>
                                                 {data.state}
                                             </Button>
+                                            { data.lastupdatedtime && 
+                                                <span style={{fontSize: '12px'}}>(Updated at: {data.lastupdatedtime})</span>
+                                            }
                                         </td>
                                         <td>
                                             <div>

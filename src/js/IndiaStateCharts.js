@@ -21,9 +21,11 @@ const IndiaStateCharts = props => {
     const sortedMostDeath = [...stateData].sort((a,b) => parseInt(b.deaths, 10) - parseInt(a.deaths, 10));
     let stateDataWithPerctRecovered = stateData.map(elem => {
         elem['perctRecoverd'] = Math.round((elem['recovered'] * 100) / elem['confirmed']);
+        elem['perctDeaths'] = Math.round((elem['deaths'] * 100) / elem['confirmed']);
+        elem['perctActive'] = Math.round((elem['active'] * 100) / elem['confirmed']);
         return elem;
     });
-    const sortedMostRecoveredPerct = stateDataWithPerctRecovered.sort((a,b) => b.perctRecoverd - a.perctRecoverd);
+    const sortedMostRecoveredPerct = stateDataWithPerctRecovered.sort((a,b) => b.active - a.active);
 
     console.group('IndiaStateCharts');
     console.groupCollapsed();
@@ -35,18 +37,15 @@ const IndiaStateCharts = props => {
 
     return(
         <Container className="india-state-charts" fluid>
-            <Row>
-                <Col sm={8}>
+            <Row style={{marginBottom: '20px'}}>
+                <Col>
                     <StateIndiaMostConfirmed data={sortedMostConfirmed} />
                 </Col>
-                <Col sm={4}>
+            </Row>
+            <Row>
+                <Col>
                     <StateIndiaMostRecovered data={sortedMostRecoveredPerct} />
                 </Col>
-                {/*
-                <Col>
-                    <StateIndiaMostDeaths data={sortedMostDeath} />
-                </Col>
-                */}
             </Row>
         </Container>
     )

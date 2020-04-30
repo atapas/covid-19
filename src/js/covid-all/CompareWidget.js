@@ -16,7 +16,17 @@ import FetchTimeSeries from '../time-series/FetchTimeSeries';
 import { useFetch } from '../useFetch';
 import CountrySelector from '../CountrySelector';
 
+let randomColor = require('randomcolor');
+const COLOR_ARRAY = randomColor({
+    count: 25,
+    luminosity: 'bright',
+    hue: 'random'
+ });
+
+
 const CompareWidget = props => {
+     // import the script
+    
     let defaultCountries = {
         'India': true, 
         'Pakistan': true, 
@@ -32,19 +42,6 @@ const CompareWidget = props => {
     const [data, loading] = useFetch('https://pomber.github.io/covid19/timeseries.json');
     const [selectedCountries, setSelectedCountries] = useState(defaultCountries);
     
-    const COLOR_ARRAY = [
-        "#17A2B8",
-        "#FFC107",
-        "#28A745",
-        "#DC3545",
-        "#626567",
-        "#BA4A00",
-        "#0E6655",
-        "#FF5833",
-        "#200A3D",
-        "#FFB433"
-    ];
-
     const getCountryResolvedName = input => {
         if (input === 'USA') {
             return 'US';

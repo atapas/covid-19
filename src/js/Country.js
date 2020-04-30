@@ -151,8 +151,50 @@ const Country = props => {
         }
     }
 
-    return (
-        <Container className="country" fluid >
+    const getPercentage = type => {
+       if (type === 'active') {
+            if (countryName === 'India') {
+                if (!indiaDataLoading) {
+                    let calc = (inidiaTotalData.active/inidiaTotalData.confirmed) * 100;
+                    return `${ calc.toFixed(2) }%`;
+                } else {
+                    return "...";
+                }
+            } else {
+                let calc = (covid[0].active/covid[0].cases) * 100;
+                return `${ calc.toFixed(2) }%`;
+            }
+
+        } else if (type === 'recovered') {
+            if (countryName === 'India') {
+                if (!indiaDataLoading) {
+                    let calc = (inidiaTotalData.recovered / inidiaTotalData.confirmed) * 100;
+                    return `${ calc.toFixed(2) }%`;
+                } else {
+                    return "...";
+                }
+            } else {
+                let calc = (covid[0].recovered/covid[0].cases) * 100;
+                return `${ calc.toFixed(2) }%`;
+            }
+
+        } else if (type === 'deaths') {
+            if (countryName === 'India') {
+                if (!indiaDataLoading) {
+                    let calc = (inidiaTotalData.deaths/inidiaTotalData.confirmed) * 100;
+                    return `${ calc.toFixed(2) }%`;
+                } else {
+                    return "...";
+                }
+            } else {
+                let calc = (covid[0].deaths/covid[0].cases) * 100;
+                return `${ calc.toFixed(2) }%`;
+            }
+        }
+    }
+   
+    return(
+       <Container className="country" fluid >
             <Row>
                 <Col>
                     <h1>
@@ -185,7 +227,6 @@ const Country = props => {
                                     displayType={'text'}
                                     thousandSeparator={true}
                                     renderText={value => <div className="value">{value}</div>} />
-
                                 <div className="extra">{getIncreasdValue('confirmed')}</div>
 
                             </Badge>
@@ -193,41 +234,49 @@ const Country = props => {
                         <Col sm={3}>
                             <Badge variant="warning" className="active">
                                 <h3 className="label">Active</h3>
-                                <CurrencyFormat
-                                    value={getTotalValue('active')}
-                                    displayType={'text'}
-                                    thousandSeparator={true}
+                                <div className="perct">{getPercentage('active')}</div>
+                                <CurrencyFormat 
+                                    value={getTotalValue('active')} 
+                                    displayType={'text'} 
+                                    thousandSeparator={true} 
                                     renderText={value => <div className="value">{value}</div>} />
-                                <div className="extra">{getIncreasdValue('active')}</div>
+                                <div className="extra">{getIncreasdValue('active')}</div>    
+                                
+                                
                             </Badge>
-                        </Col>
-                        <Col sm={3}>
-                            <Badge variant="success" className="recovered">
-                                <h3 className="label">Recovered</h3>
-                                <CurrencyFormat
-                                    value={getTotalValue('recovered')}
-                                    displayType={'text'}
-                                    thousandSeparator={true}
+                    </Col>
+                    <Col sm={3}>
+                        <Badge variant="success" className="recovered">
+                            <h3 className="label">Recovered</h3>
+                            <div className="perct">{getPercentage('recovered')}</div>
+                            <CurrencyFormat 
+                                    value={getTotalValue('recovered')} 
+                                    displayType={'text'} 
+                                    thousandSeparator={true} 
                                     renderText={value => <div className="value">{value}</div>} />
-                                {
-                                    (!indiaDataLoading && countryName === 'India') ?
-                                        <div className="extra">{getIncreasdValue('recovered')}</div> : null
-                                }
-
-                            </Badge>
-                        </Col>
-                        <Col sm={3}>
-                            <Badge variant="danger" className="deaths">
-                                <h3 className="label">Deaths</h3>
-                                <CurrencyFormat
-                                    value={getTotalValue('deaths')}
-                                    displayType={'text'}
-                                    thousandSeparator={true}
+                            
+                            {
+                                (!indiaDataLoading && countryName === 'India') ?
+                                    <div className="extra">{getIncreasdValue('recovered')}</div> 
+                                    : null
+                            }
+                            
+                        </Badge>
+                    </Col> 
+                    <Col sm={3}>
+                        <Badge variant="danger" className="deaths">
+                            <h3 className="label">Deaths</h3>
+                            <div className="perct">{getPercentage('deaths')}</div>
+                            <CurrencyFormat 
+                                    value={getTotalValue('deaths')} 
+                                    displayType={'text'} 
+                                    thousandSeparator={true} 
                                     renderText={value => <div className="value">{value}</div>} />
-                                <div className="extra">{getIncreasdValue('deaths')}</div>
-                            </Badge>
-                        </Col>
-                    </Row> : null
+                            
+                            <div className="extra">{getIncreasdValue('deaths')}</div>
+                        </Badge>
+                    </Col>
+                </Row> : null
             }
 
 

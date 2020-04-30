@@ -10,9 +10,11 @@ import {
 } from 'recharts';
 import Card from 'react-bootstrap/Card';
 
+import COLOR_CODES from '../utils/color_codes';
+
 const CountryCasesWidget = props => {
     const data = props.data;
-    const TOP_N = 10;
+    const TOP_N = 15;
 
     let refinedData = [];
     
@@ -37,7 +39,7 @@ const CountryCasesWidget = props => {
         <div className="country-all-data-widget">
             <Card >
                 <Card.Body>
-                    <Card.Title>Major Country Spreads</Card.Title>
+                    <Card.Title>Major Country Spreads(Total Confirmed Cases)</Card.Title>
                     <Card.Subtitle className="mb-2 text-muted">Number of Countries: <b>{TOP_N}</b></Card.Subtitle>
                     <div>
                         <ResponsiveContainer width='100%' height={400}>
@@ -47,7 +49,7 @@ const CountryCasesWidget = props => {
                                 <XAxis dataKey="Country"/>
                                 <YAxis/>
                                 <Tooltip/>
-                                <Area type='monotone' dataKey='Cases' stackId="1" stroke='#FFC107' fill='#FFC107' activeDot={{ r: 8 }}/>
+                                <Area type='monotone' dataKey='Cases' stackId="1" stroke={COLOR_CODES.CATEGORIES.CONFIRMED} fill={COLOR_CODES.CATEGORIES.CONFIRMED} activeDot={{ r: 8 }}/>
                             </AreaChart>
                         </ResponsiveContainer>
                     </div>

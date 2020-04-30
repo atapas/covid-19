@@ -139,7 +139,7 @@ body {
     padding: 30px;
     max-width: 230px;
     width: 200px;
-    height: 160px;
+    height: 200px;
 }
 
 .country .stat .badge .label {
@@ -151,7 +151,12 @@ body {
 
 .country .stat .badge .extra {
     font-size: 13px;
-    padding: 5px;
+    padding: 10px;
+}
+
+.country .stat .badge .perct {
+    font-size: 20px;
+    padding: 8px;
 }
 
 .country .trends {

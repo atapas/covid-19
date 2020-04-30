@@ -7,89 +7,115 @@
 import React from 'react';
 import Card from 'react-bootstrap/Card';
 import {
-    ResponsiveContainer, BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend,
+    ResponsiveContainer,
+    ComposedChart,
+    BarChart,
+    Bar,
+    Line,
+    Area,
+    Cell,
+    XAxis, 
+    YAxis, 
+    CartesianGrid,
+    Tooltip,
+    Legend,
+    Label,
+    LabelList
 } from 'recharts';
 
 import INDIA_STATE_CODES from '../utils/india_state_codes';
 
 const StateIndiaMostRecovered = props => {
     const data = props.data;
-    const TOP_N = 5;
-    const SUCCESS_COLOR_SHADES = [
-        "rgba(40, 167, 69, 1.0)",
-        "rgba(40, 167, 69, 0.9)",
-        "rgba(40, 167, 69, 0.8)",
-        "rgba(40, 167, 69, 0.7)",
-        "rgba(40, 167, 69, 0.6)",
-        "rgba(40, 167, 69, 0.5)",
-        "rgba(40, 167, 69, 0.4)",
-        "rgba(40, 167, 69, 0.5)",
-        "rgba(40, 167, 69, 0.2)",
-        "rgba(40, 167, 69, 0.1)"
-    ];
-
-    let cloned = JSON.parse(JSON.stringify(data));
-    let topNData = cloned.splice(0, TOP_N);
+    // const TOP_N = data.length;
     
+
+    // let cloned = JSON.parse(JSON.stringify(data));
+    let topNData = data.filter((elem) => {
+        return elem.confirmed > 0;
+    });
+
     let refinedData = [];
     topNData.forEach(element => {
         let obj = {};
         obj['State'] = element['state'];
         obj['% Recovered'] = element['perctRecoverd'];
+        obj['% Deaths'] = element['perctDeaths'];
+        obj['active'] = element['active'];
+        obj['% Active'] = element['perctActive'];
         obj['confirmed'] = element['confirmed'];
         obj['recovered'] = element['recovered'];
+        obj['deaths'] = element['deaths'];
         obj['State Code'] = INDIA_STATE_CODES[element['state']];
         refinedData.push(obj);
     });
 
     console.group('StateIndiaMostRecovered');
-    console.groupCollapsed();
     console.log('refinedData', refinedData);
     console.groupEnd();
 
     const CustomTooltip = ({ active, payload, label }) => {
         if (active) {
-          return (
-            <div className="custom-tooltip">
-                <p className="label">{`${payload[0].payload.State} : ${payload[0].value}`}% Recovered</p>
-                <p className="intro">
-                    {`Recovered Cases: ${payload[0].payload.recovered}`}<br />
-                    {`Total Cases: ${payload[0].payload.confirmed}`}
-                </p>
-            </div>
-          );
+            return (
+                <div className="custom-tooltip">
+                    <p className="label">
+                        <span>{payload[0].payload.State}({`Cases: ${payload[0].payload.confirmed}`})</span>
+                    </p>
+                    <p className="intro">
+                        <span style={{color: '#FFC107'}}>
+                            {`Acive Cases: ${payload[0].payload.active}(${payload[0].payload['% Active']}%)`}
+                        </span> <br />
+                        <span style={{color: '#28A745'}}>
+                            {`Recovered Cases: ${payload[0].payload.recovered}(${payload[0].payload['% Recovered']}%)`}
+                        </span> <br />
+                        <span style={{color: '#DC3545'}}>
+                            {`Death Cases: ${payload[0].payload.deaths}(${payload[0].payload['% Deaths']}%)`}
+                        </span>
+                    </p>
+                </div>
+            );
         }
-      
+
         return null;
+    };
+
+    const renderCustomizedLabel = (props) => {
+        const { x, y, width, height, value } = props;
+        const radius = 18;
+
+        return (
+            <g>
+                <circle cx={x + width / 2} cy={y - radius} r={radius} fill="#FFF" />
+                <text x={x + width / 2} y={y - radius} fill="#000" textAnchor="middle" dominantBaseline="middle">
+                    {value}%
+                </text>
+            </g>
+        );
     };
 
     return (
         <Card>
             <Card.Body>
-                <Card.Title>State: Most Recovered</Card.Title>
+                <Card.Title>State: Recovery Progress</Card.Title>
                 <Card.Subtitle className="mb-2 text-muted">
-                    State with the higher number of Recovery percentage
+                    State with the Active, Recovery and Death percentages
                 </Card.Subtitle>
                 <ResponsiveContainer width='100%' height={330}>
-                    <BarChart
-                        data={refinedData}
+                    <ComposedChart  data={refinedData}
                         margin={{
                             top: 30, right: 0, left: 0, bottom: 5,
-                        }}
-                    >
-                    <CartesianGrid strokeDasharray="3 3" />
-                    <XAxis dataKey="State Code" />
-                    <YAxis />
-                    <Tooltip content={<CustomTooltip />}/>
-                    <Legend />
-                    <Bar dataKey="% Recovered" fill="rgba(40, 167, 69, 1.0)" label={{ position: 'top' }}>
-                        {
-                            refinedData.map((entry, index) => (
-                                <Cell key={`cell-${index}`} fill={SUCCESS_COLOR_SHADES[index % 20]} />
-                            ))
-                        }
-                    </Bar>
-                    </BarChart>
+                        }}>
+                        <XAxis dataKey="State Code" />
+                        <YAxis/>
+                        <Tooltip content={<CustomTooltip />} />
+                        <Legend/>
+                        <CartesianGrid strokeDasharray="3 3" />
+                        <Bar dataKey="% Recovered" fill="rgba(40, 167, 69, 1.0)">
+                            <LabelList dataKey="% Recovered" position="top" content={renderCustomizedLabel} />
+                        </Bar>
+                        <Area type='monotone' dataKey='% Active' fill='#FFC107' stroke='#FFC107'/>
+                        <Line type='monotone' dataKey='% Deaths' stroke='#DC3545'/>
+                    </ComposedChart>
                 </ResponsiveContainer>
             </Card.Body>
         </Card>
