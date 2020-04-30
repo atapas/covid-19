@@ -18,7 +18,6 @@ const HomePageSelector = (props) => {
     const [countryName, setCountryName] = useState();
     const [filteredCountries, setFilteredCountries] = useState([]);
 
-
     const Checkbox = ({ type = 'radio', name, checked = false, onChange, className = 'regular-checkbox' }) => {
         return (<input type={type} name={name} checked={checked} onChange={onChange} className={className} />)
     };
@@ -58,7 +57,7 @@ const HomePageSelector = (props) => {
 
     const handleCancel = () => {
         setShow(false);
-        setSelectedCountry({});
+        setSelectedCountry(localStorage.getItem('countryName') ? { [country] : true} : {});
         setFilteredCountries(allCountries);
     }
 
