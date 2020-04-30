@@ -24,9 +24,7 @@ import HomePageSelector from './HomePageSelctor';
 import Loader from 'react-loader-spinner';
 
 const Country = props => {
-    // console.log(props);
     const [indiaData, indiaDataLoading] = useFetch('https://api.covid19india.org/data.json');
-    const [show, setShow] = useState(false);
     let countryName;
     if (props.location) {
         countryName = new URLSearchParams(props.location.search).get('name');
@@ -58,10 +56,6 @@ const Country = props => {
         inidiaTotalData = stateWise[0];
         stateData = stateWise.filter((elem, i) => i > 0);
         console.log('Country: stateData', stateData);
-    }
-
-    const handleShow = () => {
-        setShow(true); 
     }
 
     const getTotalValue = type => {
@@ -206,12 +200,7 @@ const Country = props => {
                                     className="flag" /> : null
                         }
                         {countryName}
-                        <Button style={{ 'marginLeft': '10px' }} variant="success" onClick={handleShow} className="country-select">
-                            <i
-                                title="Select home country"
-                                className="fas fa-edit fa-1x icon" />
-                        {show && <HomePageSelector history={props.history} show={true} />}
-                        </Button>
+                         <HomePageSelector history={props.history} />
                     </h1>
 
                 </Col>

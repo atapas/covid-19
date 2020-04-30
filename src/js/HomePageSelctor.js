@@ -11,12 +11,13 @@ import FetchTimeSeries from './time-series/FetchTimeSeries';
 const HomePageSelector = (props) => {
 
     const country = localStorage.getItem('countryName');
-    const [show, setShow] = useState(props.show);
+    const [show, setShow] = useState(false);
     const [allCountries, setAllCountries] = useState([]);
     const covid19Data = useSelector(state => state.covid19);
     const [selectedCountry, setSelectedCountry] = useState({ [country] : true});
     const [countryName, setCountryName] = useState();
     const [filteredCountries, setFilteredCountries] = useState([]);
+
 
     const Checkbox = ({ type = 'radio', name, checked = false, onChange, className = 'regular-checkbox' }) => {
         return (<input type={type} name={name} checked={checked} onChange={onChange} className={className} />)
@@ -38,6 +39,8 @@ const HomePageSelector = (props) => {
     }, []);
 
 
+    const handleShow = () => setShow(true);
+
     const handleChange = (event) => {
         let updated = { [event.target.name]: event.target.checked };
         setSelectedCountry(JSON.parse(JSON.stringify(updated)));
@@ -58,7 +61,7 @@ const HomePageSelector = (props) => {
         setSelectedCountry({});
         setFilteredCountries(allCountries);
         if (props.history) {
-            props.history.push(`/`);
+            props.history.push(`/home`);
         }
     }
 
@@ -67,11 +70,16 @@ const HomePageSelector = (props) => {
         setShow(false);
         setFilteredCountries(allCountries);
         if (props.history) {
-            props.history.push(`/`);
+            props.history.push(`/home`);
         }
     };
 
     return (<>
+    <Button style={{ 'marginLeft': '10px' }} variant="success" onClick={handleShow} className="country-select">
+                            <i
+                                title="Select home country"
+                                className="fas fa-edit fa-1x icon" />
+                        </Button>
         <Modal show={show} onHide={handleCancel} animation={true} className="select-country-modal">
             <Modal.Header closeButton>
                 <Modal.Title className="header">

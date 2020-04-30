@@ -10,7 +10,6 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Country from './Country';
-import HomePageSelector from './HomePageSelctor';
 
 
 const Home = props => {
@@ -18,7 +17,6 @@ const Home = props => {
     const countryName = localStorage.getItem('countryName');
      return(
         <>
-        {!countryName && <HomePageSelector  history={props.history} show={true} /> }
         <Container className="Home" fluid>
             <Row className="countryHeadline">
                 <Col sm={12}>
