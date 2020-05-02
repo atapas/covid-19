@@ -8,14 +8,14 @@ import FetchTimeSeries from './time-series/FetchTimeSeries';
 
 
 
-const HomePageSelector = (props) => {
+const HomePageSelector = ({ preSelected , update}) => {
 
-    const country = localStorage.getItem('countryName');
+    const country = preSelected;
     const [show, setShow] = useState(false);
     const [allCountries, setAllCountries] = useState([]);
     const covid19Data = useSelector(state => state.covid19);
     const [selectedCountry, setSelectedCountry] = useState({ [country] : true});
-    const [countryName, setCountryName] = useState();
+    const [countryName, setCountryName] = useState(country);
     const [filteredCountries, setFilteredCountries] = useState([]);
 
     const Checkbox = ({ type = 'radio', name, checked = false, onChange, className = 'regular-checkbox' }) => {
@@ -62,12 +62,9 @@ const HomePageSelector = (props) => {
     }
 
     const updateLocalStore = () => {
-        localStorage.setItem('countryName', countryName);
+        update(countryName);
         setShow(false);
         setFilteredCountries(allCountries);
-        if (props.history) {
-            props.history.push(`/home`);
-        }
     };
 
     return (<>

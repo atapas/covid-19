@@ -20,17 +20,18 @@ import TimeSeries from './time-series/TimeSeries';
 import IndiaState from './IndiaState';
 import IndiaStateCharts from './IndiaStateCharts';
 import HomePageSelector from './HomePageSelctor';
-
+import {reactLocalStorage} from 'reactjs-localstorage';
 import Loader from 'react-loader-spinner';
 
 const Country = props => {
+    const queriedCountry = props.location ? 
+                            new URLSearchParams(props.location.search).get('name') : 
+                            props.countryName;
     const [indiaData, indiaDataLoading] = useFetch('https://api.covid19india.org/data.json');
-    let countryName;
-    if (props.location) {
-        countryName = new URLSearchParams(props.location.search).get('name');
-    } else {
-        countryName = props.countryName;
-    }
+    const [countryName, setCountryName] = useState(
+        queriedCountry
+    );
+    
     const countryCoronaData = useSelector(state => state.covid19);
     const getCountryCode = country => {
         let selectedCountry = COUNTRY_CODES.filter(elem => {
@@ -183,6 +184,11 @@ const Country = props => {
             }
         }
     }
+
+    const updateCountry = country => {
+        setCountryName(country);
+        reactLocalStorage.setObject('country_selection', country);
+    }
    
     return(
        <Container className="country" fluid >
@@ -197,7 +203,9 @@ const Country = props => {
                                     className="flag" /> : null
                         }
                         {countryName}
-                         <HomePageSelector history={props.history} />
+                         <HomePageSelector 
+                            preSelected={countryName}
+                            update={updateCountry}/>
                     </h1>
 
                 </Col>
