@@ -18,14 +18,12 @@ import CurrencyFormat from 'react-currency-format';
 const WorldData = props => {
     const loading = props.loading;
     const data = props.data;
-    // console.log('from OverAllWidget', loading, data);
 
     let refinedData = [];
     if (!loading) {
         // data['infected'] = (data.cases - (data.deaths + data.recovered));
         let keys = Object.keys(data);
         keys.forEach((elem) => {
-            // console.log(elem);
             /*if (elem === 'cases' 
                 || elem === 'updated' 
                 || elem === 'affectedCountries'
@@ -41,7 +39,6 @@ const WorldData = props => {
                 refinedData.push(obj);
             }
         });
-        console.log('overall widget refinedData', refinedData);
     }
     const COLORS = ['#DC3545', '#28A745', '#FFC107'];
     return (

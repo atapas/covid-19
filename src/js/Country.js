@@ -11,6 +11,7 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Badge from 'react-bootstrap/Badge'
+import Button from 'react-bootstrap/Button';
 import CurrencyFormat from 'react-currency-format';
 
 import { useFetch } from './useFetch';
@@ -18,24 +19,24 @@ import COUNTRY_CODES from './utils/country_code';
 import TimeSeries from './time-series/TimeSeries';
 import IndiaState from './IndiaState';
 import IndiaStateCharts from './IndiaStateCharts';
-
+import HomePageSelector from './HomePageSelctor';
+import {reactLocalStorage} from 'reactjs-localstorage';
 import Loader from 'react-loader-spinner';
 
 const Country = props => {
-    // console.log(props);
+    const queriedCountry = props.location ? 
+                            new URLSearchParams(props.location.search).get('name') : 
+                            props.countryName;
     const [indiaData, indiaDataLoading] = useFetch('https://api.covid19india.org/data.json');
-    let countryName;
-    if (props.location) {
-        countryName = new URLSearchParams(props.location.search).get('name');
-    } else {
-        countryName = props.countryName;
-    }
+    const [countryName, setCountryName] = useState(
+        queriedCountry
+    );
+    
     const countryCoronaData = useSelector(state => state.covid19);
     const getCountryCode = country => {
-        let selectedCountry = COUNTRY_CODES.filter( elem => {
+        let selectedCountry = COUNTRY_CODES.filter(elem => {
             return elem.name === country;
         });
-        // console.log('selectedCountry', selectedCountry);
         let countryCode = '';
         if (selectedCountry.length > 0) {
             countryCode = selectedCountry[0]['alpha2code'];
@@ -46,7 +47,6 @@ const Country = props => {
     let covid = countryCoronaData.filter(elem => {
         return elem.country.toLowerCase() === countryName.toLowerCase();
     });
-    console.log('Country: covid data', covid);
 
     let stateData = [];
     let inidiaTotalData = {}
@@ -54,7 +54,6 @@ const Country = props => {
         let stateWise = indiaData['statewise'];
         inidiaTotalData = stateWise[0];
         stateData = stateWise.filter((elem, i) => i > 0);
-        console.log('Country: stateData', stateData);
     }
 
     const getTotalValue = type => {
@@ -185,6 +184,11 @@ const Country = props => {
             }
         }
     }
+
+    const updateCountry = country => {
+        setCountryName(country);
+        reactLocalStorage.setObject('country_selection', country);
+    }
    
     return(
        <Container className="country" fluid >
@@ -193,31 +197,35 @@ const Country = props => {
                     <h1>
                         {
                             getCountryCode(countryName) !== '' ?
-                                <img 
-                                    src={`https://www.countryflags.io/${getCountryCode(countryName)}/flat/64.png`} 
-                                    alt={countryName} 
-                                    className="flag"/> : null
+                                <img
+                                    src={`https://www.countryflags.io/${getCountryCode(countryName)}/flat/64.png`}
+                                    alt={countryName}
+                                    className="flag" /> : null
                         }
-                        { countryName }
+                        {countryName}
+                         <HomePageSelector 
+                            preSelected={countryName}
+                            update={updateCountry}/>
                     </h1>
+
                 </Col>
             </Row>
             {
-            covid.length > 0 ? 
-                <Row className="stat">
-                    <Col sm={3}>
+                covid.length > 0 ?
+                    <Row className="stat">
+                        <Col sm={3}>
                             <Badge variant="info" className="total">
                                 <h3 className="label">Total</h3>
-                                <CurrencyFormat 
-                                    value={getTotalValue('confirmed')} 
-                                    displayType={'text'} 
-                                    thousandSeparator={true} 
+                                <CurrencyFormat
+                                    value={getTotalValue('confirmed')}
+                                    displayType={'text'}
+                                    thousandSeparator={true}
                                     renderText={value => <div className="value">{value}</div>} />
                                 <div className="extra">{getIncreasdValue('confirmed')}</div>
-                                
+
                             </Badge>
-                    </Col>
-                    <Col sm={3}>
+                        </Col>
+                        <Col sm={3}>
                             <Badge variant="warning" className="active">
                                 <h3 className="label">Active</h3>
                                 <div className="perct">{getPercentage('active')}</div>
@@ -264,43 +272,43 @@ const Country = props => {
                     </Col>
                 </Row> : null
             }
-                
-               
+
+
             {
-                indiaDataLoading ? 
+                indiaDataLoading ?
                     <Loader
                         type="ThreeDots"
                         color="#00BFFF"
                         height={100}
                         width={100}
                     /> :
-                (countryName === 'India' ) ?
-                 <>
-                    <Row className="trends">
-                        <Col>
-                            <TimeSeries country={countryName} indiaData={indiaData}/>
-                        </Col>
-                    </Row>
-                    <Row>
-                        <Col>
-                            <IndiaStateCharts data={stateData} />
-                            
-                        </Col>
-                    </Row> 
-                    <Row>
-                        <Col>
-                            <IndiaState data={stateData}/>
-                        </Col>
-                    </Row> 
-                </> : 
-                <Row className="trends">
-                    <Col>
-                        <TimeSeries country={countryName} />
-                    </Col>
-                </Row>
-               
+                    (countryName === 'India') ?
+                        <>
+                            <Row className="trends">
+                                <Col>
+                                    <TimeSeries country={countryName} indiaData={indiaData} />
+                                </Col>
+                            </Row>
+                            <Row>
+                                <Col>
+                                    <IndiaStateCharts data={stateData} />
+
+                                </Col>
+                            </Row>
+                            <Row>
+                                <Col>
+                                    <IndiaState data={stateData} />
+                                </Col>
+                            </Row>
+                        </> :
+                        <Row className="trends">
+                            <Col>
+                                <TimeSeries country={countryName} />
+                            </Col>
+                        </Row>
+
             }
-                
+
         </Container>
     )
 };

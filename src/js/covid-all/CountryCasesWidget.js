@@ -17,13 +17,10 @@ const CountryCasesWidget = props => {
     const TOP_N = 15;
 
     let refinedData = [];
-    
-    // console.log('from TopNRecoveredWidget', data);
     let sortedData = data.sort((a, b) => b.cases - a.cases);
-    // console.log('sortedData', sortedData);
     let cloned = JSON.parse(JSON.stringify(sortedData));
     let topNData = cloned.splice(0, TOP_N);
-    // console.log('topNData', topNData);
+
     topNData.forEach(element => {
         let obj = {};
         obj['Country'] = element['country'];
@@ -32,7 +29,6 @@ const CountryCasesWidget = props => {
         obj['Deaths'] = element['deaths'];
         refinedData.push(obj);
     });
-    console.log('CountryCasesWidget refinedData', refinedData);
     
 
     return(

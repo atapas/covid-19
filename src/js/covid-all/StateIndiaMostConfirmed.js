@@ -70,14 +70,6 @@ const StateIndiaMostConfirmed = props => {
         return null;
     };
 
-    console.group('StateIndiaMostConfirmed');
-    console.groupCollapsed();
-    console.log('filteredData', filteredData);
-    console.log('refinedData', refinedData);
-    console.log('domain', domain);
-    console.log('range', range);
-    console.groupEnd();
-
     return (
         <Card>
             <Card.Body>

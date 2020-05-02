@@ -23,7 +23,6 @@ const IndiaState = props => {
     const sortedStateData = stateData.sort((a,b) => b.deltaconfirmed - a.deltaconfirmed);
 
     const handleEpandRow = (event, state) => {
-        console.log('Expanding state', state);
         const currentExpandedRows = expandedRows;
         const isRowCurrentlyExpanded = currentExpandedRows.includes(state);
 
@@ -53,7 +52,6 @@ const IndiaState = props => {
         if (!loadingDistrictData) {
             if (districtData[state]) {
                 let data = districtData[state]['districtData'];
-                console.log('districtData', data);
                 let districts = Object.keys(data).sort((a, b) => data[b].confirmed - data[a].confirmed)
 
                 districts.forEach(name => {
@@ -64,7 +62,6 @@ const IndiaState = props => {
             }
         }
         toRender = toRender + '</ul>';
-        console.log('toRender', toRender);
         return toRender;
     }
 

@@ -17,12 +17,9 @@ const FetchTimeSeries = props => {
     let selectedCountry = [];
     let image = '';
     
-    // console.log('COUNTRY_CODES', COUNTRY_CODES);
-    
     selectedCountry = COUNTRY_CODES.filter( elem => {
         return elem.name === country;
     });
-    // console.log('selectedCountry', selectedCountry);
     if (selectedCountry.length > 0) {
         let countryCode = selectedCountry[0]['alpha2code'];
         image =  <img src={`https://www.countryflags.io/${countryCode}/flat/${size}.png`} alt={country} />

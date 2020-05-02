@@ -27,14 +27,6 @@ const IndiaStateCharts = props => {
     });
     const sortedMostRecoveredPerct = stateDataWithPerctRecovered.sort((a,b) => b.active - a.active);
 
-    console.group('IndiaStateCharts');
-    console.groupCollapsed();
-    console.log('stateData', stateData);
-    console.log('sortedMostConfirmed', sortedMostConfirmed);
-    console.log('sortedMostDeath', sortedMostDeath);
-    console.log('sortedMostRecoveredPerct', sortedMostRecoveredPerct);
-    console.groupEnd();
-
     return(
         <Container className="india-state-charts" fluid>
             <Row style={{marginBottom: '20px'}}>

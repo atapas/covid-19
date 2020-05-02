@@ -32,14 +32,12 @@ const Countries = props => {
         })
         setCountries(mappedCountries);
         setFilteredCountries(mappedCountries);
-        console.log('countries', countries);
     }, [sortBy]);
     
     
 
     const handleFind = event => {
         event.preventDefault();
-        console.log(event.target.value);
         let filtered = countries.filter(elem => {
             return elem.toLowerCase().includes(event.target.value.toLowerCase());
             
@@ -49,7 +47,6 @@ const Countries = props => {
 
     const handleSelect = event => {
         let selectedSortVal = event.target.value;
-        console.log(selectedSortVal);
         if ( selectedSortVal == 'Total Cases') {
             setSortBy('cases');
         }else if ( selectedSortVal == 'Recovery') {

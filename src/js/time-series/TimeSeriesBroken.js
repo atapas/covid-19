@@ -22,7 +22,6 @@ const TimeSeriesBroken = props => {
         'recovered': false,
         'deaths': false
     });
-    console.log('TimeSeriesBroken data', data);
 
     const handleTypeClick = (type, color) => {
         setType(type);

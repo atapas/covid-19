@@ -12,7 +12,6 @@ import Card from 'react-bootstrap/Card';
 
 const TopNRecoveredWidget = props => {
     const data = props.data;
-    // console.log('from TopNRecoveredWidget', loading, data);
     const TOP_N = 5;
     const MIN_CASES = 100;
     const SUCCESS_COLOR_SHADES = [
@@ -29,8 +28,7 @@ const TopNRecoveredWidget = props => {
     ];
 
     let refinedData = [];
-   
-    // console.log('from TopNRecoveredWidget', data);
+
     let coutriesWithMinCases = data.filter(elem => {
         return elem.cases >= MIN_CASES && elem.country !== 'Diamond Princess';
     });
@@ -39,10 +37,8 @@ const TopNRecoveredWidget = props => {
         return elem;
     });
     let sortedData = mappedData.sort((a, b) => b.recovPerc - a.recovPerc);
-    // console.log('sortedData', sortedData);
     let cloned = JSON.parse(JSON.stringify(sortedData));
     let topNData = cloned.splice(0, TOP_N);
-    // console.log('topNData', topNData);
     topNData.forEach(element => {
         let obj = {};
         obj['country'] = element['country'];
@@ -51,8 +47,6 @@ const TopNRecoveredWidget = props => {
         obj['recovered'] = element['recovered'];
         refinedData.push(obj);
     });
-    console.log('TopNRecoveredWidget refinedData', refinedData);
-    
 
     const CustomTooltip = ({ active, payload, label }) => {
         if (active) {

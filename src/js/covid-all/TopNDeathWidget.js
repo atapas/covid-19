@@ -29,20 +29,16 @@ const TopNDeathWidget = props => {
 
     let refinedData = [];
     
-    // console.log('from TopNRecoveredWidget', data);
     let sortedData = data.sort((a, b) => b.deaths - a.deaths);
-    // console.log('sortedData', sortedData);
     let cloned = JSON.parse(JSON.stringify(sortedData));
     let topNData = cloned.splice(0, TOP_N);
-    // console.log('topNData', topNData);
+
     topNData.forEach(element => {
         let obj = {};
         obj['country'] = element['country'];
         obj['deaths'] = element['deaths'];
         refinedData.push(obj);
     });
-    // console.log('refinedData', refinedData);
-    
 
     const getPath = (x, y, width, height) => {
         return `M${x},${y + height}
