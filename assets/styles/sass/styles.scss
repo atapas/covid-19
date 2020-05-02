@@ -130,16 +130,15 @@ body {
 }
 
 .country .stat {
-    margin-right: 5px;
     padding: 10px;
-    margin-left: 19px;
 }
 
 .country .stat .badge {
-    padding: 30px;
+    padding: 20px;
     max-width: 230px;
-    width: 200px;
+    min-width: 200px;
     height: 200px;
+    margin-left: 5%;
 }
 
 .country .stat .badge .label {
