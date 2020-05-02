@@ -57,7 +57,7 @@ const HomePageSelector = ({ preSelected , update}) => {
 
     const handleCancel = () => {
         setShow(false);
-        setSelectedCountry(localStorage.getItem('countryName') ? { [country] : true} : {});
+        setSelectedCountry(country ? { [country] : true} : {});
         setFilteredCountries(allCountries);
     }
 
