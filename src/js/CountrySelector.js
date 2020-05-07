@@ -69,6 +69,11 @@ const CountrySelector = ({ preSelected , update}) => {
         setFilteredCountries(filtered);
     }
 
+    const clearSelections = () => {
+        console.log('Clear Slections');
+        setCheckedItems([]);
+    }
+
     
     return (
         <>
@@ -86,13 +91,19 @@ const CountrySelector = ({ preSelected , update}) => {
                 </Modal.Header>
 
                 <Modal.Body>
-                    <ul className="content">
+                    <Button 
+                        variant="link" 
+                        onClick={clearSelections} 
+                        style={{float: 'right'}}> 
+                        Clear All Selections 
+                    </Button>
                     <FormControl 
                             type="text" 
                             placeholder="Filter by Country Name" 
                             className="mr-sm-2"
                             onChange={event => handleFind(event)} 
                             className="filterbox"/>
+                    <ul className="content">
                         {
                             filteredCountries.map(item => (
                                 <li key={item.name}>
