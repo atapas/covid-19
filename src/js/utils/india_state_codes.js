@@ -41,7 +41,8 @@ const INDIA_STATE_CODES = {
     "Sikkim": "SK",
     "Dadra and Nagar Haveli": "DN",
     "Daman and Diu": "DD",
-    "Lakshadweep": "LD"
+    "Lakshadweep": "LD",
+    "Dadra and Nagar Haveli and Daman and Diu": "DN"
 };
 
 export default INDIA_STATE_CODES;
