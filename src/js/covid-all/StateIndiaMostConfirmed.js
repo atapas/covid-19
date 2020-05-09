@@ -13,7 +13,7 @@ import {
 import INDIA_STATE_CODES from '../utils/india_state_codes';
 
 const StateIndiaMostConfirmed = props => {
-    const MIN_CASES_TO_SHOW = 50;
+    const MIN_CASES_TO_SHOW = 200;
     const data = props.data;
 
     let filteredData = data.filter(elem => {
@@ -35,8 +35,6 @@ const StateIndiaMostConfirmed = props => {
         refinedData.push(obj);
     });
 
-   
-
     const parseDomain = () => {
         return [
           0,
@@ -46,8 +44,13 @@ const StateIndiaMostConfirmed = props => {
         ];
     };
       
-    const domain = parseDomain();
+    let domain = parseDomain();
     const range = [1, domain[1]];
+    domain[1] = domain[1] * 2;
+    
+    console.log(domain);
+    console.log(range);
+    
 
     const CustomTooltip = ({ active, payload, label }) => {
         if (active) {
@@ -85,7 +88,7 @@ const StateIndiaMostConfirmed = props => {
                     <XAxis dataKey={'State Code'} name='State' />
                     <YAxis dataKey={'Active'} type="number"  domain={domain} range={range} name='Active' />
                     <ZAxis type="number" dataKey={'Active'} domain={domain} range={range} />
-                    <Scatter name='COVID-19 India' data={refinedData} fill='#B96666' activeDot={{ r: 8 }}/>
+                    <Scatter name='COVID-19 India' data={refinedData} fill='#B96666' />
                     <Tooltip 
                         cursor={{strokeDasharray: '3 3'}} 
                         wrapperStyle={{ zIndex: 100 }} 
