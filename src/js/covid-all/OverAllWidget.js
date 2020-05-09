@@ -21,17 +21,8 @@ const WorldData = props => {
 
     let refinedData = [];
     if (!loading) {
-        // data['infected'] = (data.cases - (data.deaths + data.recovered));
         let keys = Object.keys(data);
         keys.forEach((elem) => {
-            /*if (elem === 'cases' 
-                || elem === 'updated' 
-                || elem === 'affectedCountries'
-                || elem === 'todayCases'
-                || elem === 'critical'
-                || elem === 'todayDeaths') {
-                return;
-            }*/
             if (elem === 'deaths' || elem === 'recovered' || elem === 'active') {
                 let obj = {};
                 obj['name'] = elem;
