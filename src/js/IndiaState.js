@@ -47,6 +47,14 @@ const IndiaState = props => {
         setExpandedRows(newExpandedRows);
     }
 
+    const printNotes = notes => {
+        if (notes && notes.length > 0) {
+            return `<div class='notes'><i class="fas fa-info icon"></i>${notes}</div>`;
+        }
+
+        return "";
+    }
+
     const getDistrictData = state => {
         let toRender = '<ul>';
         if (!loadingDistrictData) {
@@ -55,7 +63,12 @@ const IndiaState = props => {
                 let districts = Object.keys(data).sort((a, b) => data[b].confirmed - data[a].confirmed)
 
                 districts.forEach(name => {
-                    toRender = toRender + `<li key=${name}>📣 <span>${name}: ${data[name]['confirmed']}</span></li>`;
+                    toRender = toRender 
+                                +
+                                `<li key=${name}>📣 
+                                    <span>${name}: ${data[name]['confirmed']}</span>
+                                    ${printNotes(data[name]['notes'])}
+                                </li>`;
                 });
             } else {
                 toRender = toRender + '<h5>No data available</h5>';

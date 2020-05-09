@@ -224,6 +224,16 @@ body {
     list-style: none;
 }
 
+.expandedRow .district UL LI .notes {
+    margin-left: 20px;
+    padding: 5px;
+    color: #DC3545;
+}
+
+.expandedRow .district UL LI .notes .icon {
+    margin-right: 5px;
+}
+
 .select-country-modal .header .icon{
     margin-right: 5px;
 }
