@@ -63,10 +63,25 @@ const IndiaState = props => {
                 let districts = Object.keys(data).sort((a, b) => data[b].confirmed - data[a].confirmed)
 
                 districts.forEach(name => {
+                    let delta = data[name]['delta'];
                     toRender = toRender 
                                 +
                                 `<li key=${name}>📣 
-                                    <span>${name}: ${data[name]['confirmed']}</span>
+                                    <span> ${name}: ${data[name]['confirmed']}</span>
+                                    <span style="margin-left:20px; font-size:12px;"> 
+                                        <span>
+                                            Active: ${data[name]['active']} [<img src=${red_up_arrow} height="20px" width="20px" />
+                                            ${delta['confirmed']}]
+                                        </span>
+                                        <span style="margin-left:10px;">
+                                            Recovered: ${data[name]['recovered']} [<img src=${green_up_arrow} height="20px" width="20px" />
+                                            ${delta['recovered']}]
+                                        </span>
+                                        <span style="margin-left:10px;">
+                                            Deaths: ${data[name]['deceased']} [<img src=${red_up_arrow} height="20px" width="20px" />
+                                            ${delta['deceased']}]
+                                        </span>
+                                    </span>
                                     ${printNotes(data[name]['notes'])}
                                 </li>`;
                 });
