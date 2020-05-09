@@ -73,16 +73,19 @@ const IndiaState = props => {
                                     <span> ${name}: ${data[name]['confirmed']}</span>
                                     <span style="margin-left:20px; font-size:12px;"> 
                                         <span>
-                                            Active: ${data[name]['active']} [<img src=${red_up_arrow} height="20px" width="20px" />
-                                            ${delta['confirmed']}]
+                                            Active: ${data[name]['active']} 
+                                            ${ delta['confirmed'] > 0 
+                                                ? `[<img src=${red_up_arrow} height="15px" width="15px" /> ${delta['confirmed']}]` : '' }
                                         </span>
                                         <span style="margin-left:10px;">
-                                            Recovered: ${data[name]['recovered']} [<img src=${green_up_arrow} height="20px" width="20px" />
-                                            ${delta['recovered']}]
+                                            Recovered: ${data[name]['recovered']} 
+                                            ${ delta['recovered'] > 0 
+                                                ? `[<img src=${green_up_arrow} height="15px" width="15px" /> ${delta['recovered']}]` : '' }
                                         </span>
                                         <span style="margin-left:10px;">
-                                            Deaths: ${data[name]['deceased']} [<img src=${red_up_arrow} height="20px" width="20px" />
-                                            ${delta['deceased']}]
+                                            Deaths: ${data[name]['deceased']}
+                                            ${ delta['deceased'] > 0 
+                                                ? `[<img src=${red_up_arrow} height="15px" width="15px" /> ${delta['deceased']}]` : '' }
                                         </span>
                                     </span>
                                     ${printNotes(data[name]['notes'])}
