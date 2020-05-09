@@ -56,17 +56,20 @@ const IndiaState = props => {
     }
 
     const getDistrictData = state => {
-        let toRender = '<ul>';
+        let toRender = `<ul style=padding:0;>`;
         if (!loadingDistrictData) {
             if (districtData[state]) {
                 let data = districtData[state]['districtData'];
                 let districts = Object.keys(data).sort((a, b) => data[b].confirmed - data[a].confirmed)
 
-                districts.forEach(name => {
+                districts.forEach((name, index) => {
                     let delta = data[name]['delta'];
                     toRender = toRender 
                                 +
-                                `<li key=${name}>📣 
+                                `<li 
+                                    key=${name} 
+                                    style=${(index % 2) === 0 ? `background-color:#ececec;` : `background-color:#ffffff;`}>📣 
+                                    
                                     <span> ${name}: ${data[name]['confirmed']}</span>
                                     <span style="margin-left:20px; font-size:12px;"> 
                                         <span>
