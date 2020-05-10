@@ -60,7 +60,7 @@ const IndiaState = props => {
         if (!loadingDistrictData) {
             if (districtData[state]) {
                 let data = districtData[state]['districtData'];
-                let districts = Object.keys(data).sort((a, b) => data[b].confirmed - data[a].confirmed)
+                let districts = Object.keys(data).sort((a, b) => data[b].delta.confirmed - data[a].delta.confirmed);
 
                 districts.forEach((name, index) => {
                     let delta = data[name]['delta'];
