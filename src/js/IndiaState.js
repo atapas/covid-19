@@ -14,6 +14,8 @@ import { useFetch } from './useFetch';
 import red_up_arrow from '../../assets/images/up_red_arrow.png';
 import green_up_arrow from '../../assets/images/up_green_arrow.png';
 
+import IndiaDistrict from './IndiaDistrict';
+
 const IndiaState = props => {
     const stateData = props.data;
     const [expandedRows, setExpandedRows] = useState([]);
@@ -54,51 +56,6 @@ const IndiaState = props => {
 
         return "";
     }
-
-    const getDistrictData = state => {
-        let toRender = `<ul style=padding:0;>`;
-        if (!loadingDistrictData) {
-            if (districtData[state]) {
-                let data = districtData[state]['districtData'];
-                let districts = Object.keys(data).sort((a, b) => data[b].delta.confirmed - data[a].delta.confirmed);
-
-                districts.forEach((name, index) => {
-                    let delta = data[name]['delta'];
-                    toRender = toRender 
-                                +
-                                `<li 
-                                    key=${name} 
-                                    style=${(index % 2) === 0 ? `background-color:#ececec;` : `background-color:#ffffff;`}>📣 
-                                    
-                                    <span> ${name}: ${data[name]['confirmed']}</span>
-                                    <span style="margin-left:20px; font-size:12px;"> 
-                                        <span>
-                                            Active: ${data[name]['active']} 
-                                            ${ delta['confirmed'] > 0 
-                                                ? `[<img src=${red_up_arrow} height="15px" width="15px" /> ${delta['confirmed']}]` : '' }
-                                        </span>
-                                        <span style="margin-left:10px;">
-                                            Recovered: ${data[name]['recovered']} 
-                                            ${ delta['recovered'] > 0 
-                                                ? `[<img src=${green_up_arrow} height="15px" width="15px" /> ${delta['recovered']}]` : '' }
-                                        </span>
-                                        <span style="margin-left:10px;">
-                                            Deaths: ${data[name]['deceased']}
-                                            ${ delta['deceased'] > 0 
-                                                ? `[<img src=${red_up_arrow} height="15px" width="15px" /> ${delta['deceased']}]` : '' }
-                                        </span>
-                                    </span>
-                                    ${printNotes(data[name]['notes'])}
-                                </li>`;
-                });
-            } else {
-                toRender = toRender + '<h5>No data available</h5>';
-            }
-        }
-        toRender = toRender + '</ul>';
-        return toRender;
-    }
-
 
     return (
         <div className="indiaState">
@@ -183,9 +140,9 @@ const IndiaState = props => {
                                             !loadingDistrictData && expandedRows.includes(data.state) ?
                                                 <tr className="expandedRow" key={"row-expanded-" + data.state}>
                                                     <td colSpan="5">
-                                                        <div 
-                                                            className="district"
-                                                            dangerouslySetInnerHTML={{ __html: getDistrictData(data.state) }}>
+                                                        <div className="district">
+                                                            <IndiaDistrict 
+                                                                districtData = { districtData[data.state]['districtData']} />
                                                         </div>
 
                                                     </td>
