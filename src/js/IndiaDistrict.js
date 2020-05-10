@@ -1,15 +1,37 @@
-import React from 'react';
+import React, { useState } from 'react';
+import Button from 'react-bootstrap/Button';
 
 import red_up_arrow from '../../assets/images/up_red_arrow.png';
 import green_up_arrow from '../../assets/images/up_green_arrow.png';
 
+import IndiaDistrictTrend from './time-series/IndiaDistrictTrend';
+
 const IndiaDistrict = props => {
     const data = props.districtData;
+    const districtTrend = props.districtTrend;
     const districts = Object.keys(data).sort((a, b) => data[b].delta.confirmed - data[a].delta.confirmed);
+    const [showTrend, setShowTrend] = useState(false);
+    const [trendText, setTrendText] = useState('Show Trends');
+
+    const toggleTrends = () => {
+        setShowTrend(!showTrend)
+        if (!showTrend) {
+            setTrendText('Hide Trends');
+        } else {
+            setTrendText('Show Trends');
+        }
+    }
 
     return (
         <>
+            <Button
+                variant="link"
+                onClick={event => toggleTrends()}>
+                <i class="fas fa-chart-line" style={{marginRight: '5px'}}></i>
+                {trendText}
+            </Button>
             <ul style={{ padding: '0px' }}>
+
                 {
                     districts.map((name, index) =>
                         <li
@@ -49,6 +71,10 @@ const IndiaDistrict = props => {
                                     }
                                 </span>
                                 {
+                                    showTrend &&
+                                    <IndiaDistrictTrend districtTrendData={districtTrend[name]} />
+                                }
+                                {
                                     data[name]['notes'] && data[name]['notes'].length > 0
                                         ?
                                         <div class='notes'>
@@ -61,6 +87,12 @@ const IndiaDistrict = props => {
                         </li>
                     )}
             </ul>
+            <Button
+                variant="link"
+                onClick={event => toggleTrends()}>
+                <i class="fas fa-chart-line" style={{marginRight: '5px'}}></i>
+                {trendText}
+            </Button>
         </>
     )
 };

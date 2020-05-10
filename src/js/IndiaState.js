@@ -10,6 +10,7 @@ import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 
 import { useFetch } from './useFetch';
+import { URL_INDIA_DISTRICT_DAILY } from './utils/url';
 
 import red_up_arrow from '../../assets/images/up_red_arrow.png';
 import green_up_arrow from '../../assets/images/up_green_arrow.png';
@@ -20,6 +21,7 @@ const IndiaState = props => {
     const stateData = props.data;
     const [expandedRows, setExpandedRows] = useState([]);
     const [districtData, loadingDistrictData] = useFetch('https://api.covid19india.org/state_district_wise.json');
+    const [districtTrend, loadingDistrictTrend] = useFetch(URL_INDIA_DISTRICT_DAILY);
     const [expandState, setExpandState] = useState({});
 
     const sortedStateData = stateData.sort((a,b) => b.deltaconfirmed - a.deltaconfirmed);
@@ -47,14 +49,6 @@ const IndiaState = props => {
             currentExpandedRows.concat(state);
 
         setExpandedRows(newExpandedRows);
-    }
-
-    const printNotes = notes => {
-        if (notes && notes.length > 0) {
-            return `<div class='notes'><i class="fas fa-info icon"></i>${notes}</div>`;
-        }
-
-        return "";
     }
 
     return (
@@ -137,12 +131,13 @@ const IndiaState = props => {
                                     </tr>
                                     <>
                                         {
-                                            !loadingDistrictData && expandedRows.includes(data.state) ?
+                                            !loadingDistrictTrend && !loadingDistrictData && expandedRows.includes(data.state) ?
                                                 <tr className="expandedRow" key={"row-expanded-" + data.state}>
                                                     <td colSpan="5">
                                                         <div className="district">
                                                             <IndiaDistrict 
-                                                                districtData = { districtData[data.state]['districtData']} />
+                                                                districtData = { districtData[data.state]['districtData']}
+                                                                districtTrend = { districtTrend.districtsDaily[data.state] } />
                                                         </div>
 
                                                     </td>
