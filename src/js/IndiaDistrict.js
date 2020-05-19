@@ -82,17 +82,19 @@ const IndiaDistrict = props => {
                                             : null
                                         }
                                     </span>
-                                    <span>
+                                    <span style={{ float: 'right'}}>
                                         <Button
                                             variant="link"
                                             onClick={event => handleExpandRow(districtTrend[name], name)}>
                                             <i class="fas fa-chart-line" style={{ marginRight: '5px' }}></i>
-                                            {expandDistrict[name] ? <span>{'Hide Trend'}</span> : <span>{'Show Trend'}</span>}
+                                            {expandDistrict[name] ? <span style={{ fontSize: '12px'}}>{'Hide Trend'}</span>
+                                            : <span style={{ fontSize: '12px'}}>{'Show Trend'}</span>}
                                         </Button>
                                     </span>
                                 </span>
                             </tr>
-                            <>{
+                            <>
+                                {
                                 expandedRows.includes(name) ?
                                     <tr className="expandedRow" key={"row-expanded-" + name}>
                                         <td colSpan="5">
