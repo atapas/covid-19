@@ -7,7 +7,9 @@
 import React, { useState } from 'react';
 
 import Modal from 'react-bootstrap/Modal';
-import Button from 'react-bootstrap/Button'
+import Button from 'react-bootstrap/Button';
+
+import i18n from 'i18n-web';
 
 const About = () => {
 
@@ -18,18 +20,18 @@ const About = () => {
     return (
         <div className="about">
           <Button className="link" variant="link" onClick={handleShow}>
-            About
+            {i18n('about.header')}
           </Button>
     
           <Modal show={show} onHide={handleClose}>
             <Modal.Header closeButton>
-              <Modal.Title>About</Modal.Title>
+              <Modal.Title>{i18n('about.header')}</Modal.Title>
             </Modal.Header>
             <Modal.Body>
-                <h2>🙏 Stay Home, Stay Safe! 🙏</h2>
+                <h2>🙏 {i18n('about.stayHomeStaySafe')} 🙏</h2>
                 <br />
                 <p>
-                    Only motivation behind building this app was to kill time at home over a weekend. 😏
+                    {i18n('about.motivation')} 😏
                     <br />
                     My sincere thanks to followings 👍:
                     <ul>
