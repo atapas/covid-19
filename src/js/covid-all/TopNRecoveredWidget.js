@@ -13,7 +13,7 @@ import Card from 'react-bootstrap/Card';
 const TopNRecoveredWidget = props => {
     const data = props.data;
     const TOP_N = 5;
-    const MIN_CASES = 100;
+    const MIN_CASES = 10000;
     const SUCCESS_COLOR_SHADES = [
         "rgba(40, 167, 69, 1.0)",
         "rgba(40, 167, 69, 0.9)",

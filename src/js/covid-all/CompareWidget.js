@@ -29,11 +29,11 @@ const CompareWidget = props => {
     
     let defaultCountries = {
         'India': true, 
-        'Pakistan': true, 
-        'Bangladesh': true, 
-        'Sri Lanka': true,
-        'Malaysia': true,
-        'Vietnam': true
+        'USA': true, 
+        'Brazil': true, 
+        'Italy': true,
+        'France': true,
+        'Germany': true
     };
     let storedCountries = reactLocalStorage.getObject('compare_widget_country_selected');
     if (storedCountries && Object.keys(storedCountries).length > 0) {
@@ -80,7 +80,7 @@ const CompareWidget = props => {
         let arr = [];
         for (let i = firstIndex; i < timeseries.length; i = i + 7) {
             let obj = {};
-            obj['week'] = `Week ${wk}`;
+            obj['week'] = `WK ${wk}`;
             obj[country] = timeseries[i].confirmed;
             obj[`${country}-week-date`] = timeseries[i].date;
             arr.push(obj);
@@ -88,7 +88,7 @@ const CompareWidget = props => {
         }
         if ((((arr.length - 1) * 7) + firstIndex) < timeseries.length - 1) {
             let obj = {};
-            obj['week'] = `Week ${wk}`;
+            obj['week'] = `WK ${wk}`;
             obj[country] = timeseries[timeseries.length - 1].confirmed;
             obj[`${country}-week-date`] = timeseries[timeseries.length - 1].date;
             arr.push(obj);
