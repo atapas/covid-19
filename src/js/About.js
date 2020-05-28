@@ -29,55 +29,61 @@ const About = () => {
                 <h2>🙏 Stay Home, Stay Safe! 🙏</h2>
                 <br />
                 <p>
-                    Only motivation behind building this app was to kill time at home over a weekend. 😏
+                    Initially, the only motivation behind building this app was to kill time at home over a weekend 😏.
+                    As the days passed, I started realizing that, it takes lot to provide some information to clearly understand <i>what 
+                    is going on!</i>
                     <br />
-                    My sincere thanks to followings 👍:
+                    Hence the effort started to put some data analytics together from various data sources to present 
+                    meaningful information.
+                </p>
+                    
+                <b>My sincere thanks to followings 👍:</b>
+                <ul>
+                    <li>
+                        <a href="https://corona.lmao.ninja/docs/" target="_blank">
+                            Coronavirus Ninja API
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://github.com/pomber/covid19/" target="_blank">
+                            Corona timeseries API
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://api.covid19india.org/" target="_blank">
+                            Corona State Data(India)
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://saurav.tech/NewsAPI/top-headlines/category/health/in.json" target="_blank">
+                            API for News
+                        </a>
+                    </li>
+                </ul>
+                <br />
+                <h3>💻 Technologies 💻</h3>
+                <p>
+                    This app is built from the scratch using following User Interface Technologies:
                     <ul>
                         <li>
-                            <a href="https://corona.lmao.ninja/docs/" target="_blank">
-                                Coronavirus Ninja API
-                            </a>
+                            <a href="https://reactjs.org/" target="_blank">ReactJs</a>
                         </li>
                         <li>
-                            <a href="https://github.com/pomber/covid19/" target="_blank">
-                                Corona timeseries API
-                            </a>
+                            <a href="https://react-bootstrap.netlify.com/" target="_blank">Bootstrap</a>
                         </li>
                         <li>
-                            <a href="https://api.covid19india.org/" target="_blank">
-                                Corona State Data(India)
-                            </a>
+                            <a href="http://recharts.org/en-US/" target="_blank">Recharts</a>
                         </li>
                         <li>
-                            <a href="https://saurav.tech/NewsAPI/top-headlines/category/health/in.json" target="_blank">
-                                API for News
-                            </a>
+                            <a href="http://netlify.com/" target="_blank">Hosted on Netlify</a>
                         </li>
                     </ul>
-                    <br />
-                    <h3>💻 Technologies 💻</h3>
-                    <p>
-                        This app is built from the scratch using following User Interface Technologies:
-                        <ul>
-                            <li>
-                                <a href="https://reactjs.org/" target="_blank">ReactJs</a>
-                            </li>
-                            <li>
-                                <a href="https://react-bootstrap.netlify.com/" target="_blank">Bootstrap</a>
-                            </li>
-                            <li>
-                                <a href="http://recharts.org/en-US/" target="_blank">Recharts</a>
-                            </li>
-                            <li>
-                                <a href="http://netlify.com/" target="_blank">Hosted on Netlify</a>
-                            </li>
-                        </ul>
-                    </p>
-                    <br />
-                    <a href="https://www.tapasadhikary.com" target="_blank">
-                    Contact me
-                    </a> for any further questions.
                 </p>
+                <br />
+                <a href="https://www.tapasadhikary.com" target="_blank">
+                Contact me
+                </a> for any further questions.
+                
             </Modal.Body>
           </Modal>
         </div>
