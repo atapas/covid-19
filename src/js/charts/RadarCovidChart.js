@@ -10,6 +10,7 @@ import {
     Tooltip,
     ResponsiveContainer 
 } from 'recharts';
+
 import COLOR_CODES from '../utils/color_codes';
 
 const RadarCovidChart = props => {
@@ -25,6 +26,9 @@ const RadarCovidChart = props => {
     } else if (key === 'active') {
         color = COLOR_CODES.CATEGORIES.ACTIVE;
         name = 'Active';
+    } else if (key === 'recovered') {
+        color = COLOR_CODES.CATEGORIES.RECOVERED;
+        name = 'Recovered';
     }
 
     let sliced = data.slice(0, props.top_n);

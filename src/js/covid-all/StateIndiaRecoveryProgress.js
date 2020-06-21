@@ -25,12 +25,9 @@ import {
 
 import INDIA_STATE_CODES from '../utils/india_state_codes';
 
-const StateIndiaMostRecovered = props => {
+const StateIndiaRecoveryProgress = props => {
     const data = props.data;
-    // const TOP_N = data.length;
     
-
-    // let cloned = JSON.parse(JSON.stringify(data));
     let topNData = data.filter((elem) => {
         return elem.confirmed > 0;
     });
@@ -118,4 +115,4 @@ const StateIndiaMostRecovered = props => {
     );
 };
 
-export default StateIndiaMostRecovered;
+export default StateIndiaRecoveryProgress;
