@@ -291,7 +291,7 @@ const Country = props => {
                             </Row>
                             <Row>
                                 <Col>
-                                    <IndiaStateCharts data={stateData} />
+                                    <IndiaStateCharts data={stateData} indiaTotalData={inidiaTotalData} />
 
                                 </Col>
                             </Row>

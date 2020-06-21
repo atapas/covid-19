@@ -42,7 +42,8 @@ const INDIA_STATE_CODES = {
     "Dadra and Nagar Haveli": "DN",
     "Daman and Diu": "DD",
     "Lakshadweep": "LD",
-    "Dadra and Nagar Haveli and Daman and Diu": "DN"
+    "Dadra and Nagar Haveli and Daman and Diu": "DN",
+    "State Unassigned": "SU"
 };
 
 export default INDIA_STATE_CODES;

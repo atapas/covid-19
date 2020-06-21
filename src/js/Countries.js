@@ -21,7 +21,7 @@ const Countries = props => {
     });
     const [countries, setCountries] = useState([]);
     const [filteredCountries, setFilteredCountries] = useState([]);
-    const [sortBy, setSortBy] = useState('cases');
+    const [sortBy, setSortBy] = useState('active');
 
     // const SORT_BY = 'cases';
 
@@ -47,11 +47,13 @@ const Countries = props => {
 
     const handleSelect = event => {
         let selectedSortVal = event.target.value;
-        if ( selectedSortVal == 'Total Cases') {
+        if ( selectedSortVal == 'Active') {
+            setSortBy('active');
+        }else if ( selectedSortVal == 'Total') {
             setSortBy('cases');
         }else if ( selectedSortVal == 'Recovery') {
             setSortBy('recovered');
-        }else if ( selectedSortVal == 'Total Deaths') {
+        }else if ( selectedSortVal == 'Deaths') {
             setSortBy('deaths');
         }else if ( selectedSortVal == 'New Cases') {
             setSortBy('todayCases');
@@ -68,12 +70,13 @@ const Countries = props => {
                         <Form inline>
                             <Form.Group controlId="exampleForm.SelectCustom">
                                 <Form.Label>Sorted By: </Form.Label>
-                                <Form.Control as="select" custom="true" onChange={event => handleSelect(event)}>
-                                <option>Total Cases</option>
-                                <option>Total Deaths</option>
-                                <option>Recovery</option>
-                                <option>New Cases</option>
-                                <option>New Deaths</option>
+                                <Form.Control as="select" custom="true" onChange={event => handleSelect(event)} style={{cursor:'pointer'}}>
+                                    <option>Active</option>
+                                    <option>Recovery</option>
+                                    <option>Deaths</option>
+                                    <option>New Cases</option>
+                                    <option>New Deaths</option>
+                                    <option>Total</option>
                                 </Form.Control>
                             </Form.Group>
                         </Form>
