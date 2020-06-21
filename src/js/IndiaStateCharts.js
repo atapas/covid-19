@@ -13,11 +13,12 @@ import Col from 'react-bootstrap/Col';
 import StateIndiaMostConfirmed from './covid-all/StateIndiaMostConfirmed';
 import StateIndiaMostDeaths from './covid-all/StateIndiaMostDeaths';
 import StateIndiaMostRecovered from './covid-all/StateIndiaMostRecovered';
+import StateIndiaMostActive from './covid-all/StateIndiaMostActive';
 
 const IndiaStateCharts = props => {
     const stateData = props.data;
 
-    const sortedMostConfirmed = [...stateData].sort((a,b) => parseInt(b.active, 10) - parseInt(a.active, 10));
+    const sortedMostActive = [...stateData].sort((a,b) => parseInt(b.active, 10) - parseInt(a.active, 10));
     const sortedMostDeath = [...stateData].sort((a,b) => parseInt(b.deaths, 10) - parseInt(a.deaths, 10));
     let stateDataWithPerctRecovered = stateData.map(elem => {
         elem['perctRecoverd'] = Math.round((elem['recovered'] * 100) / elem['confirmed']);
@@ -26,12 +27,18 @@ const IndiaStateCharts = props => {
         return elem;
     });
     const sortedMostRecoveredPerct = stateDataWithPerctRecovered.sort((a,b) => b.active - a.active);
+    const indiaTotalData = props.indiaTotalData;
+
+    // console.log('indiaTotalData', indiaTotalData);
 
     return(
         <Container className="india-state-charts" fluid>
             <Row style={{marginBottom: '20px'}}>
-                <Col>
-                    <StateIndiaMostConfirmed data={sortedMostConfirmed} />
+                <Col sm={6}>
+                    <StateIndiaMostActive data={sortedMostActive} total={indiaTotalData.active}/>
+                </Col>
+                <Col sm={6}>
+                    <StateIndiaMostDeaths data={sortedMostDeath} total={indiaTotalData.deaths}/>
                 </Col>
             </Row>
             <Row>
@@ -39,6 +46,7 @@ const IndiaStateCharts = props => {
                     <StateIndiaMostRecovered data={sortedMostRecoveredPerct} />
                 </Col>
             </Row>
+            
         </Container>
     )
 };

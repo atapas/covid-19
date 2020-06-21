@@ -8,33 +8,33 @@ import React from 'react';
 import Card from 'react-bootstrap/Card';
 import RadarCovidChart from '../charts/RadarCovidChart';
 
-const StateIndiaMostDeaths = props => {
+const StateIndiaMostActive = props => {
     const data = props.data;
-    const totalDeathIndia = props.total;
-    console.log('StateIndiaMostDeaths data', data);
+    const totalActiveIndia = props.total;
+    console.log('StateIndiaMostActive data', data);
     const TOP_N = 10;
     let refinedData = [];
     data.forEach(element => {
         let obj = {};
         obj['state'] = element['state'];
-        obj['deaths'] = parseInt(element['deaths'], 10);
-        obj['total'] = totalDeathIndia;
+        obj['active'] = parseInt(element['active'], 10);
+        obj['total'] = totalActiveIndia;
         refinedData.push(obj);
     });
 
-    console.log('StateIndiaMostDeaths refinedData', refinedData);
+    console.log('StateIndiaMostActive refinedData', refinedData);
 
     return (
         <Card>
             <Card.Body>
-                <Card.Title>State: Most Death Cases Spreads</Card.Title>
+                <Card.Title>State: Most Active Cases Spreads</Card.Title>
                 <Card.Subtitle className="mb-2 text-muted">
-                    Top {TOP_N} states with Most Death Cases Spreads
+                    Top {TOP_N} states with Most Active Cases Spreads
                 </Card.Subtitle>
-                <RadarCovidChart radarData={refinedData} chartKey={'deaths'} top_n={TOP_N} />
+                <RadarCovidChart radarData={refinedData} chartKey={'active'} top_n={TOP_N} />
             </Card.Body>
         </Card>
     );
 };
 
-export default StateIndiaMostDeaths;
+export default StateIndiaMostActive;
