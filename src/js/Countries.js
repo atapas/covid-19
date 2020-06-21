@@ -70,7 +70,7 @@ const Countries = props => {
                         <Form inline>
                             <Form.Group controlId="exampleForm.SelectCustom">
                                 <Form.Label>Sorted By: </Form.Label>
-                                <Form.Control as="select" custom="true" onChange={event => handleSelect(event)}>
+                                <Form.Control as="select" custom="true" onChange={event => handleSelect(event)} style={{cursor:'pointer'}}>
                                     <option>Active</option>
                                     <option>Recovery</option>
                                     <option>Deaths</option>
