@@ -29,6 +29,9 @@ const RadarCovidChart = props => {
     } else if (key === 'recovered') {
         color = COLOR_CODES.CATEGORIES.RECOVERED;
         name = 'Recovered';
+    } else if (key === 'confirmed') {
+        color = COLOR_CODES.CATEGORIES.CONFIRMED;
+        name = 'Confirmed';
     }
 
     let sliced = data.slice(0, props.top_n);
