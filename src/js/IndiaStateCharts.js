@@ -16,9 +16,6 @@ import StateIndiaMostRadialSpreads from './covid-all/StateIndiaMostRadialSpreads
 const IndiaStateCharts = props => {
     
     const stateData = props.data;
-    const sortedMostActive = [...stateData].sort((a, b) => parseInt(b.active, 10) - parseInt(a.active, 10));
-    const sortedMostDeath = [...stateData].sort((a, b) => parseInt(b.deaths, 10) - parseInt(a.deaths, 10));
-    const sortedMostRecovered = [...stateData].sort((a, b) => parseInt(b.recovered, 10) - parseInt(a.recovered, 10));
     
     let stateDataWithPerctRecovered = stateData.map(elem => {
         elem['perctRecoverd'] = Math.round((elem['recovered'] * 100) / elem['confirmed']);
@@ -44,9 +41,7 @@ const IndiaStateCharts = props => {
             <Row>
                 <Col>
                     <StateIndiaMostRadialSpreads 
-                        activeData={sortedMostActive}
-                        deathData={sortedMostDeath}
-                        recovered={sortedMostRecovered}
+                        stateData={stateData}
                         total={indiaTotalData} />
                 </Col>
             </Row>

@@ -13,52 +13,32 @@ import Button from 'react-bootstrap/Button';
 import INDIA_STATE_CODES from '../utils/india_state_codes';
 
 const StateIndiaMostRadialSpreads = props => {
-    const [type, setType] = useState('active');
+    const [type, setType] = useState('confirmed');
     const [btnState, setBtnState] = useState({
-        'active': true,
+        'confirmed': true,
+        'active': false,
         'recovered': false,
         'deaths': false
     });
-    const activeData = props.activeData;
-    const deathData = props.deathData;
-    const recoveredData = props.recovered;
+    const stateData = props.stateData;
     const totalActiveIndia = props.total;
-
     const TOP_N = 12;
 
     let refinedData = [];
-
-    if (type === 'active') {
-        activeData.forEach(element => {
-            let obj = {};
-            obj['state'] = element['state'];
-            obj[type] = parseInt(element[type], 10);
-            obj['total'] = parseInt(totalActiveIndia.active, 10);
-            refinedData.push(obj);
-        });
-    } else if(type === 'deaths') {
-        deathData.forEach(element => {
-            let obj = {};
-            obj['state'] = element['state'];
-            obj[type] = parseInt(element[type], 10);
-            obj['total'] = parseInt(totalActiveIndia.deaths, 10);
-            refinedData.push(obj);
-        });
-    } else if(type === 'recovered') {
-        recoveredData.forEach(element => {
-            let obj = {};
-            obj['state'] = element['state'];
-            obj[type] = parseInt(element[type], 10);
-            obj['total'] = parseInt(totalActiveIndia.recovered, 10);
-            refinedData.push(obj);
-        });
-    }
-    
+    const sortedMostType = [...stateData].sort((a, b) => parseInt(b[type], 10) - parseInt(a[type], 10));
+    sortedMostType.forEach(element => {
+        let obj = {};
+        obj['state'] = element['state'];
+        obj[type] = parseInt(element[type], 10);
+        obj['total'] = parseInt(totalActiveIndia[type], 10);
+        refinedData.push(obj);
+    });
 
     const handleTypeClick = (type, color) => {
         setType(type);
 
         let tempState = Object.assign({}, {
+            'confirmed': false,
             'active': false,
             'recovered': false,
             'deaths': false
@@ -75,24 +55,30 @@ const StateIndiaMostRadialSpreads = props => {
                 <Card.Title>State: Most {type} cases spreads</Card.Title>
                 <div className="type-btn-grp">
                     <ButtonGroup aria-label="Basic example">
+                        <Button 
+                            variant="secondary" 
+                            className={btnState.confirmed ? 'selected' : null}
+                            onClick={e => handleTypeClick('confirmed', '#17A2B8')}>
+                            Confirmed
+                        </Button>
                         <Button
                             variant="secondary"
                             className={btnState.active ? 'selected' : null}
                             onClick={e => handleTypeClick('active', '#FFC107')}>
                             Active
-                    </Button>
+                        </Button>
                         <Button
                             variant="secondary"
                             className={btnState.recovered ? 'selected' : null}
                             onClick={e => handleTypeClick('recovered', '#28A745')}>
                             Recovered
-                                </Button>
+                        </Button>
                         <Button
                             variant="secondary"
                             className={btnState.deaths ? 'selected' : null}
                             onClick={e => handleTypeClick('deaths', '#DC3545')}>
                             Deaths
-                                </Button>
+                        </Button>
                     </ButtonGroup>
                 </div>
                 <Card.Subtitle className="mb-2 text-muted">
