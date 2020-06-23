@@ -8,19 +8,28 @@ import Button from 'react-bootstrap/Button';
 
 import moment from 'moment';
 
+import {reactLocalStorage} from 'reactjs-localstorage';
+
 const Notification = () => {
     const [data, loading] = useFetch('https://api.covid19india.org/updatelog/log.json');
     const [showCount, setShowCount] = useState(false);
     const [messageCount, setMessageCount] = useState(0);
     const [show, setShow] = useState(false);
     const [target, setTarget] = useState(null);
+    const [raedIndex, setReadIndex] = useState(0);
     const ref = useRef(null);
 
     useEffect(() => {
         if (!loading) {
             data.sort((a,b) => b.timestamp - a.timestamp);
-            data.length > 0 ? setShowCount(true) : setShowCount(false);
-            setMessageCount(data.length);
+            // here we need to get the logic
+            let readItemLs = reactLocalStorage.getObject('notification_last_read_item_id');
+            let readMsgId = Object.keys(readItemLs).length > 0 ? readItemLs['id'] : '';
+            let readIndex = (readMsgId === '') ? data.length : data.findIndex(elem => elem.timestamp === readMsgId);
+            setReadIndex(readIndex);
+            console.log('readIndex', readIndex);
+            (data.length && readIndex) > 0 ? setShowCount(true) : setShowCount(false);
+            setMessageCount(readIndex);
             console.log(data);
         }
     },[loading]);
@@ -69,7 +78,8 @@ const Notification = () => {
 
     const markAsRead = () => {
         setShowCount(false);
-        //setMessageCount(0);
+        reactLocalStorage.setObject('notification_last_read_item_id', {'id': data[0].timestamp});
+        setReadIndex(0);
     }
 
     return (
@@ -96,13 +106,15 @@ const Notification = () => {
                         <Popover.Title as="h3">Breaking Alerts!</Popover.Title>
                         { !loading ?
                             <Popover.Content style={{padding: '3px 3px'}}>
-                                <div>
-                                    <Button variant="link" onClick={markAsRead}>Mark as Read</Button>
-                                </div>
+                                {showCount && <div>
+                                    <Button variant="link" onClick={markAsRead}>Mark all as read</Button>
+                                </div> }
                                 <ul className="notification-info-panel">
                                 {
                                     data.map((message, index) =>
-                                        <li className="notification-message" key={index}>
+                                        <li 
+                                            className={index < raedIndex ? 'notification-message unread' : 'notification-message'}
+                                            key={index}>
                                             <div className="timestamp">{getDayDiff(message.timestamp)}</div>
                                             <div className="content" dangerouslySetInnerHTML={getContent(message.update)} />
                                         </li>
