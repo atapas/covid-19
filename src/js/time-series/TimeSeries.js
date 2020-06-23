@@ -132,7 +132,8 @@ const TimeSeries = props => {
                         <h3>No time-series data available for this country</h3> :
                         <div>
                             <TimeSeriesBroken data={brokenDownData} />
-                            <TimeSeriesPercentage data={percentageData}/>
+                            {country !== 'India' ? 
+                                <TimeSeriesPercentage data={percentageData}/> : null }
                             <div className="chart">
                                 <Card>
                                     <Card.Body>

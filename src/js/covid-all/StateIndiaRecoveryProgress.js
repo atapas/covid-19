@@ -29,7 +29,7 @@ const StateIndiaRecoveryProgress = props => {
     const data = props.data;
     
     let topNData = data.filter((elem) => {
-        return elem.confirmed > 0;
+        return elem.confirmed > 100 && elem.state != 'State Unassigned';
     });
 
     let refinedData = [];
@@ -89,7 +89,7 @@ const StateIndiaRecoveryProgress = props => {
     return (
         <Card>
             <Card.Body>
-                <Card.Title>State: Recovery Progress</Card.Title>
+                <Card.Title>State: Recovery Progress(Min. 100 Cases)</Card.Title>
                 <Card.Subtitle className="mb-2 text-muted">
                     State with the Active, Recovery and Death percentages
                 </Card.Subtitle>
