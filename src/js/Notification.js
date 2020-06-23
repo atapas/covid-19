@@ -22,18 +22,23 @@ const Notification = () => {
     useEffect(() => {
         if (!loading) {
             data.sort((a,b) => b.timestamp - a.timestamp);
-            // here we need to get the logic
+
+            // We read if any last read item id is in the local storage
             let readItemLs = reactLocalStorage.getObject('notification_last_read_item_id');
             let readMsgId = Object.keys(readItemLs).length > 0 ? readItemLs['id'] : '';
+
+            // if the id found, we check what is the index of that message in the array and query it. If not found,
+            // nothing has been read. Hence count should be same as all the mmesage count.
             let readIndex = (readMsgId === '') ? data.length : data.findIndex(elem => elem.timestamp === readMsgId);
             setReadIndex(readIndex);
-            console.log('readIndex', readIndex);
+            
+            // If there are messages and readIndex is pointing to at least one message, we will show the count bubble.
             (data.length && readIndex) > 0 ? setShowCount(true) : setShowCount(false);
             setMessageCount(readIndex);
-            console.log(data);
+            
         }
     },[loading]);
-
+    
     const handleClick = (event) => {
         setShow(!show);
         setTarget(event.target);
