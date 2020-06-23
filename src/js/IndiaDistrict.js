@@ -86,7 +86,7 @@ const IndiaDistrict = props => {
                                         <Button
                                             variant="link"
                                             onClick={event => handleExpandRow(districtTrend[name], name)}>
-                                            <i class="fas fa-chart-line" style={{ marginRight: '5px' }}></i>
+                                            <i className="fas fa-chart-line" style={{ marginRight: '5px' }}></i>
                                             {expandDistrict[name] ? <span style={{ fontSize: '12px'}}>{'Hide Trend'}</span>
                                             : <span style={{ fontSize: '12px'}}>{'Show Trend'}</span>}
                                         </Button>
