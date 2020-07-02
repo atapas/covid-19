@@ -30,6 +30,10 @@ const Notification = () => {
             // if the id found, we check what is the index of that message in the array and query it. If not found,
             // nothing has been read. Hence count should be same as all the mmesage count.
             let readIndex = (readMsgId === '') ? data.length : data.findIndex(elem => elem.timestamp === readMsgId);
+            
+            // if the id is not found, it all flushed out and start again
+            readIndex === -1 ? readIndex = 50 : readIndex;
+            
             setReadIndex(readIndex);
             
             // If there are messages and readIndex is pointing to at least one message, we will show the count bubble.
