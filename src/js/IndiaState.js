@@ -21,7 +21,7 @@ const IndiaState = props => {
     const stateData = props.data;
     const [expandedRows, setExpandedRows] = useState([]);
     const [districtData, loadingDistrictData] = useFetch('https://api.covid19india.org/state_district_wise.json');
-    const [districtTrend, loadingDistrictTrend] = useFetch(URL_INDIA_DISTRICT_DAILY);
+    // const [districtTrend, loadingDistrictTrend] = useFetch(URL_INDIA_DISTRICT_DAILY);
     const [expandState, setExpandState] = useState({});
 
     const sortedStateData = stateData.sort((a,b) => b.deltaconfirmed - a.deltaconfirmed);
@@ -131,13 +131,13 @@ const IndiaState = props => {
                                     </tr>
                                     <>
                                         {
-                                            !loadingDistrictTrend && !loadingDistrictData && expandedRows.includes(data.state) ?
+                                            !loadingDistrictData && expandedRows.includes(data.state) ?
                                                 <tr className="expandedRow" key={"row-expanded-" + data.state}>
                                                     <td colSpan="5">
                                                         <div className="district">
                                                             <IndiaDistrict 
                                                                 districtData = { districtData[data.state]['districtData']}
-                                                                districtTrend = { districtTrend.districtsDaily[data.state] } />
+                                                            />
                                                         </div>
 
                                                     </td>

@@ -9,13 +9,13 @@ import Table from 'react-bootstrap/Table';
 
 const IndiaDistrict = props => {
     const data = props.districtData;
-    const districtTrend = props.districtTrend;
+    // const districtTrend = props.districtTrend;
     const districts = Object.keys(data).sort((a, b) => data[b].delta.confirmed - data[a].delta.confirmed);
     const [expandedRows, setExpandedRows] = useState([]);
     const [expandDistrict, setExpandDistrict] = useState({});
-    const [districtTrendDetails, setDistrictTrendDetails] = useState();
+    // const [districtTrendDetails, setDistrictTrendDetails] = useState();
 
-    const handleExpandRow = (trendDetails, district) => {
+    /*const handleExpandRow = (trendDetails, district) => {
         const currentExpandedRows = expandedRows;
         const isRowCurrentlyExpanded = currentExpandedRows.includes(district);
         setDistrictTrendDetails(trendDetails);
@@ -39,7 +39,7 @@ const IndiaDistrict = props => {
             currentExpandedRows.concat(district);
 
         setExpandedRows(newExpandedRows);
-    }
+    }*/
 
 
     return (
@@ -51,7 +51,7 @@ const IndiaDistrict = props => {
                         <>
                             <tr key={name}>
                                 📣 {name}: {data[name]['confirmed']}
-                                <span style={{ marginLeft: '20px', fontSize: '12px' }}>
+                                <span style={{ marginLeft: '20px', fontSize: '14px' }}>
                                     <span>
                                         Active: {data[name]['active']}
                                         {data[name]['delta']['confirmed'] > 0
@@ -82,7 +82,7 @@ const IndiaDistrict = props => {
                                             : null
                                         }
                                     </span>
-                                    <span style={{ float: 'right'}}>
+                                    {/*<span style={{ float: 'right'}}>
                                         <Button
                                             variant="link"
                                             onClick={event => handleExpandRow(districtTrend[name], name)}>
@@ -91,10 +91,11 @@ const IndiaDistrict = props => {
                                             : <span style={{ fontSize: '12px'}}>{'Show Trend'}</span>}
                                         </Button>
                                     </span>
+                                    */}
                                 </span>
                             </tr>
                             <>
-                                {
+                                {/*
                                 expandedRows.includes(name) ?
                                     <tr className="expandedRow" key={"row-expanded-" + name}>
                                         <td colSpan="5">
@@ -103,7 +104,7 @@ const IndiaDistrict = props => {
                                             </div>
                                         </td>
                                     </tr> : null
-                            }
+                            */}
                             </>
                         </>
                     )}
