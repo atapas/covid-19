@@ -16,6 +16,9 @@ With the oubreak world-wide and increasing number of active patients, there are 
 
 👉 [https://covid-19-world.netlify.com/](https://covid-19-world.netlify.com/)
 
+# Many Thanks to all the `Stargazers` who has supported this project with stars(⭐)
+
+[![Stargazers repo roster for @atapas/covid-19](https://reporoster.com/stars/atapas/covid-19)](https://github.com/atapas/covid-19/stargazers)
 
 # Analytics
 
